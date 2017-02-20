@@ -1,3 +1,3 @@
 mikami taiga
 
-changed by yuki nakahira
+mikami taiga
