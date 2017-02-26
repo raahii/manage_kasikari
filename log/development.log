@@ -308,3 +308,24 @@ Processing by Rails::WelcomeController#index as HTML
 Completed 200 OK in 11ms (Views: 7.0ms | ActiveRecord: 0.0ms)
 
 
+Started GET "/static_pages/home" for ::1 at 2017-02-27 00:46:12 +0900
+Processing by StaticPagesController#home as HTML
+  Rendering static_pages/home.html.erb within layouts/application
+  Rendered static_pages/home.html.erb within layouts/application (4.9ms)
+Completed 200 OK in 1539ms (Views: 1536.1ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/static_pages/home" for ::1 at 2017-02-27 00:54:49 +0900
+Processing by StaticPagesController#home as HTML
+  Rendering static_pages/home.html.erb within layouts/application
+  Rendered static_pages/home.html.erb within layouts/application (4.4ms)
+Completed 200 OK in 429ms (Views: 426.4ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/" for ::1 at 2017-02-27 00:54:54 +0900
+Processing by StaticPagesController#home as HTML
+  Rendering static_pages/home.html.erb within layouts/application
+  Rendered static_pages/home.html.erb within layouts/application (0.5ms)
+Completed 200 OK in 18ms (Views: 16.8ms | ActiveRecord: 0.0ms)
+
+
