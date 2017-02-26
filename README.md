@@ -27,47 +27,60 @@ etc…
 
 ## セットアップ
 
-1. clone repostitory
-	
-	```
-	git clone <this_repository>
-	cd manage_kasikari
-	bundle install
-	```
+1. リポジトリをクローン
+  
+  ```
+  git clone <this_repository>
+  cd manage_kasikari
+  bundle install
+  ```
 
-2. install and start mysql
+  OS X Sierraで`bundle install`が失敗する場合は[ココ](http://nekonenene.hatenablog.com/entry/2016/10/31/061350)を参考。
 
-	```
-	brew install mysql
-	mysql.start
-	```
+2. mysqlのインストール
 
-3. set up mysql
+  ```
+  brew update && brew upgrade
+  brew install mysql
+  mysql.start
+  ```
 
-	```
-	mysql -u root
+3. mysqlのセットアップ
 
-	mysql> update mysql.user set password=password('root用の好きなパスワード') where user = 'root';
-	mysql> flush privileges;
-	mysql> exit;
-	```
-	
-	そしたら環境変数にrootのパスワードを書く。~/.bashrcとか~/.bash_profileとか適当に以下を追記。
-	
-	```
-	export DB_ROOT_PASSWORD=さっき設定したパスワード
-	```
-	
-	最後にターミナルを再起動
-	
-	
+  ```
+  mysql -u root
+
+  mysql> update mysql.user set password=password('root用の好きなパスワード') where user = 'root';
+  mysql> flush privileges;
+  mysql> exit;
+  ```
+  もし上記で
+  ```
+  ERROR 1054 (42S22): Unknown column 'password' in 'field list'
+  ```
+  のようなエラーでひっかかった場合には
+  ```
+  mysql> update mysql.user set authentication_string=password('root用の好きなパスワード') where user = 'root';
+  ```
+  を試す。
+
+  そしたら環境変数にrootのパスワードを書く。~/.bashrcとか~/.bash_profileとか適当に以下を追記。
+  
+  ```
+  export DB_ROOT_PASSWORD=さっき設定したパスワード
+  ```
+  
+  最後にターミナルを再起動
+  
+  
 4. migration
 
-	```
-	bundle exec rake db:migrate
-	```
-	
-	問題なく動けばLGTM！！
+  ```
+  bundle exec rake db:create
+  bundle exec rake db:migrate
+  ```
+  
+  問題なく動けばLGTM！！
 
 ## Memo
 
