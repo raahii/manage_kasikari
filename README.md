@@ -1,6 +1,6 @@
 # MKK（Manage Kasi Kari）
 
-## 開発環境 
+## 開発環境
 
 ・Ruby on Rails
 
@@ -28,7 +28,7 @@ etc…
 ## セットアップ
 
 1. リポジトリをクローン
-  
+
   ```
   git clone <this_repository>
   cd manage_kasikari
@@ -65,21 +65,21 @@ etc…
   を試す。
 
   そしたら環境変数にrootのパスワードを書く。~/.bashrcとか~/.bash_profileとか適当に以下を追記。
-  
+
   ```
   export DB_ROOT_PASSWORD=さっき設定したパスワード
   ```
-  
+
   最後にターミナルを再起動
-  
-  
+
+
 4. migration
 
   ```
   bundle exec rake db:create
   bundle exec rake db:migrate
   ```
-  
+
   問題なく動けばLGTM！！
 
 ## Memo
@@ -91,3 +91,5 @@ bundle install
 
 bundle exec rake db:create
 ```
+
+##変更変更変更！！！！！！！！！！！！！！！！！！！！！
