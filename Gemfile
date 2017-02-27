@@ -14,6 +14,7 @@ gem 'sass-rails', '~> 5.0'
 gem 'uglifier', '>= 1.3.0'
 gem 'coffee-rails', '~> 4.2'
 gem 'thor', '0.19.1'
+gem 'bcrypt', '3.1.11' # パスワードのハッシュ化に必要
 
 gem 'jquery-rails'
 gem 'jbuilder', '~> 2.5'
@@ -25,6 +26,12 @@ gem 'jbuilder', '~> 2.5'
 
 group :development, :test do
   gem 'byebug', platform: :mri
+  gem 'annotate'   # modelのソースの先頭にテーブルのスキーマ情報を付加してくれる
+  gem 'pry-rails'  # rails console(もしくは、rails c)でirbの代わりにpryを使われる
+  gem 'pry-doc'    # methodを表示
+  gem 'pry-byebug' # デバッグを実施
+  gem 'hirb'       # モデルの出力結果を表形式で表示するGem
+  gem 'hirb-unicode' 
 end
 
 group :development do
