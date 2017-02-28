@@ -1,5 +1,6 @@
 class ItemsController < ApplicationController
   before_action :set_item,       only: [:show, :edit, :update, :destroy]
+  before_action :logged_in_user, only: [:new, :edit, :update, :destroy]
   before_action :correct_user,   only: [:edit, :update, :destroy]
 
   def index
@@ -54,12 +55,19 @@ class ItemsController < ApplicationController
     )
   end
 
-  # 正しいユーザーかどうか確認
-  def correct_user
-    unless current_user.id == @item.user_id
+  # ログイン済みユーザーかどうか確認
+  def logged_in_user
+    unless logged_in?
       store_location
       flash[:danger] = "Please log in."
       redirect_to login_url
+    end
+  end
+
+  # 正しいユーザーかどうか確認
+  def correct_user
+    unless current_user.id == @item.user_id
+      redirect_to root_url
     end
   end
 end

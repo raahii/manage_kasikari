@@ -4,10 +4,10 @@
 
   <% if logged_in? %>
     <h2></h2>
-    <%= link_to "物を登録する", new_item_path, class: "btn btn-lg btn-primary" %>
+    <%= link_to "アイテムを登録する", new_item_path, class: "btn btn-lg btn-primary" %>
   <% else %>
     <h2>
-      友人間での物の貸し借りより良い体験に
+      物の貸し借りをより良い体験に
     </h2>
 
     <%= link_to "Sign up now!", signup_path, class: "btn btn-lg btn-primary" %>
