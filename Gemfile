@@ -15,6 +15,8 @@ gem 'uglifier', '>= 1.3.0'
 gem 'coffee-rails', '~> 4.2'
 gem 'thor', '0.19.1'
 gem 'bcrypt', '3.1.11' # パスワードのハッシュ化に必要
+gem 'will_paginate',           '3.1.0'
+gem 'bootstrap-will_paginate', '0.0.10'
 
 gem 'jquery-rails'
 gem 'jbuilder', '~> 2.5'
@@ -32,6 +34,7 @@ group :development, :test do
   gem 'pry-byebug' # デバッグを実施
   gem 'hirb'       # モデルの出力結果を表形式で表示するGem
   gem 'hirb-unicode'
+  gem 'faker',          '1.6.6'
 end
 
 group :development do
