@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
-
+  before_action :set_user,       only: [:show, :edit, :update]
   before_action :logged_in_user, only: [:index, :edit, :update]
   before_action :correct_user,   only: [:edit, :update]
 
@@ -12,15 +12,12 @@ class UsersController < ApplicationController
   end
 
   def show
-    @user = User.find(params[:id])
   end
 
   def edit
-    @user = User.find(params[:id])
   end
 
   def update
-    @user = User.find(params[:id])
     if @user.update_attributes(user_params)
       flash[:success] = "Profile updated!"
       redirect_to @user
@@ -49,6 +46,10 @@ class UsersController < ApplicationController
       :password,
       :password_confirmation,
     )
+  end
+
+  def set_user
+    @user = User.find(params[:id])
   end
 
   # ログイン済みユーザーかどうか確認
