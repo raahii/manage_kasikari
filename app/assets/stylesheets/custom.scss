@@ -16,9 +16,14 @@
 
 }
 
+// .btn{
+//
+// }
+
 .btn-primary{
   background-color: #34b490;
   border-color: #228E70;
+  font-family: "Rounded Mplus 1c";
   &:hover,&:focus {
     background-color: #228E70;
     border-color: #34b490;
@@ -105,6 +110,36 @@ h2 {
   text-align: center;
   // font-weight: normal;
   color: white;
+  font-family: "Rounded Mplus 1c"
+}
+
+h3 {
+  font-size: 1.2em;
+  letter-spacing: -1px;
+  margin-bottom: 30px;
+  // font-weight: normal;
+  color: #34b490;
+  font-family: "Rounded Mplus 1c"
+}
+
+h4 {
+  font-size: 5em;
+  letter-spacing: -2px;
+  margin-bottom: 30px;
+  text-align: center;
+  color: #34b490;
+  -webkit-text-stroke-color: #000;
+  -webkit-text-stroke-width: 1px;
+  font-family: "Rounded Mplus 1c"
+}
+
+h5 {
+  font-size: 1.2em;
+  letter-spacing: -1px;
+  margin-bottom: 30px;
+  text-align: center;
+  // font-weight: normal;
+  color: #34b490;
   font-family: "Rounded Mplus 1c"
 }
 
@@ -255,4 +290,9 @@ input {
     overflow: auto;
     margin: 20px 0;
   }
+}
+
+/* item style */
+#edit_item{
+  padding : 20px ;
 }
