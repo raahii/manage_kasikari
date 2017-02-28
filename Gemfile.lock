@@ -120,7 +120,6 @@ GEM
     notiffany (0.1.1)
       nenv (~> 0.1)
       shellany (~> 0.0)
-    pg (0.18.4)
     pry (0.10.4)
       coderay (~> 1.1.0)
       method_source (~> 0.8.1)
@@ -225,7 +224,6 @@ DEPENDENCIES
   listen (~> 3.0.5)
   minitest-reporters (= 1.1.9)
   mysql2 (>= 0.3.18, < 0.5)
-  pg (= 0.18.4)
   pry-byebug
   pry-doc
   pry-rails

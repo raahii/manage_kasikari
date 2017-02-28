@@ -1,6 +1,25 @@
 @import "bootstrap-sprockets";
 @import "bootstrap";
 
+/* Bootstrapスタイル 変更点 */
+.navbar-inverse{
+  background-color: #34b490;
+  border-color: #34b490;
+}
+
+.jumbotron{
+  background-color: #FBF4E2;
+
+}
+
+.btn-primary{
+  background-color: #34b490;
+  border-color: #228E70;
+  &:hover,&:focus {
+    background-color: #228E70;
+  }
+}
+
 /* mixins, variables, etc. */
 
 $gray-medium-light: #eaeaea;
@@ -14,6 +33,7 @@ $gray-medium-light: #eaeaea;
 /* universal */
 
 body {
+  background-color: #FBF4E2;
   padding-top: 60px;
 }
 
@@ -29,6 +49,7 @@ textarea {
   text-align: center;
   h1 {
     margin-bottom: 10px;
+    color: #34b490;
   }
 }
 
@@ -36,6 +57,7 @@ textarea {
 
 h1, h2, h3, h4, h5, h6 {
   line-height: 1;
+  color: #34b490;
 }
 
 h1 {
