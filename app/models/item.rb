@@ -11,5 +11,7 @@
 #
 
 class Item < ApplicationRecord
+  mount_uploader :image, ImageUploader
+
   validates :name, presence: true, length: { maximum: 255 }
 end

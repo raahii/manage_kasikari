@@ -26,6 +26,10 @@ module ManageKasikari
       g.fixture true
       g.test_framework :test_unit
     end
+    
+    # 画像アップローダ
+    config.autoload_paths += Dir[Rails.root.join('app', 'uploaders')]
+
   end
 end
 

@@ -17,6 +17,8 @@ gem 'thor', '0.19.1'
 gem 'bcrypt', '3.1.11' # パスワードのハッシュ化に必要
 gem 'will_paginate',           '3.1.0'
 gem 'bootstrap-will_paginate', '0.0.10'
+gem 'carrierwave'      # Itemのサムネイル画像用
+gem 'rmagick', '< 2.16.0'
 
 gem 'jquery-rails'
 gem 'jbuilder', '~> 2.5'

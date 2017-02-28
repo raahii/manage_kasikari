@@ -11,10 +11,14 @@ class ItemsController < ApplicationController
 
     if @item.save
       flash[:success] = "登録しました。"
-      # redirect_to @item
+      redirect_to @item
     else
       render 'new'
     end
+  end
+
+  def show
+    @item = Item.find(params[:id])
   end
 
   private
@@ -22,7 +26,8 @@ class ItemsController < ApplicationController
   def item_params
     params.require(:item).permit(
       :name,
-      :explanation
+      :explanation,
+      :image
     )
   end
 end
