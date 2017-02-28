@@ -1,0 +1,24 @@
+<%= form_for(@item) do |f| %>
+  <% if @item.errors.any? %>
+    <div id="error_explanation">
+      <div class="alert alert-danger">
+        The form contains <%= pluralize(@item.errors.count, "error") %>.
+      </div>
+      <ul>
+        <% @item.errors.full_messages.each do |msg| %>
+          <li><%= msg %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <%= f.label :name %>
+  <%= f.text_field :name, class: 'form-control' %>
+
+  <%= f.label :explanation %>
+  <%= f.text_field :explanation, class: 'form-control' %>
+  <%= f.label :image, "サムネイル画像" %>
+  <%= f.file_field :image %>
+
+  <%= f.submit "登録", class: "btn btn-primary" %>
+<% end %>

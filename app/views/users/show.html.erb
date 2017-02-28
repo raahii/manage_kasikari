@@ -12,10 +12,12 @@
       <% if @user.items.any? %>
         <ul>
           <% @user.items.each do |item| %>
+            <a href="<%= item_path(item) %>">
             <li>
-              <%= thumbnail_for item %>
+              <%= thumbnail_for item, size: 50 %>
               <%= item.name %>
             </li>
+            </a>
           <% end %>
         </ul>
       <% else %>

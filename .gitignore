@@ -9,6 +9,7 @@ capybara-*.html
 /public/system
 /coverage/
 /spec/tmp
+/app/uploads
 .env
 config/initializers/secret_token.rb
 /.bundle

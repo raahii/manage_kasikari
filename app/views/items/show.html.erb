@@ -3,8 +3,12 @@
   <aside class="col-md-4">
     <section class="user_info">
       <h1>
-        <%= thumbnail_for size: 80 %>
+        <%= thumbnail_for @item, size: 100 %>
         <%= @item.name %>
+        <% if current_user.id === @item.user_id %>
+          | <%= link_to "編集", edit_item_path(@item) %>
+          | <%= link_to "削除", @item, method: :delete, data: { confirm: "You sure?" } %>
+        <% end %>
       </h1>
     </section>
   </aside>
