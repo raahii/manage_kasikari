@@ -31,7 +31,7 @@ group :development, :test do
   gem 'pry-doc'    # methodを表示
   gem 'pry-byebug' # デバッグを実施
   gem 'hirb'       # モデルの出力結果を表形式で表示するGem
-  gem 'hirb-unicode' 
+  gem 'hirb-unicode'
 end
 
 group :development do
@@ -50,7 +50,6 @@ group :test do
 end
 
 group :production do
-  gem 'pg', '0.18.4'
 end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
