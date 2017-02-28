@@ -20,8 +20,24 @@
   border-color: #228E70;
   &:hover,&:focus {
     background-color: #228E70;
+    border-color: #34b490;
   }
 }
+
+.container{
+  width: auto;
+  height: 100%;
+  margin: 0 auto;
+}
+
+/* homeのみの変更点 */
+#home_only{
+  background-image: url("/images/home_background.jpg"); //画像はpublic/imagesの中に
+  background-size: cover;
+  padding-top: 60px;
+}
+
+
 
 /* mixins, variables, etc. */
 
@@ -37,8 +53,10 @@ $gray-medium-light: #eaeaea;
 
 body {
   background-color: #FBF4E2;
+  // background-image: url("/images/home_background.jpg"); //画像はpublic/imagesの中に
+  background-size: cover;
   padding-top: 60px;
-  font-family: 'Comic Sans MS',cursive;
+  font-family: 'Courier New',monospace;
 }
 
 section {
@@ -65,14 +83,17 @@ textarea {
 h1, h2, h3, h4, h5, h6 {
   line-height: 1;
   color: #34b490;
+
 }
 
 h1 {
-  font-size: 3em;
+  font-size: 5em;
   letter-spacing: -2px;
   margin-bottom: 30px;
   text-align: center;
   color: #34b490;
+  -webkit-text-stroke-color: #000;
+  -webkit-text-stroke-width: 1px;
 }
 
 h2 {
@@ -80,8 +101,9 @@ h2 {
   letter-spacing: -1px;
   margin-bottom: 30px;
   text-align: center;
-  font-weight: normal;
+  // font-weight: normal;
   color: white;
+  font-family: serif,serif;
 }
 
 p {
@@ -110,10 +132,15 @@ p {
 /* footer */
 
 footer {
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  height: 100px;
   margin-top: 45px;
   padding: 5px 5px 0px;
   border-top: 1px solid $gray-medium-light;
   color: $gray-light;
+
   a {
     color: $gray;
     &:hover {
