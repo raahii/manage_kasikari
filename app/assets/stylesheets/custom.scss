@@ -1,5 +1,6 @@
 @import "bootstrap-sprockets";
 @import "bootstrap";
+@import url('https://fonts.googleapis.com/css?family=Righteous');
 
 /* Bootstrapスタイル 変更点 */
 .navbar-inverse{
@@ -56,7 +57,7 @@ body {
   // background-image: url("/images/home_background.jpg"); //画像はpublic/imagesの中に
   background-size: cover;
   padding-top: 60px;
-  font-family: 'Courier New',monospace;
+  font-family: 'Righteous', cursive;
 }
 
 section {
@@ -103,7 +104,7 @@ h2 {
   text-align: center;
   // font-weight: normal;
   color: white;
-  font-family: serif,serif;
+  font-family: "Nico Moji";
 }
 
 p {
