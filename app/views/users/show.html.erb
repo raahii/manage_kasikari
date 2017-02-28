@@ -12,18 +12,24 @@
       <% if @user.items.any? %>
         <ul>
           <% @user.items.each do |item| %>
-            <a href="<%= item_path(item) %>">
-            <li>
-              <%= thumbnail_for item, size: 50 %>
-              <%= item.name %>
-            </li>
-            </a>
+            <%= link_to item_path(item) do %>
+              <li>
+                <%= thumbnail_for item, size: 50 %>
+                <%= item.name %>
+              </li>
+            <% end %>
           <% end %>
-          <div class="col-md-8 btn btn-primary">アイテムを追加</div>
+
+          <%= link_to new_item_path do %>
+            <div class="col-md-8 btn btn-primary">アイテムを追加</div>
+          <% end %>
         </ul>
       <% else %>
         <h2>登録したものはありません</h2>
-        <div class="col-md-8 btn btn-primary">アイテムを登録</div>
+
+        <%= link_to new_item_path do %>
+          <div class="col-md-8 btn btn-primary">アイテムを登録</div>
+        <% end %>
       <% end %>
     </section>
   </aside>
