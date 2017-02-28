@@ -1,15 +1,16 @@
 <% provide(:title, "Home") %>
-<div class="center jumbotron">
-  <h1>Manage Kasi Kari</h1>
+<body id="home_only">
+  <div class="center">
+    <h1>Manage Kasi Kari</h1>
+    <% if logged_in? %>
+      <h2></h2>
+      <%= link_to "アイテムを登録する", new_item_path, class: "btn btn-lg btn-primary" %>
+    <% else %>
+      <h2>
+        物の貸し借りをより良い体験に
+      </h2>
 
-  <% if logged_in? %>
-    <h2></h2>
-    <%= link_to "アイテムを登録する", new_item_path, class: "btn btn-lg btn-primary" %>
-  <% else %>
-    <h2>
-      物の貸し借りをより良い体験に
-    </h2>
-
-    <%= link_to "Sign up now!", signup_path, class: "btn btn-lg btn-primary" %>
-  <% end %>
-</div>
+      <%= link_to "Sign up now!", signup_path, class: "btn btn-lg btn-primary" %>
+    <% end %>
+  </div>
+</body>
