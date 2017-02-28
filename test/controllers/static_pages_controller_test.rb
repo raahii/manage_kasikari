@@ -33,6 +33,6 @@ class StaticPagesControllerTest < ActionDispatch::IntegrationTest
   test "LoginページへのGETリクエスト" do
     get login_path
     assert_response :success
-    assert_select "title", "Login | #{@base_title}"
+    assert_select "title", "Log in | #{@base_title}"
   end
 end
