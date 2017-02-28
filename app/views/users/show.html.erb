@@ -7,5 +7,20 @@
         <%= @user.name %>
       </h1>
     </section>
+    <section class="user_items">
+      <h1>登録したアイテム一覧</h1>
+      <% if @user.items.any? %>
+        <ul>
+          <% @user.items.each do |item| %>
+            <li>
+              <%= thumbnail_for item %>
+              <%= item.name %>
+            </li>
+          <% end %>
+        </ul>
+      <% else %>
+        <h2>登録したものはありません</h2>
+      <% end %>
+    </section>
   </aside>
 </div>

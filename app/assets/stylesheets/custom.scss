@@ -212,3 +212,11 @@ input {
     border-bottom: 1px solid $gray-lighter;
   }
 }
+
+.user_items  {
+  li {
+    list-style-type: none;
+    overflow: auto;
+    margin: 20px 0;
+  }
+}
