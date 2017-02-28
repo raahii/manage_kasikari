@@ -8,7 +8,10 @@
 }
 
 .jumbotron{
-  background-color: #FBF4E2;
+   background-image: url("/images/home_background.jpg"); //画像はpublic/imagesの中に
+   background-size: cover;
+   background-position: center center;
+  // background-color: #FBF4E2;
 
 }
 
@@ -35,6 +38,7 @@ $gray-medium-light: #eaeaea;
 body {
   background-color: #FBF4E2;
   padding-top: 60px;
+  font-family: 'Comic Sans MS',cursive;
 }
 
 section {
@@ -47,9 +51,12 @@ textarea {
 
 .center {
   text-align: center;
+
   h1 {
     margin-bottom: 10px;
     color: #34b490;
+    -webkit-text-stroke-color: #000;
+    -webkit-text-stroke-width: 1px;
   }
 }
 
@@ -65,7 +72,7 @@ h1 {
   letter-spacing: -2px;
   margin-bottom: 30px;
   text-align: center;
-  color: #ffffff;
+  color: #34b490;
 }
 
 h2 {
@@ -74,7 +81,7 @@ h2 {
   margin-bottom: 30px;
   text-align: center;
   font-weight: normal;
-  color: $gray-light;
+  color: white;
 }
 
 p {
