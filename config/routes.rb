@@ -1,4 +1,16 @@
 Rails.application.routes.draw do
+  get 'kasikaris/index'
+
+  get 'kasikaris/new'
+
+  get 'kasikaris/create'
+
+  get 'kasikaris/edit'
+
+  get 'kasikaris/update'
+
+  get 'kasikaris/destroy'
+
   root 'static_pages#home'
   get  '/help',    to:  'static_pages#help'
   get  '/about',   to:  'static_pages#about'

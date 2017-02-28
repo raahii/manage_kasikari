@@ -1,0 +1,32 @@
+# == Schema Information
+#
+# Table name: kasikaris
+#
+#  id           :integer          not null, primary key
+#  item_id      :integer          not null
+#  from_user_id :integer          not null
+#  to_user_id   :integer          not null
+#  start_date   :date             not null
+#  end_date     :date             not null
+#  done_flag    :boolean          default(FALSE), not null
+#  created_at   :datetime         not null
+#  updated_at   :datetime         not null
+#
+
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  item_id: 1
+  from_user_id: 1
+  to_user_id: 1
+  start_date: 2017-03-01
+  end_date: 2017-03-01
+  done_flag: false
+
+two:
+  item_id: 1
+  from_user_id: 1
+  to_user_id: 1
+  start_date: 2017-03-01
+  end_date: 2017-03-01
+  done_flag: false
