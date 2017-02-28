@@ -1,6 +1,6 @@
 @import "bootstrap-sprockets";
 @import "bootstrap";
-@import url('https://fonts.googleapis.com/css?family=Righteous');
+@import url('https://fonts.googleapis.com/css?family=Baloo+Bhai');//web-font
 
 /* Bootstrapスタイル 変更点 */
 .navbar-inverse{
@@ -57,7 +57,8 @@ body {
   // background-image: url("/images/home_background.jpg"); //画像はpublic/imagesの中に
   background-size: cover;
   padding-top: 60px;
-  font-family: 'Righteous', cursive;
+  font-family: 'Baloo Bhai', cursive;
+
 }
 
 section {
@@ -104,7 +105,7 @@ h2 {
   text-align: center;
   // font-weight: normal;
   color: white;
-  font-family: "Nico Moji";
+  font-family: "Rounded Mplus 1c"
 }
 
 p {
