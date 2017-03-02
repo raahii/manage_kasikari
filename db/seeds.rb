@@ -23,8 +23,8 @@ User.create!(name:  "Example User",
 end
 
 # アイテム
-users = User.order(:created_at).take(6)
-50.times do
+users = User.order(:created_at).take(30)
+20.times do
   name = Faker::Name.name
   users.each { |user| user.items.create!(name: name) }
 end
@@ -36,3 +36,26 @@ following = users[2..50]
 followers = users[3..40]
 following.each { |followed| user.follow(followed) }
 followers.each { |follower| follower.follow(user) }
+
+# 貸し借り
+example_user = User.find(1)
+friends      = example_user.friends.first(10)
+
+friends.each.with_index(1) do |friend, i|
+  Kasikari.create!(
+    item_id: example_user.items.first.id,
+    from_user_id: example_user.id,
+    to_user_id: friend.id,
+    start_date: Date.today,
+    end_date: Date.today + i,
+  )
+end
+friends.each.with_index(1) do |friend, i|
+  Kasikari.create!(
+    item_id: friend.items.first.id,
+    from_user_id: friend.id,
+    to_user_id: example_user.id,
+    start_date: Date.today,
+    end_date: Date.today + i,
+  )
+end
