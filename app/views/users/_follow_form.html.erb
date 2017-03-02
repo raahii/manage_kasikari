@@ -1,0 +1,9 @@
+<% unless current_user?(@user) %>
+  <div id="follow_form">
+  <% if current_user.friend_with?(@user) %>
+    <h3>友達です</h3>
+  <% else %>
+    <%= render 'follow' %>
+  <% end %>
+  </div>
+<% end %>

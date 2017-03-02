@@ -35,9 +35,8 @@ class User < ApplicationRecord
   has_secure_password
   validates :password, presence: true, length: { minimum: 6 }, allow_nil: true
 
-
   def feed
-    Micropost.where("user_id = ?", id)
+    Item.where("user_id = ?", id)
   end
 
   # ユーザーをフォローする
@@ -50,26 +49,25 @@ class User < ApplicationRecord
     active_relationships.find_by(followed_id: other_user.id).destroy
   end
 
-  # 現在のユーザーがフォローしてたらtrueを返す
+  # ユーザーがフォローしてたらtrueを返す
   def following?(other_user)
     following.include?(other_user)
   end
   
-=begin
-
-  # 現在のユーザーがフォローされていたらtrueを返す
+  # ユーザーがフォローされていたらtrueを返す
   def followed?(other_user)
-    # TODO
-    other_user.following.include?(id)
+    followers.include?(other_user)
   end
   
   # 相互フォローサれていたらtrueをかえす
   def friend_with?(other_user)
-    # TODO
     following?(other_user) && followed?(other_user)
   end
-
-=end
+  
+  # TODO: ちゃんとSQLで書く
+  def friends
+    following & followers
+  end
 
   # 渡された文字列のハッシュ値を返す
   def User.digest(string)
