@@ -1,8 +1,10 @@
 class KasikarisController < ApplicationController
   def index
+    @karikaris = Kasikari.all
   end
 
   def new
+
   end
 
   def create

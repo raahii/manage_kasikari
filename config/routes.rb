@@ -1,15 +1,4 @@
 Rails.application.routes.draw do
-  get 'kasikaris/index'
-
-  get 'kasikaris/new'
-
-  get 'kasikaris/create'
-
-  get 'kasikaris/edit'
-
-  get 'kasikaris/update'
-
-  get 'kasikaris/destroy'
 
   root 'static_pages#home'
   get  '/help',    to:  'static_pages#help'
@@ -29,6 +18,6 @@ Rails.application.routes.draw do
   end
 
   resources :items
-
   resources :relationships, only: [:create, :destroy]
+  resources :kasikaris
 end
