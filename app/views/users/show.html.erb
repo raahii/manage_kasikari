@@ -5,7 +5,11 @@
       <h1>
         <%= gravatar_for @user %>
         <%= @user.name %>
+        <%= render 'follow_form' if logged_in? %>
       </h1>
+    </section>
+    <section class="stats">
+      <%= render 'shared/stats' %>
     </section>
     <section class="user_items">
       <h3>登録したアイテム一覧</h3>
