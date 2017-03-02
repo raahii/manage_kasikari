@@ -11,7 +11,7 @@
 #
 
 class User < ApplicationRecord
-  has_many :items
+  has_many :items, dependent: :destroy
 
   before_save { self.email = email.downcase }
   
@@ -25,6 +25,10 @@ class User < ApplicationRecord
   has_secure_password
   validates :password, presence: true, length: { minimum: 6 }, allow_nil: true
 
+  
+  def feed
+    Micropost.where("user_id = ?", id)
+  end
 
   # 渡された文字列のハッシュ値を返す
   def User.digest(string)
@@ -32,4 +36,6 @@ class User < ApplicationRecord
                                                   BCrypt::Engine.cost
     BCrypt::Password.create(string, cost: cost)
   end
+
+
 end

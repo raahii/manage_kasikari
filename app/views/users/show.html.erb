@@ -11,14 +11,7 @@
       <h3>登録したアイテム一覧</h3>
       <% if @user.items.any? %>
         <ul>
-          <% @user.items.each do |item| %>
-            <%= link_to item_path(item) do %>
-              <li>
-                <%= thumbnail_for item, size: 50 %>
-                <%= item.name %>
-              </li>
-            <% end %>
-          <% end %>
+          <%= render @user.items%>
 
           <%= link_to new_item_path do %>
             <div class="col-md-8 btn btn-primary">アイテムを追加</div>

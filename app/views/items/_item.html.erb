@@ -1,0 +1,6 @@
+<%= link_to item_path(item) do %>
+  <li>
+    <%= thumbnail_for item, size: 50 %>
+    <%= item.name %>
+  </li>
+<% end %>
