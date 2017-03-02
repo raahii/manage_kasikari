@@ -1,5 +1,6 @@
 @import "bootstrap-sprockets";
 @import "bootstrap";
+@import url('https://fonts.googleapis.com/css?family=Baloo+Bhai');//web-font
 
 /* Bootstrapスタイル 変更点 */
 .navbar-inverse{
@@ -15,9 +16,14 @@
 
 }
 
+// .btn{
+//
+// }
+
 .btn-primary{
   background-color: #34b490;
   border-color: #228E70;
+  font-family: "Rounded Mplus 1c";
   &:hover,&:focus {
     background-color: #228E70;
     border-color: #34b490;
@@ -56,7 +62,8 @@ body {
   // background-image: url("/images/home_background.jpg"); //画像はpublic/imagesの中に
   background-size: cover;
   padding-top: 60px;
-  font-family: 'Courier New',monospace;
+  font-family: 'Baloo Bhai', cursive;
+
 }
 
 section {
@@ -103,7 +110,37 @@ h2 {
   text-align: center;
   // font-weight: normal;
   color: white;
-  font-family: serif,serif;
+  font-family: "Rounded Mplus 1c"
+}
+
+h3 {
+  font-size: 1.2em;
+  letter-spacing: -1px;
+  margin-bottom: 30px;
+  // font-weight: normal;
+  color: #34b490;
+  font-family: "Rounded Mplus 1c"
+}
+
+h4 {
+  font-size: 5em;
+  letter-spacing: -2px;
+  margin-bottom: 30px;
+  text-align: center;
+  color: #34b490;
+  -webkit-text-stroke-color: #000;
+  -webkit-text-stroke-width: 1px;
+  font-family: "Rounded Mplus 1c"
+}
+
+h5 {
+  font-size: 1.2em;
+  letter-spacing: -1px;
+  margin-bottom: 30px;
+  text-align: center;
+  // font-weight: normal;
+  color: #34b490;
+  font-family: "Rounded Mplus 1c"
 }
 
 p {
@@ -207,6 +244,44 @@ aside {
   margin-top: 15px;
 }
 
+.stats {
+  overflow: auto;
+  margin-top: 0;
+  padding: 0;
+  a {
+    float: left;
+    padding: 0 10px;
+    border-left: 1px solid $gray-lighter;
+    color: gray;
+    &:first-child {
+      padding-left: 0;
+      border: 0;
+    }
+    &:hover {
+      text-decoration: none;
+      color: blue;
+    }
+  }
+  strong {
+    display: block;
+  }
+}
+
+.user_avatars {
+  overflow: auto;
+  margin-top: 10px;
+  .gravatar {
+    margin: 1px 1px;
+  }
+  a {
+    padding: 0;
+  }
+}
+
+.users.follow {
+  padding: 0;
+}
+
 /* forms */
 
 input, textarea, select, .uneditable-input {
@@ -253,4 +328,9 @@ input {
     overflow: auto;
     margin: 20px 0;
   }
+}
+
+/* item style */
+#edit_item{
+  padding : 20px ;
 }

@@ -1,4 +1,4 @@
-<%= form_for(@item) do |f| %>
+<%= form_for(@item, html: { multipart: true }) do |f| %>
   <% if @item.errors.any? %>
     <div id="error_explanation">
       <div class="alert alert-danger">
@@ -18,7 +18,16 @@
   <%= f.label :explanation %>
   <%= f.text_field :explanation, class: 'form-control' %>
   <%= f.label :image, "サムネイル画像" %>
-  <%= f.file_field :image %>
+  <%= f.file_field :image, accept: 'image/jpeg,image/gif,image/png' %>
 
   <%= f.submit "登録", class: "btn btn-primary" %>
 <% end %>
+
+<script type="text/javascript">
+  $('#item_image').bind('change', function() {
+    var size_in_megabytes = this.files[0].size/1024/1024;
+    if (size_in_megabytes > 5) {
+      alert('Maximum file size is 5MB. Please choose a smaller file.');
+    }
+  });
+</script>

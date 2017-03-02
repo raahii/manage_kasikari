@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170228153913) do
+ActiveRecord::Schema.define(version: 20170302095933) do
 
   create_table "items", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string   "name",                      null: false
@@ -19,6 +19,7 @@ ActiveRecord::Schema.define(version: 20170228153913) do
     t.datetime "created_at",                null: false
     t.datetime "updated_at",                null: false
     t.integer  "user_id"
+    t.index ["user_id", "created_at"], name: "index_items_on_user_id_and_created_at", using: :btree
     t.index ["user_id"], name: "index_items_on_user_id", using: :btree
   end
 
@@ -28,9 +29,21 @@ ActiveRecord::Schema.define(version: 20170228153913) do
     t.integer  "to_user_id",                   null: false
     t.date     "start_date",                   null: false
     t.date     "end_date",                     null: false
-    t.boolean  "done_flag",    default: false, null: false
+    t.boolean  "done_flag",    default: false
     t.datetime "created_at",                   null: false
     t.datetime "updated_at",                   null: false
+    t.index ["from_user_id"], name: "index_kasikaris_on_from_user_id", using: :btree
+    t.index ["to_user_id"], name: "index_kasikaris_on_to_user_id", using: :btree
+  end
+
+  create_table "relationships", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.integer  "follower_id"
+    t.integer  "followed_id"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+    t.index ["followed_id"], name: "index_relationships_on_followed_id", using: :btree
+    t.index ["follower_id", "followed_id"], name: "index_relationships_on_follower_id_and_followed_id", unique: true, using: :btree
+    t.index ["follower_id"], name: "index_relationships_on_follower_id", using: :btree
   end
 
   create_table "users", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
