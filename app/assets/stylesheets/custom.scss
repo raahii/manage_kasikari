@@ -9,9 +9,9 @@
 }
 
 .jumbotron{
-   background-image: url("/images/home_background.jpg"); //画像はpublic/imagesの中に
-   background-size: cover;
-   background-position: center center;
+  background-image: url("/images/home_background.jpg"); //画像はpublic/imagesの中に
+  background-size: cover;
+  background-position: center center;
   // background-color: #FBF4E2;
 
 }
@@ -333,4 +333,22 @@ input {
 /* item style */
 #edit_item{
   padding : 20px ;
+}
+
+
+/* kasikaris index */
+.kasikaris {
+  margin: 0;
+
+  li {
+    width: 100%;
+    list-style-type: none;
+
+    div {
+      display: inline-block;
+      width: calc(90% / 3);
+      text-align: center;
+      margin: 10px 0px;
+    }
+  }
 }

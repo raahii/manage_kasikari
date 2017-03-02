@@ -14,14 +14,28 @@
 #
 
 class Kasikari < ApplicationRecord
-  has_many :items
+
   validates :item_id,      presence: true
   validates :from_user_id, presence: true
   validates :to_user_id,   presence: true
   validates :start_date,   presence: true
   validates :end_date,     presence: true
 
+  default_scope -> { order(created_at: :desc) }
+
   def init
     self.done_flag  ||= false  # will set the default value only if it's nil
+  end
+
+  def item
+    Item.find_by(id: self.item_id)
+  end
+
+  def from_user
+    User.find_by(id: self.from_user_id)
+  end
+
+  def to_user
+    User.find_by(id: self.to_user_id)
   end
 end

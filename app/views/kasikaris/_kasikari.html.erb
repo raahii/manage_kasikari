@@ -1,0 +1,25 @@
+<% item      = kasikari.item %>
+<% from_user = kasikari.from_user %>
+<% to_user   = kasikari.to_user %>
+<li>
+  <div class="kasikari_from_user">
+    <%= link_to from_user do %>
+      <%= gravatar_for from_user, size: 100 %>
+      <%= from_user.name%>
+    <% end %>
+  </div>
+
+  <div class="kasikari_item">
+    <%= link_to item do %>
+      <%= thumbnail_for item, size: 100 %>
+      <%= item.name %>
+    <% end %>
+  </div>
+
+  <div class="kasikari_to_user">
+    <%= link_to to_user do %>
+      <%= gravatar_for to_user, size: 100 %>
+      <%= to_user.name%>
+    <% end %>
+  </div>
+</li>

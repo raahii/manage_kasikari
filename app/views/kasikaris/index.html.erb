@@ -1,2 +1,10 @@
-<h1>Kasikaris#index</h1>
-<p>Find me in app/views/kasikaris/index.html.erb</p>
+<% provide(title: "貸し借り一覧") %>
+<h1>All kasikaris</h1>
+
+<%= will_paginate %>
+
+<ul class="kasikaris">
+  <%= render @kasikaris %>
+</ul>
+
+<%= will_paginate %>

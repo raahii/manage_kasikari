@@ -1,6 +1,6 @@
 class KasikarisController < ApplicationController
   def index
-    @karikaris = Kasikari.all
+    @kasikaris = Kasikari.paginate(page: params[:page])
   end
 
   def new
