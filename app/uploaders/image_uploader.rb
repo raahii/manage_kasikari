@@ -14,6 +14,11 @@ class ImageUploader < CarrierWave::Uploader::Base
     process :resize_to_fill => [40, 40, gravity = ::Magick::CenterGravity]
   end
 
+
+  def store_dir
+    "uploads/#{model.class.to_s.underscore}/#{model.id}"
+  end
+
   # jpg,jpeg,gif,pngしか受け付けない
   def extension_white_list
     %w(jpg jpeg gif png)
@@ -23,5 +28,6 @@ class ImageUploader < CarrierWave::Uploader::Base
   def filename
     super.chomp(File.extname(super)) + '.jpg' if original_filename.present?
   end
+
 
 end
