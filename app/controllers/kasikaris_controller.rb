@@ -33,6 +33,12 @@ class KasikarisController < ApplicationController
   end
 
   def update
+    if @kasikari.update_attributes(kasikari_params)
+      flash[:success] = "貸し借りを更新しました"
+      redirect_to @kasikari
+    else
+      render 'edit'
+    end
   end
 
   def destroy
@@ -67,7 +73,7 @@ class KasikarisController < ApplicationController
     elsif from_user == current_user && to_user == current_user
       flash[:danger] = "貸し借りをするユーザーの組み合わせが無効です"
       redirect_to new_kasikari_path
-    elsif friends.include?(from_user) || friends.include?(to_user)
+    elsif !friends.include?(from_user) && !friends.include?(to_user)
       flash[:danger] = "友達でないユーザーとの貸し借りはできません"
       redirect_to new_kasikari_path
     end

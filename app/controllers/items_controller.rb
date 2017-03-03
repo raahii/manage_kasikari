@@ -28,7 +28,7 @@ class ItemsController < ApplicationController
 
   def update
     if @item.update_attributes(item_params)
-      flash[:success] = "Item updated!"
+      flash[:success] = "アイテムを更新しました"
       redirect_to @item
     else
       render 'edit'

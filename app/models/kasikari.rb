@@ -20,7 +20,10 @@ class Kasikari < ApplicationRecord
   validates :to_user_id,   presence: true, allow_nil: true
   validates :start_date,   presence: true
   validates :end_date,     presence: true
+  
+  # 独自のバリデータ
   validate :exist_item?, :exist_from_user?, :exist_to_user?
+  validate :valid_item?
 
   default_scope -> { order(created_at: :desc) }
 
@@ -46,8 +49,13 @@ class Kasikari < ApplicationRecord
     end
   end
 
-  # 設計が良くない
+  def valid_item?
+    unless from_user.items.include?(item)
+      errors.add(:item_id, "貸し手はそのアイテムを持っていません。")
+    end
+  end
 
+  # 設計が良くない
   def item
     Item.find_by(id: self.item_id)
   end
