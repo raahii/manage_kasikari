@@ -1,7 +1,5 @@
-<% provide(:title, 'All items') %>
-<h1>All items</h1>
-
-<%= will_paginate %>
+<% provide(:title, "#{@user.name}のアイテム一覧") %>
+<h1> "#{@user.name}のアイテム一覧"</h1>
 
 <ul class="items">
   <% @items.each do |item| %>
@@ -11,6 +9,3 @@
     </li>
   <% end %>
 </ul>
-
-<%= will_paginate %>
-

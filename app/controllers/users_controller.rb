@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
-  before_action :set_user,       only: [:show, :edit, :update]
+  before_action :set_user,       only: [:show, :edit, :update, :friends, :items]
   before_action :logged_in_user, only: [:index, :edit, :update,
                                         :frinends]
   before_action :correct_user,   only: [:edit, :update]
@@ -40,9 +40,13 @@ class UsersController < ApplicationController
   end
 
   def friends
-    @user  = User.find(params[:id])
     @users = @user.friends
     render 'show_friends'
+  end
+
+  def items
+    @items = @user.items
+    render 'show_items'
   end
 
   private

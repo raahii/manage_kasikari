@@ -14,10 +14,11 @@ Rails.application.routes.draw do
   resources :users do
     member do
       get :friends
+      get :items
     end
   end
 
-  resources :items
+  resources :items, only: [:new, :show, :edit, :update, :destroy]
   resources :relationships, only: [:create, :destroy]
   resources :kasikaris
 end
