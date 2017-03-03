@@ -1,3 +1,17 @@
-// Place all the styles related to the Kasikaris controller here.
-// They will automatically be included in application.css.
-// You can use Sass (SCSS) here: http://sass-lang.com/
+@import "custom";
+/* kasikaris index */
+.kasikaris {
+  margin: 0;
+
+  li {
+    width: 100%;
+    list-style-type: none;
+
+    div {
+      display: inline-block;
+      width: calc(90% / 3);
+      text-align: center;
+      margin: 10px 0px;
+    }
+  }
+}
