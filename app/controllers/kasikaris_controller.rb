@@ -1,7 +1,7 @@
 class KasikarisController < ApplicationController
-  before_action :set_kasikari,   only: [:show, :edit, :update]
-  before_action :logged_in_user, only: [:index, :edit, :update]
-  before_action :correct_user,   only: [:edit, :update]
+  before_action :set_kasikari,   only: [:show, :edit, :update, :destroy]
+  before_action :logged_in_user, only: [:index, :edit, :update, :destroy]
+  before_action :correct_user,   only: [:edit, :update, :destroy]
 
   def index
     @kasikaris = Kasikari.paginate(page: params[:page])
@@ -42,6 +42,9 @@ class KasikarisController < ApplicationController
   end
 
   def destroy
+    @kasikari.destroy
+    flash[:success] = "貸し借りを削除しました。"
+    redirect_to user_path(current_user)
   end
 
   private

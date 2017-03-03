@@ -4,6 +4,7 @@ class ItemsController < ApplicationController
   before_action :correct_user,   only: [:edit, :update, :destroy]
 
   def index
+    @items = Item.paginate(page: params[:page])
   end
 
   def new
@@ -36,7 +37,7 @@ class ItemsController < ApplicationController
   end
 
   def destroy
-    Item.find(params[:id]).destroy
+    @item.destroy
     flash[:success] = "アイテムを削除しました。"
     redirect_to user_path(current_user)
   end
