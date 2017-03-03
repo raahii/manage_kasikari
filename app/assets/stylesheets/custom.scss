@@ -1,11 +1,23 @@
 @import "bootstrap-sprockets";
 @import "bootstrap";
-@import url('https://fonts.googleapis.com/css?family=Baloo+Bhai');//web-font
+@import url('https://fonts.googleapis.com/css?family=Josefin+Sans');//web-font
+
+html{
+  overflow: auto;
+
+}
+
+body{
+  overflow: hidden;
+  position: relative;
+  min-width: 1000px;
+}
 
 /* Bootstrapスタイル 変更点 */
 .navbar-inverse{
   background-color: #34b490;
   border-color: #34b490;
+
 }
 
 .jumbotron{
@@ -15,11 +27,8 @@
   // background-color: #FBF4E2;
 
 }
-
-// .btn{
 //
-// }
-
+//
 .btn-primary{
   background-color: #34b490;
   border-color: #228E70;
@@ -30,96 +39,116 @@
   }
 }
 
-.container{
-  width: auto;
-  height: 100%;
-  margin: 0 auto;
+/* homeのみの変更点  ヒーロー*/
+*, *:after, *:before {
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
 }
 
-/* homeのみの変更点 */
-#home_only{
-  background-image: url("/images/home_background.jpg"); //画像はpublic/imagesの中に
-  background-size: cover;
-  padding-top: 60px;
+#hero1{
+  background-image: url("/images/b1.jpg"); //画像はpublic/imagesの中に
+  background-size:cover;
+  background-position:center center;
+  background-attachment:fixed;
+  background-color:#464646;
+  // width: 100vw;
+  margin: 0 -500%; /* 上下の margin は元の値に合わせて適宜変更 */
+  padding: 0 500%; /* 上下の margin は元の値に合わせて適宜変更 */
+
 }
 
+.hero, .content{
+  text-align:center;
+  position:relative;
+  // width: 100vw;
+}
 
+.inner{
+  min-height:600px;
+  position: relative;
+}
 
 /* mixins, variables, etc. */
-
+//
 $gray-medium-light: #eaeaea;
-
-@mixin box_sizing {
-  -moz-box-sizing:    border-box;
-  -webkit-box-sizing: border-box;
-  box-sizing:         border-box;
+//
+// @mixin box_sizing {
+//   -moz-box-sizing:    border-box;
+//   -webkit-box-sizing: border-box;
+//   box-sizing:         border-box;
+// }
+//
+// /* universal */
+//
+ body {
+//   background-color: #FBF4E2;
+//   // background-image: url("/images/home_background.jpg"); //画像はpublic/imagesの中に
+//   background-size: cover;
+//   padding-top: 60px;
+   font-family: 'Josefin Sans', sans-serif;
+ }
+//
+// section {
+//   overflow: auto;
+// }
+//
+// textarea {
+//   resize: vertical;
+// }
+//
+.center{
+  position: absolute;
+  top: 50%;
+  left: 50%;
 }
 
-/* universal */
+.center_home {
+   position: absolute;
+   top: 50%;
+   left: 50%;
+   margin-right: -50%;
+   -webkit-transform: translate(-50%, -50%); /* Safari用 */
+   transform: translate(-50%, -50%);
+   text-align: center;
 
-body {
-  background-color: #FBF4E2;
-  // background-image: url("/images/home_background.jpg"); //画像はpublic/imagesの中に
-  background-size: cover;
-  padding-top: 60px;
-  font-family: 'Baloo Bhai', cursive;
-
-}
-
-section {
-  overflow: auto;
-}
-
-textarea {
-  resize: vertical;
-}
-
-.center {
-  text-align: center;
 
   h1 {
     margin-bottom: 10px;
-    color: #34b490;
+    color: #FFFFFF;
     -webkit-text-stroke-color: #000;
-    -webkit-text-stroke-width: 1px;
+    -webkit-text-stroke-width: 0.1px;
   }
 }
 
 /* typography */
-
-h1, h2, h3, h4, h5, h6 {
-  line-height: 1;
-  color: #34b490;
-
-}
-
 h1 {
   font-size: 5em;
   letter-spacing: -2px;
   margin-bottom: 30px;
-  text-align: center;
-  color: #34b490;
+  // text-align: center;
+  color: #FFFFFF;
   -webkit-text-stroke-color: #000;
-  -webkit-text-stroke-width: 1px;
+  -webkit-text-stroke-width: 0.1px;
 }
-
+//
 h2 {
-  font-size: 1.2em;
+  // font-size: 1.2em;
   letter-spacing: -1px;
   margin-bottom: 30px;
-  text-align: center;
+  //text-align: center;
   // font-weight: normal;
   color: white;
-  font-family: "Rounded Mplus 1c"
 }
-
+//
 h3 {
-  font-size: 1.2em;
-  letter-spacing: -1px;
+  font-size: 5em;
+  letter-spacing: -2px;
   margin-bottom: 30px;
-  // font-weight: normal;
-  color: #34b490;
-  font-family: "Rounded Mplus 1c"
+  // text-align: center;
+  color: #000000;
+  -webkit-text-stroke-color: #000;
+  -webkit-text-stroke-width: 0.1px;
 }
 
 h4 {
@@ -127,30 +156,41 @@ h4 {
   letter-spacing: -2px;
   margin-bottom: 30px;
   text-align: center;
-  color: #34b490;
+  color: #000000;
   -webkit-text-stroke-color: #000;
-  -webkit-text-stroke-width: 1px;
-  font-family: "Rounded Mplus 1c"
+  -webkit-text-stroke-width: 0.1px;
+
 }
-
-h5 {
-  font-size: 1.2em;
-  letter-spacing: -1px;
-  margin-bottom: 30px;
-  text-align: center;
-  // font-weight: normal;
-  color: #34b490;
-  font-family: "Rounded Mplus 1c"
-}
-
-p {
-  font-size: 1.1em;
-  line-height: 1.7em;
-}
-
-
-/* header */
-
+//
+// h4 {
+//   font-size: 5em;
+//   letter-spacing: -2px;
+//   margin-bottom: 30px;
+//   text-align: center;
+//   color: #34b490;
+//   -webkit-text-stroke-color: #000;
+//   -webkit-text-stroke-width: 1px;
+//   font-family: "Rounded Mplus 1c"
+// }
+//
+// h5 {
+//   font-size: 1.2em;
+//   letter-spacing: -1px;
+//   margin-bottom: 30px;
+//   text-align: center;
+//   // font-weight: normal;
+//   color: #34b490;
+//   font-family: "Rounded Mplus 1c"
+// }
+//
+// p {
+//   font-size: 1.1em;
+//   line-height: 1.7em;
+// }
+//
+//
+// /* header */
+//
 #logo {
   float: left;
   margin-right: 10px;
@@ -165,12 +205,11 @@ p {
     text-decoration: none;
   }
 }
-
+//
 /* footer */
 
 footer {
-  position: fixed;
-  bottom: 0;
+  // bottom: 0;
   width: 100%;
   height: 100px;
   margin-top: 45px;
@@ -181,7 +220,7 @@ footer {
   a {
     color: $gray;
     &:hover {
-      color: $gray-darker;
+      color: #FFFFFF;
     }
   }
   small {
@@ -197,158 +236,104 @@ footer {
   }
 }
 
-/* miscellaneous */
-
-.debug_dump {
-  clear: both;
-  float: left;
-  width: 100%;
-  margin-top: 45px;
-  @include box_sizing;
-}
-
-/* sidebar */
-
-aside {
-  section.user_info {
-    margin-top: 20px;
-  }
-  section {
-    padding: 10px 0;
-    margin-top: 20px;
-    &:first-child {
-      border: 0;
-      padding-top: 0;
-    }
-    span {
-      display: block;
-      margin-bottom: 3px;
-      line-height: 1;
-    }
-    h1 {
-      font-size: 1.4em;
-      text-align: left;
-      letter-spacing: -1px;
-      margin-bottom: 3px;
-      margin-top: 0px;
-    }
-  }
-}
-
-.gravatar {
-  float: left;
-  margin-right: 10px;
-}
-
-.gravatar_edit {
-  margin-top: 15px;
-}
-
-.stats {
-  overflow: auto;
-  margin-top: 0;
-  padding: 0;
-  a {
-    float: left;
-    padding: 0 10px;
-    border-left: 1px solid $gray-lighter;
-    color: gray;
-    &:first-child {
-      padding-left: 0;
-      border: 0;
-    }
-    &:hover {
-      text-decoration: none;
-      color: blue;
-    }
-  }
-  strong {
-    display: block;
-  }
-}
-
-.user_avatars {
-  overflow: auto;
-  margin-top: 10px;
-  .gravatar {
-    margin: 1px 1px;
-  }
-  a {
-    padding: 0;
-  }
-}
-
-.users.follow {
-  padding: 0;
-}
-
-/* forms */
-
-input, textarea, select, .uneditable-input {
-  border: 1px solid #bbb;
-  width: 100%;
-  margin-bottom: 15px;
-  @include box_sizing;
-}
-
-input {
-  height: auto !important;
-}
-
-#error_explanation {
-  color: red;
-  ul {
-    color: red;
-    margin: 0 0 30px 0;
-  }
-}
-
-.field_with_errors {
-  @extend .has-error;
-  .form-control {
-    color: $state-danger-text;
-  }
-}
-
-/* Users index */
-
-.users {
-  list-style: none;
-  margin: 0;
-  li {
-    overflow: auto;
-    padding: 10px 0;
-    border-bottom: 1px solid $gray-lighter;
-  }
-}
-
-.user_items  {
-  li {
-    list-style-type: none;
-    overflow: auto;
-    margin: 20px 0;
-  }
-}
-
-/* item style */
-#edit_item{
-  padding : 20px ;
-}
-
-
-/* kasikaris index */
-.kasikaris {
-  margin: 0;
-
-  li {
-    width: 100%;
-    list-style-type: none;
-
-    div {
-      display: inline-block;
-      width: calc(90% / 3);
-      text-align: center;
-      margin: 10px 0px;
-    }
-  }
-}
+//
+// /* miscellaneous */
+//
+// .debug_dump {
+//   clear: both;
+//   float: left;
+//   width: 100%;
+//   margin-top: 45px;
+//   @include box_sizing;
+// }
+//
+// /* sidebar */
+//
+// aside {
+//   section.user_info {
+//     margin-top: 20px;
+//   }
+//   section {
+//     padding: 10px 0;
+//     margin-top: 20px;
+//     &:first-child {
+//       border: 0;
+//       padding-top: 0;
+//     }
+//     span {
+//       display: block;
+//       margin-bottom: 3px;
+//       line-height: 1;
+//     }
+//     h1 {
+//       font-size: 1.4em;
+//       text-align: left;
+//       letter-spacing: -1px;
+//       margin-bottom: 3px;
+//       margin-top: 0px;
+//     }
+//   }
+// }
+//
+// .gravatar {
+//   float: left;
+//   margin-right: 10px;
+// }
+//
+// .gravatar_edit {
+//   margin-top: 15px;
+// }
+//
+// /* forms */
+//
+// input, textarea, select, .uneditable-input {
+//   border: 1px solid #bbb;
+//   width: 100%;
+//   margin-bottom: 15px;
+//   @include box_sizing;
+// }
+//
+// input {
+//   height: auto !important;
+// }
+//
+// #error_explanation {
+//   color: red;
+//   ul {
+//     color: red;
+//     margin: 0 0 30px 0;
+//   }
+// }
+//
+// .field_with_errors {
+//   @extend .has-error;
+//   .form-control {
+//     color: $state-danger-text;
+//   }
+// }
+//
+// /* Users index */
+//
+// .users {
+//   list-style: none;
+//   margin: 0;
+//   li {
+//     overflow: auto;
+//     padding: 10px 0;
+//     border-bottom: 1px solid $gray-lighter;
+//   }
+// }
+//
+// .user_items  {
+//   li {
+//     list-style-type: none;
+//     overflow: auto;
+//     margin: 20px 0;
+//   }
+// }
+//
+// /* item style */
+// #edit_item{
+//   padding : 20px ;
+// }
+>>>>>>> change_scss

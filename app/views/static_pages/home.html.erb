@@ -1,6 +1,8 @@
 <% provide(:title, "Home") %>
-<body id="home_only">
-  <div class="center">
+<!-- <body id="home_only"> -->
+<section id="hero1" class="hero">
+  <div class="inner">
+    <div class="center_home">
     <h1>Manage Kasi Kari</h1>
     <% if logged_in? %>
       <h2></h2>
@@ -12,5 +14,52 @@
 
       <%= link_to "Sign up now!", signup_path, class: "btn btn-lg btn-primary" %>
     <% end %>
+    </div>
   </div>
-</body>
+</section>
+<!-- </body> -->
+
+<section class="content" id="about">
+  <div class="inner">
+    <div class="center_home">
+    <h3>About</h3>
+    <p>
+      
+    </p>
+    </div>
+  </div>
+</section>
+
+<section id="hero1" class="hero">
+  <div class="inner">
+    <div class="center_home">
+    <h1>とりあえず始めよう！</h1>
+    <% if logged_in? %>
+      <h2></h2>
+      <%= link_to "アイテムを登録する", new_item_path, class: "btn btn-lg btn-primary" %>
+    <% else %>
+      <h2>
+        物の貸し借りをより良い体験に
+      </h2>
+
+      <%= link_to "Sign up now!", signup_path, class: "btn btn-lg btn-primary" %>
+    <% end %>
+    </div>
+  </div>
+</section>
+
+<section class="content" id="help">
+  <div class="inner">
+    <div class="center_home">
+    <h3>Help</h3>
+    <p>
+      Get help on MKK at the
+      <a href="#/help">MKK help page</a>.
+    </p>
+    </div>
+  </div>
+</section>
+
+
+
+<%= render "layouts/footer" %>
