@@ -13,6 +13,7 @@ class UsersController < ApplicationController
   end
 
   def show
+    @timeline_kasikaris = @user.timeline_kasikaris
   end
 
   def edit

@@ -35,8 +35,16 @@ class User < ApplicationRecord
   has_secure_password
   validates :password, presence: true, length: { minimum: 6 }, allow_nil: true
 
-  def feed
-    Item.where("user_id = ?", id)
+  # ユーザー自身と友達に関わる貸し借りのデータを全部取ってくる
+  def timeline_kasikaris
+    following_ids = "SELECT followed_id FROM relationships
+                     WHERE follower_id = :user_id"
+    to = Kasikari.where("to_user_id IN (#{following_ids})
+                           OR from_user_id = :user_id", user_id: id)
+    from = Kasikari.where("from_user_id IN (#{following_ids})
+                           OR from_user_id = :user_id", user_id: id)
+
+    to | from
   end
 
   # ユーザーをフォローする
