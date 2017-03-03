@@ -1,13 +1,8 @@
 class StaticPagesController < ApplicationController
   def home
-  end
-
-  def help
-  end
-
-  def about
-  end
-
-  def contact
+    if logged_in?
+      @item  = current_user.items.build
+      @timeline_kasikaris = current_user.timeline_kasikaris
+    end
   end
 end
