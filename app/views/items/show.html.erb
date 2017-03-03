@@ -10,10 +10,10 @@
             | <%= link_to "編集", edit_item_path(@item) %>
             | <%= link_to "削除", @item, method: :delete, data: { confirm: "You sure?" } %>
           <% end %>
-      </div>
-      </h1>
-    </section>
-    <%= link_to user_path(current_user) do %>
+        </div>
+        </h1>
+      </section>
+      <%= link_to user_path(current_user) do %>
       <h5> 一覧へ </h5>
     <% end %>
   </aside>
