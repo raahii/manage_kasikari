@@ -14,11 +14,25 @@ body{
 }
 
 /* Bootstrapスタイル 変更点 */
-.navbar-inverse{
+.navbar-inverse {
   background-color: #34b490;
-  border-color: #34b490;
-
+  border-color: #228E70;
 }
+
+.navbar-inverse .navbar-nav{
+  li{
+    a{
+      color: #FFFFFF;
+      &:hover {
+        color: #000000;
+        text-decoration: none;
+      }
+    }
+  }
+}
+
+
+
 
 .jumbotron{
   background-image: url("/images/home_background.jpg"); //画像はpublic/imagesの中に
