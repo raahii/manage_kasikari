@@ -1,0 +1,31 @@
+<% provide(:title, "貸し借り") %>
+<div class="row">
+  <aside class="col-md-4 kasikari">
+    <section class="from_user_info">
+      <h1>
+        <%= render @kasikari.from_user %>
+      </h1>
+    </section>
+
+    <section class="item">
+      <h1>
+        <%= render @kasikari.item %>
+      </h1>
+    </section>
+
+    <section class="to_user_info">
+      <h1>
+        <%= render @kasikari.to_user %>
+      </h1>
+    </section>
+
+    <section class="info">
+      <ul>
+        <li>貸出日:<%= @kasikari.start_date %></li>
+        <li>返却日:<%= @kasikari.end_date %></li>
+        <li>終了: <%= @kasikari.done_flag %></li>
+      </ul>
+    </section>
+
+  </aside>
+</div>

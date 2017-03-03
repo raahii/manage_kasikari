@@ -27,6 +27,8 @@ class Kasikari < ApplicationRecord
     self.done_flag  ||= false  # will set the default value only if it's nil
   end
 
+  # 設計が良くない
+
   def item
     Item.find_by(id: self.item_id)
   end

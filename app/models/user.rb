@@ -68,6 +68,19 @@ class User < ApplicationRecord
   def friends
     following & followers
   end
+  
+  def kasis
+    Kasikari.where(from_user_id: self.id)
+  end
+
+  def karis
+    Kasikari.where(to_user_id: self.id)
+  end
+
+  # TODO: ちゃんとSQLで書く
+  def kasikaris
+    self.kasis | self.karis
+  end
 
   # 渡された文字列のハッシュ値を返す
   def User.digest(string)
