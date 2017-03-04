@@ -8,6 +8,7 @@ html{
 }
 
 body{
+  background-color:#F5F8FA;
   overflow: hidden;
   position: relative;
   min-width: 1000px;
@@ -31,18 +32,6 @@ body{
   }
 }
 
-
-
-
-.jumbotron{
-  background-image: url("/images/home_background.jpg"); //画像はpublic/imagesの中に
-  background-size: cover;
-  background-position: center center;
-  // background-color: #FBF4E2;
-
-}
-//
-//
 .btn-primary{
   background-color: #34b490;
   border-color: #228E70;
@@ -92,24 +81,24 @@ $gray-medium-light: #eaeaea;
   -webkit-box-sizing: border-box;
   box-sizing:         border-box;
 }
-//
-// /* universal */
-//
+
+/* universal */
  body {
-//   background-color: #FBF4E2;
-//   // background-image: url("/images/home_background.jpg"); //画像はpublic/imagesの中に
-//   background-size: cover;
-//   padding-top: 60px;
    font-family: 'Josefin Sans', sans-serif;
  }
+
+main{
+  padding-top: 50px;
+  padding-left: 3%;
+}
 //
-// section {
-//   overflow: auto;
-// }
+section {
+  overflow: auto;
+}
 //
-// textarea {
-//   resize: vertical;
-// }
+textarea {
+  resize: vertical;
+}
 //
 .center{
   position: absolute;
@@ -175,27 +164,13 @@ h4 {
   -webkit-text-stroke-width: 0.1px;
 
 }
-//
-// h4 {
-//   font-size: 5em;
-//   letter-spacing: -2px;
-//   margin-bottom: 30px;
-//   text-align: center;
-//   color: #34b490;
-//   -webkit-text-stroke-color: #000;
-//   -webkit-text-stroke-width: 1px;
-//   font-family: "Rounded Mplus 1c"
-// }
-//
-// h5 {
-//   font-size: 1.2em;
-//   letter-spacing: -1px;
-//   margin-bottom: 30px;
-//   text-align: center;
-//   // font-weight: normal;
-//   color: #34b490;
-//   font-family: "Rounded Mplus 1c"
-// }
+
+h5 {
+  font-size: 3em;
+  letter-spacing: -1px;
+  margin-bottom: 30px;
+  color: #000000;
+}
 //
 // p {
 //   font-size: 1.1em;
@@ -289,7 +264,7 @@ aside {
 }
 
 .gravatar {
-  float: left;
+  // float: left;
   margin-right: 10px;
 }
 
@@ -301,6 +276,7 @@ aside {
   overflow: auto;
   margin-top: 0;
   padding: 0;
+  padding-left: 5%;
   a {
     float: left;
     padding: 0 10px;
@@ -317,6 +293,7 @@ aside {
   }
   strong {
     display: block;
+    text-align: center;
   }
 }
 

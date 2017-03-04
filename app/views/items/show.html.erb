@@ -2,7 +2,7 @@
 <div class="row">
   <aside class="col-md-4">
     <section class="user_info">
-      <h1>
+      <h3>
         <%= thumbnail_for @item, size: 100 %>
         <%= @item.name %>
         <div id="edit_item">
@@ -11,7 +11,7 @@
             | <%= link_to "削除", @item, method: :delete, data: { confirm: "You sure?" } %>
           <% end %>
         </div>
-        </h1>
+      </h3>
       </section>
       <%= link_to user_path(current_user) do %>
       <h5> 一覧へ </h5>

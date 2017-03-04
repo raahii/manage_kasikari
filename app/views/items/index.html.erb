@@ -1,5 +1,5 @@
-<% provide(:title, "#{@user.name}のアイテム一覧") %>
-<h3> "#{@user.name}のアイテム一覧"</h3>
+<% provide(:title, "#{current_user.name}のアイテム一覧") %>
+<h1><%="#{current_user.name}のアイテム一覧"%></h1>
 
 <ul class="items">
   <% @items.each do |item| %>

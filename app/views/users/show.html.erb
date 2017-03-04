@@ -1,39 +1,27 @@
 <% provide(:title, @user.name) %>
 <div class="row">
-  <aside class="col-md-4">
-    <section class="user_info">
-      <h1>
-        <%= gravatar_for @user %>
-        <%= @user.name %>
-        <%= render 'follow_form' if logged_in? %>
-      </h1>
-    </section>
-    <section class="stats">
-      <%= render 'shared/stats' %>
-    </section>
-    <section class="user_items">
-      <h3>登録したアイテム一覧</h3>
-      <% if @user.items.any? %>
-        <ul>
-          <%= render @user.items%>
-
-          <%= link_to new_item_path do %>
-            <div class="col-md-8 btn btn-primary">アイテムを追加</div>
-          <% end %>
-        </ul>
-      <% else %>
-        <h2>登録したものはありません</h2>
-
-        <%= link_to new_item_path do %>
-          <div class="col-md-8 btn btn-primary">アイテムを登録</div>
-        <% end %>
-      <% end %>
-    </section>
-    <section class="timeline">
-      <h3>タイムライン</h3>
-      <ul>
-        <%= render @timeline_kasikaris %>
-      </ul>
-    </section>
-  </aside>
+    <div class="set_position">
+      <section class="user_me">
+        <section class="user_info">
+          <h5>
+            <%= gravatar_for @user %>
+            <%= @user.name %>
+            <%= render 'follow_form' if logged_in? %>
+          </h5>
+        </section>
+        <section class="stats">
+          <%= render 'shared/stats' %>
+        </section>
+        <%= link_to "アイテムを登録する", new_item_path, class: "btn btn-lg btn-primary" %>
+      </section>
+      
+      <section class="timeline">
+        <h5>タイムライン</h5>
+        <div id="timeline-list">
+          <ul>
+            <%= render @timeline_kasikaris %>
+          </ul>
+      </div>
+      </section>
+    </div>
 </div>
