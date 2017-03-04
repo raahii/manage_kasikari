@@ -3,20 +3,20 @@
     <div class="set_position">
       <section class="user_me">
         <section class="user_info">
-          <h5>
-            <%= gravatar_for @user %>
+          <h6>
+            <p><%= gravatar_for @user %></p>
             <%= @user.name %>
             <%= render 'follow_form' if logged_in? %>
-          </h5>
+          </h6>
         </section>
         <section class="stats">
           <%= render 'shared/stats' %>
         </section>
         <%= link_to "アイテムを登録する", new_item_path, class: "btn btn-lg btn-primary" %>
       </section>
-      
+
       <section class="timeline">
-        <h5>タイムライン</h5>
+        <h6>タイムライン</h6>
         <div id="timeline-list">
           <ul>
             <%= render @timeline_kasikaris %>

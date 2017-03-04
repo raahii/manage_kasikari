@@ -14,6 +14,10 @@ body{
   min-width: 1000px;
 }
 
+img{
+    border-radius: 10px;
+}
+
 /* Bootstrapスタイル 変更点 */
 .navbar-inverse {
   background-color: #34b490;
@@ -50,7 +54,7 @@ body{
 }
 
 #hero1{
-  background-image: url("/images/b1.jpg"); //画像はpublic/imagesの中に
+  background-image: url("/images/back_home.jpg"); //画像はpublic/imagesの中に
   background-size:cover;
   background-position:center center;
   background-attachment:fixed;
@@ -169,6 +173,15 @@ h5 {
   font-size: 3em;
   letter-spacing: -1px;
   margin-bottom: 30px;
+  color: #000000;
+}
+
+h6{
+  font-size: 1.4em;
+  text-align: left;
+  letter-spacing: -1px;
+  margin-bottom: 3px;
+  margin-top: 0px;
   color: #000000;
 }
 //
