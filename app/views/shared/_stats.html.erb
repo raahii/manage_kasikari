@@ -6,4 +6,10 @@
     </strong>
     友達
   </a>
+  <a href="<%= items_user_path(@user) %>">
+    <strong id="following" class="stat">
+      <%= @user.items.count %>
+    </strong>
+    アイテム
+  </a>
 </div>
