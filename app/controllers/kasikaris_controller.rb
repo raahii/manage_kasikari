@@ -23,6 +23,7 @@ class KasikarisController < ApplicationController
 
     if @kasikari.save
       flash[:success] = "貸し借りを登録しました"
+      @kasikari.item.update!(available: false)
       redirect_to @kasikari
     else
       redirect_to new_kasikari_path

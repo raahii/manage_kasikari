@@ -50,8 +50,10 @@ class Kasikari < ApplicationRecord
   end
 
   def valid_item?
-    unless from_user.items.include?(item)
-      errors.add(:item_id, "貸し手はそのアイテムを持っていません。")
+    if !from_user.items.include?(item)
+      errors.add(:item_id, "貸し手はそのアイテムを持っていません")
+    elsif !item.available
+      errors.add(:item_id, "そのアイテムは既に他の人に借りられています")
     end
   end
 
