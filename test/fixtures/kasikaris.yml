@@ -8,7 +8,7 @@
 #  to_user_id   :integer          not null
 #  start_date   :date             not null
 #  end_date     :date             not null
-#  done_flag    :boolean          default(FALSE), not null
+#  done_flag    :boolean          default(FALSE)
 #  created_at   :datetime         not null
 #  updated_at   :datetime         not null
 #
