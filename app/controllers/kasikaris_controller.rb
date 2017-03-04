@@ -22,8 +22,8 @@ class KasikarisController < ApplicationController
     @kasikari = Kasikari.new(kasikari_params)
 
     if @kasikari.save
+      @kasikari.item.update_attributes!(available: false)
       flash[:success] = "貸し借りを登録しました"
-      @kasikari.item.update!(available: false)
       redirect_to @kasikari
     else
       redirect_to new_kasikari_path
@@ -35,6 +35,7 @@ class KasikarisController < ApplicationController
 
   def update
     if @kasikari.update_attributes(kasikari_params)
+      @kasikari.item.update_attributes!(available: true) if @kasikari.done_flag
       flash[:success] = "貸し借りを更新しました"
       redirect_to @kasikari
     else

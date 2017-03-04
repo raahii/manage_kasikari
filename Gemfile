@@ -36,7 +36,7 @@ group :development, :test do
   gem 'pry-byebug' # デバッグを実施
   gem 'hirb'       # モデルの出力結果を表形式で表示するGem
   gem 'hirb-unicode'
-  gem 'faker',          '1.6.6'
+  gem 'faker'
 end
 
 group :development do
