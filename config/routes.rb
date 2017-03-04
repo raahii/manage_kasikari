@@ -18,7 +18,7 @@ Rails.application.routes.draw do
     end
   end
 
-  resources :items, only: [:new, :show, :edit, :update, :destroy]
+  resources :items
   resources :relationships, only: [:create, :destroy]
   resources :kasikaris
 end
