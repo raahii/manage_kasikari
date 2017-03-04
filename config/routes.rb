@@ -23,5 +23,6 @@ Rails.application.routes.draw do
 
   post '/subscribe'   => 'subscriptions#create'
   post '/unsubscribe' => 'subscriptions#destroy'
+  post "/push"        => "subscriptions#push"
 
 end
