@@ -1,17 +1,27 @@
 @import "custom";
 /* kasikaris index */
+// li{background:url(画像);}
 .kasikaris {
   margin: 0;
 
   li {
     width: 100%;
     list-style-type: none;
+    
 
     div {
       display: inline-block;
       width: calc(90% / 3);
       text-align: center;
       margin: 10px 0px;
+    }
+  }
+}
+
+.kasikari_to_user,.kasikari_from_user{
+  a{
+    img{
+      border-radius: 50px;
     }
   }
 }

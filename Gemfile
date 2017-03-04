@@ -22,6 +22,7 @@ gem 'rmagick', '< 2.16.0'
 
 gem 'jquery-rails'
 gem 'jbuilder', '~> 2.5'
+gem "font-awesome-rails"
 # gem 'redis', '~> 3.0'
 # gem 'bcrypt', '~> 3.1.7'
 
