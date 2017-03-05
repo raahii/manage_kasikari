@@ -10,9 +10,8 @@
             <%= render 'follow_form' if logged_in? %>
           </h6>
         </section>
-        <section class="stats">
-          <%= render 'shared/stats' %>
-        </section>
+        <%= render 'shared/stats' %>
+        <br><br><br>
         <%= link_to "アイテムを登録する", new_item_path, class: "btn btn-lg btn-primary" %>
         <br><br><br>
         <button type="button" id="subscribe_button" class="btn btn-primary" disabled="disabled">プッシュ通知は使えません</button>
@@ -22,6 +21,7 @@
 
       <section class="timeline">
         <h6>タイムライン</h6>
+        <br>
         <div id="timeline-list">
           <ul>
             <%= render @timeline_kasikaris %>
