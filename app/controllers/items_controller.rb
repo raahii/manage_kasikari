@@ -49,8 +49,6 @@ class ItemsController < ApplicationController
   end
 
   def item_params
-    params[:image]  ||= "http://placehold.it/80x80"
-
     params.require(:item).permit(
       :name,
       :explanation,
