@@ -30,11 +30,10 @@
     </div>
 </div>
 
-  <script>
-
+<script>
 'use strict';
 
-const applicationServerPublicKey = 'BM9yViYOYuiZsZTjOrrduIEBSDG41iKI3oXyDWNpAzSfZ98e6H7j5wPU4VHbcs5aKl-rIjfClieAeeouMPd_ERc';
+const applicationServerPublicKey = 'BK6_74HsZx1k6i8mquyKG-dKOtgV006ULQdXuz6RYeNcURS9o7EVh8wWgQI3212qAldps3tqQYOZhpCUzFj9z5k=';
 
 const subscribeButton = document.querySelector('#subscribe_button');
 const notifyButton    = document.querySelector('#notify_button');
@@ -61,7 +60,7 @@ function updateSubscriptionOnServer(subscription) {
   if (subscription) {
     $.post("/subscribe", { subscription: subscription.toJSON() });
   } else {
-    console.debug("subscritpion is null in #updateSubscriptionOnServer");
+    $.post("/unsubscribe", {});
   }
 }
 
@@ -69,7 +68,7 @@ function subscribeUser() {
   const applicationServerKey = urlB64ToUint8Array(applicationServerPublicKey);
   swRegistration.pushManager.subscribe({
     userVisibleOnly: true,
-    applicationServerKey: applicationServerKey
+    applicationServerKey: applicationServerKey,
   })
   .then(function(subscription) {
     console.log('User is subscribed:', subscription);
@@ -170,4 +169,4 @@ if ('serviceWorker' in navigator && 'PushManager' in window) {
   console.warn('Push messaging is not supported');
   subscribeButton.textContent = 'プッシュ通知は使えません';
 }
-  </script>
+</script>

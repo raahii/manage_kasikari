@@ -1,0 +1,13 @@
+{
+  "name": "Manage Kasikari",
+  "short_name": "MKK",
+  "icons": [{
+    "src": "images/icon.png",
+    "sizes": "180x180",
+    "type": "image/png"
+  }],
+  "start_url": "/",
+  "display": "standalone",
+  "gcm_sender_id": "453579440042",
+  "gcm_user_visible_only": true
+}
