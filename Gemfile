@@ -29,6 +29,11 @@ gem "font-awesome-rails"
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 
+
+# プッシュ通知用
+gem 'serviceworker-rails'
+gem 'webpush'
+
 group :development, :test do
   gem 'byebug', platform: :mri
   gem 'annotate'   # modelのソースの先頭にテーブルのスキーマ情報を付加してくれる
