@@ -1,3 +1,4 @@
+
 # == Schema Information
 #
 # Table name: users
@@ -8,13 +9,5 @@
 #  created_at      :datetime         not null
 #  updated_at      :datetime         not null
 #  password_digest :string(255)
+#  image           :string(255)
 #
-# michael:
-#   name: Michael Example
-#   email: michael@example.com
-#   password_digest: <%= User.digest('password') %>
-#
-# archer:
-#   name: Sterling Archer
-#   email: duchess@example.gov
-#   password_digest: <%= User.digest('password') %>

@@ -18,9 +18,4 @@ class Item < ApplicationRecord
   validates :name, presence: true, length: { maximum: 255 }
 
   default_scope -> { order(created_at: :desc) }
-
-  def init
-    self.available ||= true
-    self.image ||= "http://placehold.it/80x80"
-  end
 end
