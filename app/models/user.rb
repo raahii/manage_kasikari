@@ -8,9 +8,12 @@
 #  created_at      :datetime         not null
 #  updated_at      :datetime         not null
 #  password_digest :string(255)
+#  image           :string(255)
 #
 
 class User < ApplicationRecord
+  mount_uploader :image, ImageUploader
+
   has_many :items, dependent: :destroy
   has_many :active_relationships, class_name:  "Relationship",
                                   foreign_key: "follower_id",

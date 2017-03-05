@@ -3,7 +3,7 @@
   <div class="set_position_friends">
     <section class="user_me user_me_friends">
       <section class="user_info user_info_friends">
-        <%= gravatar_for @user %>
+        <%= thumbnail_for @user %>
         <h6><%= @user.name %></h6>
         <span><%= link_to "view my profile", @user %></span>
         <span><b>Items:</b> <%= @user.items.count %></span>
@@ -11,7 +11,6 @@
         <%= render 'shared/stats' %>
         <% if @users.any? %>
         <% end %>
-    </section>
 
     <section class="friends_list">
       <h6>友だち</h6>

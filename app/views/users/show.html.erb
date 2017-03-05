@@ -4,7 +4,7 @@
       <section class="user_me">
         <section class="user_info">
           <h6>
-            <p><%= gravatar_for @user %></p>
+            <p><%= thumbnail_for @user %></p>
             <%= @user.name %>
             <%= render 'follow_form' if logged_in? %>
           </h6>

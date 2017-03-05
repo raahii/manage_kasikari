@@ -7,7 +7,7 @@ start-date(<%= kasikari.start_date%>)〜end-date(<%= kasikari.end_date%>)
 <li>
   <div class="kasikari_from_user">
     <%= link_to from_user do %>
-      <%= gravatar_for from_user, size: 100 %>
+      <%= thumbnail_for from_user, size: 100 %>
       <%= from_user.name%>
     <% end %>
   </div>
@@ -21,7 +21,7 @@ start-date(<%= kasikari.start_date%>)〜end-date(<%= kasikari.end_date%>)
 
   <div class="kasikari_to_user">
     <%= link_to to_user do %>
-      <%= gravatar_for to_user, size: 100 %>
+      <%= thumbnail_for to_user, size: 100 %>
       <%= to_user.name%>
     <% end %>
   </div>
