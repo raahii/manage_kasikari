@@ -4,7 +4,8 @@
       <section class="user_me">
         <section class="user_info">
           <h6>
-            <p><%= thumbnail_for @user %></p>
+            <%= thumbnail_for @user %>
+            <br><br>
             <%= @user.name %>
             <%= render 'follow_form' if logged_in? %>
           </h6>
