@@ -5,15 +5,15 @@
   </li>
 
   <div class="stats">
-    <a href="<%= friends_user_path(@user) %>">
+    <a href="<%= friends_user_path(user) %>">
       <strong id="following" class="stat">
-        <%= @user.friends.count %>
+        <%= user.friends.count %>
       </strong>
       友達
     </a>
-    <a href="<%= items_user_path(@user) %>">
+    <a href="<%= items_user_path(user) %>">
       <strong id="following" class="stat">
-        <%= @user.items.count %>
+        <%= user.items.count %>
       </strong>
       アイテム
     </a>

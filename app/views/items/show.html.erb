@@ -1,13 +1,14 @@
 <% provide(:title, @item.name) %>
-<div class="row">
-  <aside class="col-md-4">
+<div class="item">
     <section class="user_info">
       <h3>
         <%= thumbnail_for @item, size: 100 %>
         <%= @item.name %>
+        <p>Explanation</p>
+        <%= @item.explanation %>
         <div id="edit_item">
           <% if logged_in? && current_user.id === @item.user_id %>
-            | <%= link_to "編集", edit_item_path(@item) %>
+             <%= link_to "編集", edit_item_path(@item) %>
             | <%= link_to "削除", @item, method: :delete, data: { confirm: "You sure?" } %>
           <% end %>
         </div>
@@ -16,5 +17,4 @@
       <%= link_to user_path(current_user) do %>
       <h5> 一覧へ </h5>
     <% end %>
-  </aside>
 </div>
