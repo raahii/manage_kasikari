@@ -43,12 +43,14 @@ img{
 .btn-primary{
   background-color: #34b490;
   border-color: #228E70;
-  font-family: "Rounded Mplus 1c";
+  // font-family: "Rounded Mplus 1c";
   &:hover,&:focus {
     background-color: #228E70;
     border-color: #34b490;
   }
 }
+
+
 
 /* homeのみの変更点  ヒーロー*/
 *, *:after, *:before {
@@ -97,7 +99,8 @@ $gray-medium-light: #eaeaea;
 
 main{
   padding-top: 50px;
-  padding-left: 3%;
+  padding-left: 1%;
+  padding-right: 1%;
 }
 //
 section {
@@ -189,29 +192,40 @@ h6{
   margin-top: 0px;
   color: #000000;
 }
+
+h7{
+  font-size: 12px;
+}
 //
 // p {
 //   font-size: 1.1em;
-//   line-height: 1.7em;
+//   // line-height: 1.7em;
 // }
 //
 //
 // /* header */
 //
-#logo {
-  float: left;
-  margin-right: 10px;
-  font-size: 1.7em;
-  color: white;
-  text-transform: uppercase;
-  letter-spacing: -1px;
-  padding-top: 9px;
-  font-weight: bold;
-  &:hover {
-    color: white;
-    text-decoration: none;
-  }
+.navbar-brand{
+  background: url("/images/MKK-logo.png") no-repeat left center;
+  background-size: contain;
+  height: 50px;
+  width: 250px;
 }
+
+// #logo {
+//   float: left;
+//   margin-right: 10px;
+//   font-size: 1.7em;
+//   color: white;
+//   text-transform: uppercase;
+//   letter-spacing: -1px;
+//   padding-top: 9px;
+//   font-weight: bold;
+//   &:hover {
+//     color: white;
+//     text-decoration: none;
+//   }
+// }
 //
 /* footer */
 
@@ -223,6 +237,7 @@ footer {
   padding: 5px 5px 0px;
   border-top: 1px solid $gray-medium-light;
   color: $gray-light;
+  text-align: center;
 
   a {
     color: $gray;
@@ -232,6 +247,15 @@ footer {
   }
   small {
     float: left;
+    text-align: left;
+  }
+  .navbar-brand {
+    background: url("/images/Gutty-logo.png") no-repeat left center;
+    background-size: contain;
+    height: 50px;
+    width: 100px;
+    padding-top: 0px;
+    margin-left: 30px;
   }
   ul {
     float: right;
