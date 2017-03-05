@@ -40,14 +40,24 @@ class User < ApplicationRecord
 
   # ユーザー自身と友達に関わる貸し借りのデータを全部取ってくる
   def timeline_kasikaris
-    following_ids = "SELECT followed_id FROM relationships
-                     WHERE follower_id = :user_id"
+    following_ids = "SELECT followed_id FROM relationships " <<
+                    "WHERE follower_id = :user_id"
     to = Kasikari.where("to_user_id IN (#{following_ids})
-                           OR from_user_id = :user_id", user_id: id)
+                           OR to_user_id = :user_id", user_id: id)
     from = Kasikari.where("from_user_id IN (#{following_ids})
                            OR from_user_id = :user_id", user_id: id)
 
     to | from
+  end
+  
+  # そのユーザーが貸した物一覧
+  def kasis
+    Kasikari.where("from_user_id = #{id}")
+  end
+
+  # そのユーザーが借りた物一覧
+  def karis
+    Kasikari.where("to_user_id = #{id}")
   end
 
   # ユーザーをフォローする

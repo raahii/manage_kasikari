@@ -14,7 +14,6 @@
 #
 
 class Kasikari < ApplicationRecord
-
   enum status: { 
     applying: 0,
     ongoing: 1,
@@ -71,5 +70,4 @@ class Kasikari < ApplicationRecord
   def to_user
     User.find_by(id: self.to_user_id)
   end
-  
 end
