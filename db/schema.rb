@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170305045227) do
+ActiveRecord::Schema.define(version: 20170305114126) do
 
   create_table "items", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string   "name",                                     null: false
@@ -25,15 +25,17 @@ ActiveRecord::Schema.define(version: 20170305045227) do
   end
 
   create_table "kasikaris", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
-    t.integer  "item_id",                      null: false
-    t.integer  "from_user_id",                 null: false
-    t.integer  "to_user_id",                   null: false
-    t.date     "start_date",                   null: false
-    t.date     "end_date",                     null: false
-    t.boolean  "done_flag",    default: false
-    t.datetime "created_at",                   null: false
-    t.datetime "updated_at",                   null: false
+    t.integer  "item_id",                  null: false
+    t.integer  "from_user_id",             null: false
+    t.integer  "to_user_id",               null: false
+    t.date     "start_date",               null: false
+    t.date     "end_date",                 null: false
+    t.datetime "created_at",               null: false
+    t.datetime "updated_at",               null: false
+    t.integer  "status",       default: 0
+    t.index ["from_user_id", "status"], name: "index_kasikaris_on_from_user_id_and_status", using: :btree
     t.index ["from_user_id"], name: "index_kasikaris_on_from_user_id", using: :btree
+    t.index ["to_user_id", "status"], name: "index_kasikaris_on_to_user_id_and_status", using: :btree
     t.index ["to_user_id"], name: "index_kasikaris_on_to_user_id", using: :btree
   end
 

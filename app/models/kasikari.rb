@@ -8,12 +8,18 @@
 #  to_user_id   :integer          not null
 #  start_date   :date             not null
 #  end_date     :date             not null
-#  done_flag    :boolean          default(FALSE)
 #  created_at   :datetime         not null
 #  updated_at   :datetime         not null
+#  status       :integer          default(0)
 #
 
 class Kasikari < ApplicationRecord
+
+  enum status: { 
+    applying: 0,
+    ongoing: 1,
+    done: 2
+  }
 
   validates :item_id,      presence: true, allow_nil: true
   validates :from_user_id, presence: true, allow_nil: true
@@ -26,10 +32,6 @@ class Kasikari < ApplicationRecord
   validate :valid_item?
 
   default_scope -> { order(created_at: :desc) }
-
-  def init
-    self.done_flag  ||= false  # will set the default value only if it's nil
-  end
 
   def exist_item?
     if Item.find_by(id: item_id).nil?
