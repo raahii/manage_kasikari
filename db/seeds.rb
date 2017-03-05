@@ -5,23 +5,27 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
+IMAGES_NUM = 10
+dummy_image = "#{Rails.root}/public/images/gutty.png"
 User.create!(
   name:  "Example User",
   email: "example@railstutorial.org",
   password:              "foobar",
   password_confirmation: "foobar",
+  image: File.open(dummy_image)
 )
 
 99.times do |n|
   name  = Faker::Name.name
   email = "example-#{n+1}@railstutorial.org"
   password = "password"
-  image_url = Faker::Avatar.image("my-own-slug", "100x100", "jpg")
+  file_path = "#{Rails.root}/public/images/sample/users/#{rand(1..IMAGES_NUM)}.png"
   User.create!(
     name:                  name,
     email:                 email,
     password:              password,
     password_confirmation: password,
+    image:                 File.open(file_path),
   )
 end
 
@@ -30,25 +34,33 @@ users = User.order(:created_at).take(30) << User.find(1)
 10.times do
   users.each do |user|
     name = Faker::Food.ingredient
-    image_url = Faker::LoremPixel.image("200x200", false, 'food')
+    file_path = "#{Rails.root}/public/images/sample/items/#{rand(1..IMAGES_NUM)}.png"
 
     item = user.items.create!(
-      name:  name
+      name:  name,
+      image: File.open(file_path),
     )
-    item.update_attributes!(image: image_url)
   end
 end
 
 # リレーションシップ
 users = User.all
+user = User.find(2)
+following = users[3..20]
+followers = users[3..30]
+following.each { |followed| user.follow(followed) }
+followers.each { |follower| follower.follow(user) }
+
 user = User.find(1)
 following = users[2..40]
 followers = users[2..50]
 following.each { |followed| user.follow(followed) }
 followers.each { |follower| follower.follow(user) }
 
+
 # 貸し借り
 friends = user.friends.first(10)
+other_user = User.find(2)
 
 friends.each.with_index(1) do |friend, i|
   Kasikari.create!(
@@ -68,3 +80,13 @@ friends.each.with_index(1) do |friend, i|
     end_date:     Date.today + i,
   )
 end
+friends.last(9).each.with_index(1) do |friend, i|
+  Kasikari.create!(
+    item_id:      other_user.items.first.id,
+    from_user_id: other_user.id,
+    to_user_id:   friend.id,
+    start_date:   Date.today,
+    end_date:     Date.today + i,
+  )
+end
+
