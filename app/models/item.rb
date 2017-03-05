@@ -20,6 +20,7 @@ class Item < ApplicationRecord
   default_scope -> { order(created_at: :desc) }
 
   def init
-    self.available  ||= true
+    self.available ||= true
+    self.image ||= "http://placehold.it/80x80"
   end
 end

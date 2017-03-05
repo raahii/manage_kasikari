@@ -1,7 +1,6 @@
 class UsersController < ApplicationController
   before_action :set_user,       only: [:show, :edit, :update, :friends, :items]
-  before_action :logged_in_user, only: [:index, :edit, :update,
-                                        :frinends]
+  before_action :logged_in_user, only: [:index, :edit, :update, :frinends]
   before_action :correct_user,   only: [:edit, :update]
 
   def index
@@ -57,6 +56,7 @@ class UsersController < ApplicationController
       :email,
       :password,
       :password_confirmation,
+      :image,
     )
   end
 
