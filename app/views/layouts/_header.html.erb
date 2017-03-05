@@ -3,10 +3,18 @@
     <%= link_to "MKK", root_path, id: "logo" %>
     <nav>
       <ul class="nav navbar-nav navbar-right">
-        <li><%= link_to "Home", root_path %></li>
-        <li><%= link_to "About",   '/#about' %></li>
-        <li><%= link_to "Help", '/#help' %></li>
+        <% if current_page?(root_path) %>
+          <li><%= link_to "About",   '/#about' %></li>
+          <li><%= link_to "Help", '/#help' %></li>
+        <% else %>
+        <li><%= link_to "TOP", root_path %></li>
+        <% end %>
         <% if logged_in? %>
+          <li>
+            <%= link_to notification_path, class: "notification" do %>
+              <i class="fa fa-bell-o" aria-hidden="true"></i>
+            <% end %>
+          </li>
           <li><%= link_to "Friends", friends_user_path(current_user) %></li>
           <li class="dropdown">
             <a href="#" class="dropdown-toggle" data-toggle="dropdown">

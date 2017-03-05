@@ -17,8 +17,8 @@
   <%= f.label :end_date %>
   <%= f.date_select :end_date, {}, class: 'form-control' %>
 
-  <%= f.label :done_flag %>
-  <%= f.check_box :done_flag %>
+  <%= f.label :status %>
+  <%= f.select :status, Kasikari.statuses.keys.to_a, {}, class: 'form-control' %>
 
   <%= f.submit "登録", class: "btn btn-primary" %>
 <% end %>

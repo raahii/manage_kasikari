@@ -35,7 +35,7 @@ class KasikarisController < ApplicationController
 
   def update
     if @kasikari.update_attributes(kasikari_params)
-      @kasikari.item.update_attributes!(available: true) if @kasikari.done_flag
+      @kasikari.item.update_attributes!(available: true) if @kasikari.done?
       flash[:success] = "貸し借りを更新しました"
       redirect_to @kasikari
     else
@@ -45,6 +45,7 @@ class KasikarisController < ApplicationController
 
   def destroy
     @kasikari.destroy
+    @kasikari.item.update_attributes!(available: true)
     flash[:success] = "貸し借りを削除しました。"
     redirect_to user_path(current_user)
   end
@@ -56,13 +57,15 @@ class KasikarisController < ApplicationController
   end
 
   def kasikari_params
-    params.require(:kasikari).permit(
+    param = params.require(:kasikari)
+    
+    param.permit(
       :item_id,
       :from_user_id,
       :to_user_id,
       :start_date,
       :end_date,
-      :done_flag
+      :status,
     )
   end
 

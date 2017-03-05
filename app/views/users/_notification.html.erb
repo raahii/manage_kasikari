@@ -1,0 +1,14 @@
+<% @new_kasikaris.each do |kasikari| %>
+  <% from_user = kasikari.from_user %>
+  <% to_user = kasikari.to_user %>
+  <% item = kasikari.item %>
+
+  <li>
+    <% # 貸し側の場合 %>
+    <% if kasikari.from_user_id = @user.id %> 
+      <%= to_user.name %>さん が <%= item.name %> を借りたいと言っています
+    <% else %>
+      <%= from_user.name %>さん が <%= item.name %> を貸し出すと言っています
+    <% end %>
+  </li>
+<% end %>

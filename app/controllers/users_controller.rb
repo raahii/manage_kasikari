@@ -9,6 +9,8 @@ class UsersController < ApplicationController
 
   def show
     @timeline_kasikaris = @user.timeline_kasikaris
+    @new_kasis_count = @user.kasis.applying.count
+    @new_karis_count = @user.karis.applying.count
   end
 
   def new
@@ -46,6 +48,13 @@ class UsersController < ApplicationController
   def items
     @items = @user.items
     render 'show_items'
+  end
+
+  def notification
+    @user      = current_user
+    @new_kasikaris = @user.kasis.applying || @user.kasis.applying
+
+    render 'show_notification'
   end
 
   private
