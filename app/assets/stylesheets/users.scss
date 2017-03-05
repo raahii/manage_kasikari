@@ -87,9 +87,9 @@ $gray-medium-light: #eaeaea;
 }
 
 /* user/:id/friends/ページ */
-.set_position_items{
+.set_position_friends{
   display: flex;
-  section.items_list{
+  section.friends_list{
     margin: 10px;
     border-radius: 5px;
     // background: #FFFFFF;
@@ -98,7 +98,7 @@ $gray-medium-light: #eaeaea;
       padding-top: 0px;
     }
   }
-  section.user_me_items{
+  section.user_me_friends{
     margin: 10px;
     padding-top: 30px;
     background: #FFFFFF;
@@ -107,11 +107,11 @@ $gray-medium-light: #eaeaea;
       padding: 20px 40px;
     }
   }
-  .user_me_items{
+  .user_me_friends{
     flex:1;
   }
 
-  .items_list{
+  .friends_list{
     flex:3;
   }
 }
@@ -149,9 +149,9 @@ $gray-medium-light: #eaeaea;
 
 
 /* user/:id/items/ページ */
-.set_position_friends{
+.set_position_items{
   display: flex;
-  section.friends_list{
+  section.items_list{
     margin: 10px;
     border-radius: 5px;
     // background: #FFFFFF;
@@ -160,7 +160,7 @@ $gray-medium-light: #eaeaea;
       padding-top: 0px;
     }
   }
-  section.user_me_friends{
+  section.user_me_items{
     margin: 10px;
     padding-top: 30px;
     background: #FFFFFF;
@@ -169,11 +169,11 @@ $gray-medium-light: #eaeaea;
       padding: 20px 40px;
     }
   }
-  .user_me_friends{
+  .user_me_items{
     flex:1;
   }
 
-  .friends_list{
+  .items_list{
     flex:3;
   }
 }
