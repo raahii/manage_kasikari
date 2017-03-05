@@ -7,7 +7,7 @@ class ImageUploader < CarrierWave::Uploader::Base
   process :resize_to_limit => [200, 200]
 
   # 保存形式をJPGにする
-  process :convert => 'jpg'
+  process :convert => 'png'
 
   # サムネイルを生成する設定
   version :thumb do
@@ -26,7 +26,7 @@ class ImageUploader < CarrierWave::Uploader::Base
 
   # 拡張子が同じでないとGIFをJPGとかにコンバートできないので、ファイル名を変更
   def filename
-    super.chomp(File.extname(super)) + '.jpg' if original_filename.present?
+    super.chomp(File.extname(super)) + '.png' if original_filename.present?
   end
 
 
