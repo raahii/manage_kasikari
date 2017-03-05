@@ -2,10 +2,10 @@
   <%= render 'shared/error_messages', object: @item %>
 
   <%= f.label :name %>
-  <%= f.text_field :name, class: 'form-control' %>
+  <%= f.text_field :name, class: 'form-control' ,:placeholder => "Enter name" %>
 
   <%= f.label :explanation %>
-  <%= f.text_field :explanation, class: 'form-control' %>
+  <%= f.text_field :explanation, class: 'form-control' ,:placeholder => "Enter explanation" %>
   <%= f.label :image, "サムネイル画像" %>
   <%= f.file_field :image, accept: 'image/jpeg,image/gif,image/png' %>
 
