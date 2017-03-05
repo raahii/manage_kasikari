@@ -1,0 +1,173 @@
+<% provide(:title, "通知") %>
+<div class="row">
+    <div class="set_position">
+      <section class="user_me">
+        <section class="user_info">
+          <h6>
+            <%= thumbnail_for @user %>
+            <br><br>
+            <%= @user.name %>
+            <%= render 'follow_form' if logged_in? %>
+          </h6>
+        </section>
+        <section class="stats">
+          <%= render 'shared/stats' %>
+        </section>
+        <%= link_to "アイテムを登録する", new_item_path, class: "btn btn-lg btn-primary" %>
+        <br><br><br>
+        <button type="button" id="subscribe_button" class="btn btn-primary" disabled="disabled">プッシュ通知は使えません</button>
+        <br><br>
+        <button type="button" id="notify_button" class="btn btn-primary">ガッティさんの顔を見る</button>
+      </section>
+
+      <section class="timeline">
+        <h6>通知</h6>
+        <div id="notification-list">
+          <ul>
+            <%= render 'notification' %>
+          </ul>
+      </div>
+      </section>
+    </div>
+</div>
+
+<script>
+'use strict';
+
+const applicationServerPublicKey = 'BK6_74HsZx1k6i8mquyKG-dKOtgV006ULQdXuz6RYeNcURS9o7EVh8wWgQI3212qAldps3tqQYOZhpCUzFj9z5k=';
+
+const subscribeButton = document.querySelector('#subscribe_button');
+const notifyButton    = document.querySelector('#notify_button');
+
+let isSubscribed = false;
+let swRegistration = null;
+
+function urlB64ToUint8Array(base64String) {
+  const padding = '='.repeat((4 - base64String.length % 4) % 4);
+  const base64 = (base64String + padding)
+    .replace(/\-/g, '+')
+    .replace(/_/g, '/');
+
+  const rawData = window.atob(base64);
+  const outputArray = new Uint8Array(rawData.length);
+
+  for (let i = 0; i < rawData.length; ++i) {
+    outputArray[i] = rawData.charCodeAt(i);
+  }
+  return outputArray;
+}
+
+function updateSubscriptionOnServer(subscription) {
+  if (subscription) {
+    $.post("/subscribe", { subscription: subscription.toJSON() });
+  } else {
+    $.post("/unsubscribe", {});
+  }
+}
+
+function subscribeUser() {
+  const applicationServerKey = urlB64ToUint8Array(applicationServerPublicKey);
+  swRegistration.pushManager.subscribe({
+    userVisibleOnly: true,
+    applicationServerKey: applicationServerKey,
+  })
+  .then(function(subscription) {
+    console.log('User is subscribed:', subscription);
+
+    updateSubscriptionOnServer(subscription);
+
+    isSubscribed = true;
+
+    updateBtn();
+  })
+  .catch(function(err) {
+    console.log('Failed to subscribe the user: ', err);
+    updateBtn();
+  });
+}
+
+function unsubscribeUser() {
+  swRegistration.pushManager.getSubscription()
+  .then(function(subscription) {
+    if (subscription) {
+      return subscription.unsubscribe();
+    }
+  })
+  .catch(function(error) {
+    console.log('Error unsubscribing', error);
+  })
+  .then(function() {
+    updateSubscriptionOnServer(null);
+
+    console.log('User is unsubscribed.');
+    isSubscribed = false;
+
+    updateBtn();
+  });
+}
+
+function updateBtn() {
+  if (Notification.permission === 'denied') {
+    subscribeButton.textContent = 'Push Messaging Blocked.';
+    subscribeButton.disabled = true;
+    updateSubscriptionOnServer(null);
+    return;
+  }
+
+  if (isSubscribed) {
+    subscribeButton.textContent = 'プッシュ通知を無効にする';
+  } else {
+    subscribeButton.textContent = 'プッシュ通知を有効にする';
+  }
+
+  subscribeButton.disabled = false;
+}
+
+function initialiseUI() {
+  // プッシュ通知登録のイベントフック
+  subscribeButton.addEventListener('click', function() {
+    subscribeButton.disabled = true;
+    if (isSubscribed) {
+      unsubscribeUser();
+    } else {
+      subscribeUser();
+    }
+  });
+
+  // プッシュ通知実行のイベントフック
+  notify_button.addEventListener('click', function() {
+      $.post("/push");
+  });
+
+  // Set the initial subscription value
+  swRegistration.pushManager.getSubscription().then(function(subscription) {
+    isSubscribed = !(subscription === null);
+
+    if (isSubscribed) {
+      console.log('User IS subscribed.');
+    } else {
+      console.log('User is NOT subscribed.');
+    }
+
+    updateBtn();
+  });
+}
+
+if ('serviceWorker' in navigator && 'PushManager' in window) {
+  console.log('Service Worker and Push is supported');
+
+  navigator.serviceWorker.register('/serviceworker.js')
+  .then(function(swReg) {
+    console.log('Service Worker is registered', swReg);
+
+    swRegistration = swReg;
+    initialiseUI();
+  })
+  .catch(function(error) {
+    console.error('Service Worker Error', error);
+  });
+} else {
+  console.warn('Push messaging is not supported');
+  subscribeButton.textContent = 'プッシュ通知は使えません';
+}
+</script>

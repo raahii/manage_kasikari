@@ -2,14 +2,15 @@ class UsersController < ApplicationController
   before_action :set_user,       only: [:show, :edit, :update, :friends, :items]
   before_action :logged_in_user, only: [:index, :edit, :update, :frinends]
   before_action :correct_user,   only: [:edit, :update]
-11
+
   def index
     @users = User.paginate(page: params[:page])
   end
 
   def show
     @timeline_kasikaris = @user.timeline_kasikaris
-    @new_kasis = @user.kasis.applying
+    @new_kasis_count = @user.kasis.applying.count
+    @new_karis_count = @user.karis.applying.count
   end
 
   def new
@@ -47,6 +48,13 @@ class UsersController < ApplicationController
   def items
     @items = @user.items
     render 'show_items'
+  end
+
+  def notification
+    @user      = current_user
+    @new_kasikaris = @user.kasis.applying || @user.kasis.applying
+
+    render 'show_notification'
   end
 
   private
