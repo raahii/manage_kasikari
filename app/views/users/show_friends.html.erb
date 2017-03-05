@@ -1,30 +1,29 @@
 <% provide(:title, "Friends") %>
 <div class="row">
-  <aside class="col-md-4">
-    <section class="user_info">
-      <%= gravatar_for @user %>
-      <h6><%= @user.name %></h6>
-      <span><%= link_to "view my profile", @user %></span>
-      <span><b>Items:</b> <%= @user.items.count %></span>
+  <div class="set_position_friends">
+    <section class="user_me user_me_friends">
+      <section class="user_info user_info_friends">
+        <%= gravatar_for @user %>
+        <h6><%= @user.name %></h6>
+        <span><%= link_to "view my profile", @user %></span>
+        <span><b>Items:</b> <%= @user.items.count %></span>
+      </section>
+        <%= render 'shared/stats' %>
+        <% if @users.any? %>
+        <% end %>
     </section>
-    <section class="stats">
-      <%= render 'shared/stats' %>
+
+    <section class="friends_list">
+      <h6>友だち</h6>
       <% if @users.any? %>
-        <div class="user_avatars">
-          <% @users.each do |user| %>
-            <%= link_to gravatar_for(user, size: 30), user %>
-          <% end %>
-        </div>
+        <ul class="users_follow">
+
+            <% @users.each do |user| %>
+              <%= render 'friend_user', user: user %>
+            <% end %>
+        </ul>
+        <% # = will_paginate %>
       <% end %>
     </section>
-  </aside>
-  <div class="col-md-8">
-    <h3>友だち</h3>
-    <% if @users.any? %>
-      <ul class="users follow">
-        <%= render @users %>
-      </ul>
-      <% # = will_paginate %>
-    <% end %>
   </div>
 </div>

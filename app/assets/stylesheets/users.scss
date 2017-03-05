@@ -1,20 +1,22 @@
 @import "custom";
 @import "kasikaris";
+
 /* Users index */
+/* users/idページ */
 $gray-medium-light: #eaeaea;
 
 .users {
   list-style: none;
-  margin: 0;
+  // margin: 0;
   li {
     overflow: auto;
-    padding: 10px 0;
+    // padding: 10px 0;
     border-bottom: 1px solid $gray-lighter;
   }
 }
 
 .user_me{
-  margin: 0 auto;
+  // margin: 0 auto;
 }
 
 .user_items  {
@@ -26,7 +28,7 @@ $gray-medium-light: #eaeaea;
 }
 
 .user_info{
-  padding-top: 50px;
+  // padding-top: 50px;
 }
 
 .set_position{
@@ -81,5 +83,66 @@ $gray-medium-light: #eaeaea;
   }
   .kasikari_item{
     padding-left: 5%;
+  }
+}
+
+/* user/:id/friends/ページ */
+.set_position_friends{
+  display: flex;
+  section.friends_list{
+    margin: 10px;
+    border-radius: 5px;
+    // background: #FFFFFF;
+    padding: 15px;
+    section.stats{
+      padding-top: 0px;
+    }
+  }
+  section.user_me_friends{
+    margin: 10px;
+    padding-top: 30px;
+    background: #FFFFFF;
+    text-align: center;
+    .stats{
+      padding: 20px 40px;
+    }
+  }
+  .user_me_friends{
+    flex:1;
+  }
+
+  .friends_list{
+    flex:3;
+  }
+}
+
+
+.users_follow{
+  display: flex;
+  flex-wrap: wrap;
+  text-align: center;
+  li{
+     list-style-type: none;
+      div{
+        // display: inline-block;
+      }
+      img{
+        display: block;
+        margin: 0 auto;
+      }
+  }
+  .friends_list_person{
+    width: 200px;
+    margin: 20px;
+    padding: 20px;
+    background: #FFFFFF;
+    border: 1px solid #e1e8ed;
+    border-radius: 5px;
+
+    .stats{
+      padding-top: 0px 30px;
+      width: auto;
+      margin: 0 auto;
+    }
   }
 }
