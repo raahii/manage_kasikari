@@ -52,7 +52,7 @@ class UsersController < ApplicationController
 
   def notification
     @user      = current_user
-    @new_kasikaris = @user.kasis.applying || @user.kasis.applying
+    @new_kasikaris = @user.kasis.applying
 
     render 'show_notification'
   end

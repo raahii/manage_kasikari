@@ -4,11 +4,6 @@
   <% item = kasikari.item %>
 
   <li>
-    <% # 貸し側の場合 %>
-    <% if kasikari.from_user_id = @user.id %> 
-      <%= to_user.name %>さん が <%= item.name %> を借りたいと言っています
-    <% else %>
-      <%= from_user.name %>さん が <%= item.name %> を貸し出すと言っています
-    <% end %>
+    <%= to_user.name %>さん が <%= item.name %> を借りたいと言っています
   </li>
 <% end %>

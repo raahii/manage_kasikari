@@ -16,8 +16,9 @@
 class Kasikari < ApplicationRecord
   enum status: { 
     applying: 0,
-    ongoing: 1,
-    done: 2
+    ongoing:  1,
+    denied:   2,
+    done:     3,
   }
 
   validates :item_id,      presence: true, allow_nil: true

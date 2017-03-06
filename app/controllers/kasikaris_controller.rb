@@ -5,7 +5,8 @@ class KasikarisController < ApplicationController
   before_action :correct_item,   only: [:new_kari]
 
   def index
-    @kasikaris = Kasikari.paginate(page: params[:page]) end
+    @kasikaris = Kasikari.paginate(page: params[:page])
+  end
 
   def show
   end
@@ -25,14 +26,9 @@ class KasikarisController < ApplicationController
   end
 
   def create
-    # * 誰かのアイテムを借りようとしている場合は申請をして相手に承認され
-    #   るまでなけれ貸し借りとしては成立しない
-    # これ後回しかな…
-
     @kasikari = Kasikari.new(kasikari_params)
 
     if @kasikari.save
-      @kasikari.item.update_attributes!(available: false)
       flash[:success] = "貸し借りを登録しました"
       redirect_to @kasikari
     else
@@ -45,9 +41,12 @@ class KasikarisController < ApplicationController
 
   def update
     if @kasikari.update_attributes(kasikari_params)
-      @kasikari.item.update_attributes!(available: true) if @kasikari.done?
+      @kasikari.item.update_attributes!(available: !@kasikari.ongoing?)
       flash[:success] = "貸し借りを更新しました"
-      redirect_to @kasikari
+      respond_to do |format|
+        format.html { redirect_to @kasikari }
+        format.js
+      end
     else
       render 'edit'
     end
