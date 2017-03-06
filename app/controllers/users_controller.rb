@@ -1,6 +1,8 @@
 class UsersController < ApplicationController
-  before_action :set_user,       only: [:show, :edit, :update, :friends, :items]
-  before_action :logged_in_user, only: [:index, :edit, :update, :frinends]
+  before_action :set_user,       only: [:show, :edit, :update, :friends,
+                                        :items, :kasikaris]
+  before_action :logged_in_user, only: [:index, :edit, :update, :frinends,
+                                        :items, :kasikaris]
   before_action :correct_user,   only: [:edit, :update]
 
   def index
@@ -48,6 +50,12 @@ class UsersController < ApplicationController
   def items
     @items = @user.items
     render 'show_items'
+  end
+
+  def kasikaris
+    @kasis = @user.kasis
+    @karis = @user.karis
+    render 'show_kasikaris'
   end
 
   private

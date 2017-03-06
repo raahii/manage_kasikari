@@ -3,23 +3,24 @@ Rails.application.routes.draw do
   get  '/contact',     to: 'static_pages#contact'
   get  '/signup',      to: 'users#new'
   post '/signup',      to: 'users#create'
-
-  get    '/login',  to: 'sessions#new'
-  post   '/login',  to: 'sessions#create'
-  delete '/logout', to: 'sessions#destroy'
+  get    '/login',     to: 'sessions#new'
+  post   '/login',     to: 'sessions#create'
+  delete '/logout',    to: 'sessions#destroy'
+  get '/notification', to: 'notifications#index'
   
-  resources :users do
+  resources :users, except: [:index] do
     member do
       get :friends
       get :items
+      get :kasikaris
     end
   end
 
-  resources :items
   resources :relationships, only: [:create, :destroy]
-  resources :kasikaris
+  resources :items, except: [:index]
+  resources :kasikaris, except: [:index]
+
   get '/kasikaris/new/:id', to: 'kasikaris#new_kari', as: 'new_kari'
-  get '/notification',      to: 'notifications#index'
 
   post '/subscribe'   => 'subscriptions#create'
   post '/unsubscribe' => 'subscriptions#destroy'
