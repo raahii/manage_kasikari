@@ -3,8 +3,11 @@
 <% to_user   = kasikari.to_user %>
 
 <div class="time_show">
-start-date(<%= kasikari.start_date%>)〜end-date(<%= kasikari.end_date%>)
-</div>
+  <div class="notification_time">
+    <%= print_time(kasikari.created_at) %>
+  </div>
+  借りた日(<%= kasikari.start_date%>)〜返却期限(<%= kasikari.end_date%>)
+
 <li>
   <div class="kasikari_from_user">
     <%= link_to from_user do %>
@@ -27,3 +30,5 @@ start-date(<%= kasikari.start_date%>)〜end-date(<%= kasikari.end_date%>)
     <% end %>
   </div>
 </li>
+
+</div>
