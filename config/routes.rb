@@ -1,6 +1,5 @@
 Rails.application.routes.draw do
   root 'static_pages#home'
-  get '/notification', to: 'users#notification'
   get  '/contact',     to: 'static_pages#contact'
   get  '/signup',      to: 'users#new'
   post '/signup',      to: 'users#create'
@@ -20,6 +19,7 @@ Rails.application.routes.draw do
   resources :relationships, only: [:create, :destroy]
   resources :kasikaris
   get '/kasikaris/new/:id', to: 'kasikaris#new_kari', as: 'new_kari'
+  get '/notification',      to: 'notifications#index'
 
   post '/subscribe'   => 'subscriptions#create'
   post '/unsubscribe' => 'subscriptions#destroy'
