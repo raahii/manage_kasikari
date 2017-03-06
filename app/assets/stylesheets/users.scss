@@ -1,9 +1,10 @@
 @import "custom";
 @import "kasikaris";
 
+
+
 /* Users index */
 /* users/idページ */
-
 .set_position{
   display: flex;
   // margin-top: 20px;
@@ -64,6 +65,34 @@
   }
   .kasikari_item{
     padding-left: 5%;
+  }
+}
+
+/* user/notificationページ */
+#notificaion-list ul:after{
+  display: block;
+}
+
+#notification-list ul li{
+  list-style-type: none;
+  display: flex;
+  padding-top: 2%;
+  padding-bottom: 2%;
+  padding-left: 10%;
+  border-bottom: 1px solid #191970;
+  border-radius: 5px;
+  // background:url(/images/arrow.jpg);
+  // background-size:cover;
+  // background-position:center center;
+   background-color:#FFFFFF;
+  div{
+    display: inline-block;
+  }
+  .notification_text{
+    flex: 4;
+  }
+  .notification_btn{
+    flex: 1;
   }
 }
 

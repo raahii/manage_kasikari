@@ -23,6 +23,18 @@ img{
 .navbar-inverse {
   background-color: #34b490;
   border-color: #228E70;
+
+  .dropdown{
+    a{
+      padding: 8px 15px 4px;
+    }
+    img{
+      width: 35px;
+      height: 35px;
+      border-radius: 50px;
+      border: 1px solid #FFFFFF;
+    }
+  }
 }
 
 .navbar-inverse .navbar-nav{
@@ -43,12 +55,40 @@ img{
 .btn-primary{
   background-color: #34b490;
   border-color: #228E70;
+  // border-radius: 20px;
   // font-family: "Rounded Mplus 1c";
   &:hover,&:focus {
     background-color: #228E70;
     border-color: #34b490;
   }
 }
+
+.btn-permit{
+  background-color: #4169E1;
+  border-color: #0000CD;
+  color: #FFFFFF;
+  // border-radius: 20px;
+  // font-family: "Rounded Mplus 1c";
+  &:hover,&:focus {
+    background-color: #1E90FF;
+    border-color: #3333DD;
+    color: #FFFFFF;
+  }
+}
+
+.btn-reject{
+  background-color: #DC143C;
+  border-color: #8B0000;
+  color: #FFFFFF;
+  // border-radius: 20px;
+  // font-family: "Rounded Mplus 1c";
+  &:hover,&:focus {
+    background-color: #FF0000;
+    border-color: #DD3333;
+    color: #FFFFFF;
+  }
+}
+
 
 
 
@@ -65,7 +105,6 @@ img{
   background-position:center center;
   background-attachment:fixed;
   background-color:#464646;
-  // width: 100vw;
   margin: 0 -500%; /* 上下の margin は元の値に合わせて適宜変更 */
   padding: 0 500%; /* 上下の margin は元の値に合わせて適宜変更 */
 
@@ -74,7 +113,6 @@ img{
 .hero, .content{
   text-align:center;
   position:relative;
-  // width: 100vw;
 }
 
 .inner{
@@ -206,7 +244,7 @@ h7{
 // /* header */
 //
 .navbar-brand{
-  background: url("/images/MKK-logo.png") no-repeat left center;
+  background: url("/images/KK-logo.png") no-repeat left center;
   background-size: contain;
   height: 50px;
   width: 250px;
