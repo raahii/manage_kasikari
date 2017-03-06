@@ -25,7 +25,7 @@
             <%= link_to item.name, item ,class: "items_name" %>
             <%= thumbnail_for item, size: 150 %>
             <br>
-            <%= link_to "借りたい", "#", class: "btn btn-lg btn-primary" %>
+            <%= link_to "借りたい", new_kari_path(item), class: "btn btn-lg btn-primary" %>
           </li>
         </div>
         <% end %>

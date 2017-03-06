@@ -1,17 +1,27 @@
 class KasikarisController < ApplicationController
   before_action :set_kasikari,   only: [:show, :edit, :update, :destroy]
-  before_action :logged_in_user, only: [:index, :edit, :update, :destroy]
+  before_action :logged_in_user, only: [:index, :new, :create, :edit, :update, :destroy]
   before_action :correct_user,   only: [:edit, :update, :destroy]
+  before_action :correct_item,   only: [:new_kari]
 
   def index
-    @kasikaris = Kasikari.paginate(page: params[:page])
-  end
+    @kasikaris = Kasikari.paginate(page: params[:page]) end
 
   def show
   end
 
   def new
     @kasikari = Kasikari.new
+  end
+
+  def new_kari
+    @kasikari = Kasikari.new(
+      item_id: @item.id,
+      from_user_id: @item.owner.id,
+      to_user_id: current_user.id,
+    )
+
+    render 'new'
   end
 
   def create
@@ -58,7 +68,7 @@ class KasikarisController < ApplicationController
 
   def kasikari_params
     param = params.require(:kasikari)
-    
+
     param.permit(
       :item_id,
       :from_user_id,
@@ -84,6 +94,16 @@ class KasikarisController < ApplicationController
     elsif !friends.include?(from_user) && !friends.include?(to_user)
       flash[:danger] = "友達でないユーザーとの貸し借りはできません"
       redirect_to new_kasikari_path
+    end
+  end
+
+  def correct_item
+    @item = Item.find(params[:id])
+
+    if current_user?(@item.owner)
+      redirect_to root_path
+    elsif !current_user.friend_with?(@item.owner)
+      redirect_to root_path
     end
   end
 end

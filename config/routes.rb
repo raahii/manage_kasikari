@@ -19,6 +19,7 @@ Rails.application.routes.draw do
   resources :items
   resources :relationships, only: [:create, :destroy]
   resources :kasikaris
+  get '/kasikaris/new/:id', to: 'kasikaris#new_kari', as: 'new_kari'
 
   post '/subscribe'   => 'subscriptions#create'
   post '/unsubscribe' => 'subscriptions#destroy'
