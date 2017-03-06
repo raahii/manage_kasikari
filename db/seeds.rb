@@ -61,23 +61,28 @@ followers.each { |follower| follower.follow(user) }
 # 貸し借り
 friends = user.friends.first(10)
 other_user = User.find(2)
+status = 1
 
 friends.each.with_index(1) do |friend, i|
+  status = 1 - status
   Kasikari.create!(
     item_id:      user.items[i].id,
     from_user_id: user.id,
     to_user_id:   friend.id,
     start_date:   Date.today,
     end_date:     Date.today + i,
+    status:       status,
   )
 end
 friends.each.with_index(1) do |friend, i|
+  status = 1 - status
   Kasikari.create!(
     item_id:      friend.items.first.id,
     from_user_id: friend.id,
     to_user_id:   user.id,
     start_date:   Date.today,
     end_date:     Date.today + i,
+    status:       status,
   )
 end
 friends.last(9).each.with_index(1) do |friend, i|

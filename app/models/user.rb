@@ -42,10 +42,10 @@ class User < ApplicationRecord
   def timeline_kasikaris
     following_ids = "SELECT followed_id FROM relationships " <<
                     "WHERE follower_id = :user_id"
-    to = Kasikari.where("to_user_id IN (#{following_ids})
-                           OR to_user_id = :user_id", user_id: id)
-    from = Kasikari.where("from_user_id IN (#{following_ids})
-                           OR from_user_id = :user_id", user_id: id)
+    to = Kasikari.where("(to_user_id IN (#{following_ids})
+                           OR to_user_id = :user_id) AND status = 1", user_id: id)
+    from = Kasikari.where("(from_user_id IN (#{following_ids})
+                           OR from_user_id = :user_id) AND status = 1", user_id: id)
 
     to | from
   end

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170305114126) do
+ActiveRecord::Schema.define(version: 20170306095735) do
 
   create_table "items", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string   "name",                                     null: false
@@ -33,6 +33,8 @@ ActiveRecord::Schema.define(version: 20170305114126) do
     t.datetime "created_at",               null: false
     t.datetime "updated_at",               null: false
     t.integer  "status",       default: 0
+    t.integer  "flag",         default: 0
+    t.index ["from_user_id", "status", "flag"], name: "index_kasikaris_on_from_user_id_and_status_and_flag", using: :btree
     t.index ["from_user_id", "status"], name: "index_kasikaris_on_from_user_id_and_status", using: :btree
     t.index ["from_user_id"], name: "index_kasikaris_on_from_user_id", using: :btree
     t.index ["to_user_id", "status"], name: "index_kasikaris_on_to_user_id_and_status", using: :btree

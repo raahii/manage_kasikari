@@ -9,8 +9,8 @@ class UsersController < ApplicationController
 
   def show
     @timeline_kasikaris = @user.timeline_kasikaris
-    @new_kasis_count = @user.kasis.applying.count
-    @new_karis_count = @user.karis.applying.count
+    @new_kasis_count    = @user.kasis.applying.count
+    @new_karis_count    = @user.karis.applying.count
   end
 
   def new

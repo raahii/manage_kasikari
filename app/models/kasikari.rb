@@ -10,7 +10,8 @@
 #  end_date     :date             not null
 #  created_at   :datetime         not null
 #  updated_at   :datetime         not null
-#  status       :integer          default(0)
+#  status       :integer          default("applying")
+#  flag         :integer          default("unread")
 #
 
 class Kasikari < ApplicationRecord
@@ -19,6 +20,10 @@ class Kasikari < ApplicationRecord
     ongoing:  1,
     denied:   2,
     done:     3,
+  }
+  enum flag: { 
+    unread: 0,
+    read:  1,
   }
 
   validates :item_id,      presence: true, allow_nil: true

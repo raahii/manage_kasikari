@@ -10,7 +10,8 @@
 #  end_date     :date             not null
 #  created_at   :datetime         not null
 #  updated_at   :datetime         not null
-#  status       :integer          default(0)
+#  status       :integer          default("applying")
+#  flag         :integer          default("unread")
 #
 
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
