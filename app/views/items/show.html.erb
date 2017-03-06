@@ -1,20 +1,21 @@
 <% provide(:title, @item.name) %>
 <div class="item">
-    <section class="user_info">
-      <h3>
-        <%= thumbnail_for @item, size: 100 %>
-        <%= @item.name %>
-        <p>Explanation</p>
-        <%= @item.explanation %>
+    <div class="item_box">
+        <h4><%= @item.name %><br></h4>
+        <%= thumbnail_for @item, size: 200 %>
+        <br><br>
+        説明
+        <div class="item_explation">
+          <%= @item.explanation %>
+        </div>
         <div id="edit_item">
           <% if logged_in? && current_user.id === @item.user_id %>
              <%= link_to "編集", edit_item_path(@item) %>
             | <%= link_to "削除", @item, method: :delete, data: { confirm: "You sure?" } %>
           <% end %>
         </div>
-      </h3>
-      </section>
+      </div>
       <%= link_to user_path(current_user) do %>
-      <h5> 一覧へ </h5>
+       <i class="fa fa-chevron-left" aria-hidden="true"></i>一覧へ
     <% end %>
 </div>

@@ -8,8 +8,8 @@
         <%= thumbnail_for @user %>
         <br><br>
         <h6><%= @user.name %></h6>
-        <span><%= link_to "view my profile", @user %></span>
-        <span><b>Items:</b> <%= @user.items.count %></span>
+        <!-- <span><%= link_to "view my profile", @user %></span>
+        <span><b>Items:</b> <%= @user.items.count %></span> -->
       </section>
         <%= render 'shared/stats' %>
         <br><br><br>
@@ -27,9 +27,9 @@
             <br>
             <% if current_user?(@user) %>
               <% if item.available %>
-                <div class="btn btn-sm btn-primary">貸出可</div>
+                <div class="btn-sm btn-sm-b">貸出可</div>
               <% else %>
-                <div class="btn btn-sm btn-primary">貸出中</div>
+                <div class="btn-sm btn-sm-r">貸出中</div>
               <% end %>
             <% else %>
               <%= link_to "借りたい", new_kari_path(item), class: "btn btn-lg btn-primary" %>

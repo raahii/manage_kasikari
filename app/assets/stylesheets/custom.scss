@@ -289,7 +289,10 @@ footer {
   small {
     float: left;
     text-align: left;
+    padding-top: 15px;
+
   }
+
   .navbar-brand {
     background: url("/images/Gutty-logo.png") no-repeat left center;
     background-size: contain;
@@ -305,16 +308,6 @@ footer {
       margin-left: 15px;
     }
   }
-}
-
-/* miscellaneous */
-
-.debug_dump {
-  clear: both;
-  float: left;
-  width: 100%;
-  margin-top: 45px;
-  @include box_sizing;
 }
 
 /* sidebar */

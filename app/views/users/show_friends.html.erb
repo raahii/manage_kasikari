@@ -6,8 +6,6 @@
         <%= thumbnail_for @user %>
         <br><br>
         <h6><%= @user.name %></h6>
-        <span><%= link_to "view my profile", @user %></span>
-        <span><b>Items:</b> <%= @user.items.count %></span>
       </section>
         <%= render 'shared/stats' %>
         <% if @users.any? %>
