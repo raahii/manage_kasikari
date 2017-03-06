@@ -28,6 +28,9 @@ module ManageKasikari
       g.test_framework :test_unit
     end
     
+    # locale
+    config.i18n.default_locale = :ja
+    
     # 画像アップローダ
     config.autoload_paths += Dir[Rails.root.join('app', 'uploaders')]
 

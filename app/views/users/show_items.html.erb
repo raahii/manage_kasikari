@@ -25,7 +25,15 @@
             <%= link_to item.name, item ,class: "items_name" %>
             <%= thumbnail_for item, size: 150 %>
             <br>
-            <%= link_to "借りたい", new_kari_path(item), class: "btn btn-lg btn-primary" %>
+            <% if current_user?(@user) %>
+              <% if item.available %>
+                <div class="btn btn-sm btn-primary">貸出可</div>
+              <% else %>
+                <div class="btn btn-sm btn-primary">貸出中</div>
+              <% end %>
+            <% else %>
+              <%= link_to "借りたい", new_kari_path(item), class: "btn btn-lg btn-primary" %>
+            <% end %>
           </li>
         </div>
         <% end %>

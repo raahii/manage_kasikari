@@ -8,6 +8,9 @@
       <div class="notification_text">
         <%= thumbnail_for to_user, size: 30 %><%= to_user.name %>さん が <%= thumbnail_for  item, size: 30 %><%= item.name %> を借りたい申請が来ています
       </div>
+      <div class="notification_time">
+        <%= print_time(kasikari.created_at) %>
+      </div>
       <div class="notification_btn">
         <button type="button" id="permit_button" class="btn btn-permit">許可</button>
         <button type="button" id="reject_button" class="btn btn-reject">拒否</button>

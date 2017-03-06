@@ -3,7 +3,6 @@ require 'tempfile'
 require 'uri'
 
 module ApplicationHelper
-
   def full_title(page_title = '')
     base_title = "Manage-kasi-kari"
     if page_title.empty?
@@ -16,7 +15,6 @@ module ApplicationHelper
   def thumbnail_for(object, options={ size: 80 })
     class_name = "thumbnail_#{object.model_name.to_s.downcase}"
     size = options[:size]
-
     image = object.image.present? ? object.image.to_s : "/images/dummy.png"
 
     image_tag image,
@@ -37,5 +35,9 @@ module ApplicationHelper
       file.flush
       file
     end
+  end
+
+  def print_time(time)
+    time_ago_in_words(time) + "前"
   end
 end
