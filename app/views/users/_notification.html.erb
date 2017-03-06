@@ -5,8 +5,14 @@
 
   <li>
     <% # 貸し側の場合 %>
-    <% if kasikari.from_user_id = @user.id %> 
-      <%= to_user.name %>さん が <%= item.name %> を借りたいと言っています
+    <% if kasikari.from_user_id = @user.id %>
+      <div class="notification_text">
+        <%= thumbnail_for to_user, size: 30 %><%= to_user.name %>さん が <%= thumbnail_for  item, size: 30 %><%= item.name %> を借りたい申請が来ています
+      </div>
+      <div class="notification_btn">
+        <button type="button" id="permit_button" class="btn btn-permit">許可</button>
+        <button type="button" id="reject_button" class="btn btn-reject">拒否</button>
+        </div>
     <% else %>
       <%= from_user.name %>さん が <%= item.name %> を貸し出すと言っています
     <% end %>

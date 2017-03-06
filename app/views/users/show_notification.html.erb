@@ -10,15 +10,10 @@
             <%= render 'follow_form' if logged_in? %>
           </h6>
         </section>
-        <section class="stats">
           <%= render 'shared/stats' %>
+          <br><br>
+          <%= render 'sidebar' %>
         </section>
-        <%= link_to "アイテムを登録する", new_item_path, class: "btn btn-lg btn-primary" %>
-        <br><br><br>
-        <button type="button" id="subscribe_button" class="btn btn-primary" disabled="disabled">プッシュ通知は使えません</button>
-        <br><br>
-        <button type="button" id="notify_button" class="btn btn-primary">ガッティさんの顔を見る</button>
-      </section>
 
       <section class="timeline">
         <h6>通知</h6>
