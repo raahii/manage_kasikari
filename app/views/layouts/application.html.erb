@@ -2,6 +2,7 @@
 <html>
   <head>
     <link href="https://fonts.googleapis.com/earlyaccess/roundedmplus1c.css" rel="stylesheet" />
+    <link rel="stylesheet" href="http://ajax.googleapis.com/ajax/libs/jqueryui/1/themes/redmond/jquery-ui.css" >
     <link rel="manifest" href="/manifest.json">
     <title><%= full_title(yield(:title)) %></title>
     <%= csrf_meta_tags %>
@@ -23,4 +24,9 @@
     <!-- </div> -->
     <%= render "layouts/footer" %>
   </body>
+  <script>
+  $(function() {
+    $(".datepicker").datepicker();
+  });
+  </script>
 </html>

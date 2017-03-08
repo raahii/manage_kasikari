@@ -44,10 +44,10 @@
       <%= f.hidden_field :to_user_id, class: 'form-control' %>
 
       <%= f.label :start_date %>
-      <%= f.date_select :start_date, {}, class: 'form-control' %>
+      <%= f.text_field :start_date, class: 'datepicker from-control' %>
 
       <%= f.label :end_date %>
-      <%= f.date_select :end_date, {}, class: 'form-control' %>
+      <%= f.text_field :end_date, class: 'datepicker form-control' %>
 
       <%= f.submit "登録", class: "btn btn-primary" %>
     <% end %>

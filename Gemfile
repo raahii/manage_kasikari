@@ -21,6 +21,7 @@ gem 'carrierwave'      # Itemのサムネイル画像用
 gem 'rmagick', '< 2.16.0'
 
 gem 'jquery-rails'
+gem 'jquery-ui-rails'
 gem 'jbuilder', '~> 2.5'
 gem "font-awesome-rails"
 # gem 'redis', '~> 3.0'
