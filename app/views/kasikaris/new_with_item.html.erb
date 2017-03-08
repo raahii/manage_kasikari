@@ -1,0 +1,55 @@
+<% provide(:title, '貸し借りを登録する') %>
+
+<h4>借りたい申請をする</h4>
+
+<div class="row">
+  <div class="col-md-6 col-md-offset-3 kasikari_with_item">
+  
+    <div class="panel panel-default">
+      <div class="panel-heading">貸すユーザー</div>
+      <div class="panel-body">
+        <%= thumbnail_for @from_user, size: 70 %>
+        <%= link_to @from_user.name, @from_user %>
+      </div>
+    </div>
+    
+    <div class="panel panel-default">
+      <div class="panel-heading">
+        アイテム
+      </div>
+      <div class="panel-body">
+        <%= thumbnail_for @item, size: 70 %>
+        <%= link_to @item.name, item_path(@item) %>
+      </div>
+    </div>
+
+    <div class="panel panel-default">
+      <div class="panel-heading">
+        借りるユーザー
+      </div>
+      <div class="panel-body">
+        <%= thumbnail_for @to_user, size: 70 %>
+        <%= link_to @to_user.name, @to_user %>
+      </div>
+    </div>
+
+    <%= form_for(@kasikari) do |f| %>
+
+      <%= render 'shared/error_messages', object: @kasikari %>
+
+      <%= f.hidden_field :item_id, class: 'form-control' %>
+
+      <%= f.hidden_field :from_user_id, class: 'form-control' %>
+
+      <%= f.hidden_field :to_user_id, class: 'form-control' %>
+
+      <%= f.label :start_date %>
+      <%= f.date_select :start_date, {}, class: 'form-control' %>
+
+      <%= f.label :end_date %>
+      <%= f.date_select :end_date, {}, class: 'form-control' %>
+
+      <%= f.submit "登録", class: "btn btn-primary" %>
+    <% end %>
+  </div>
+</div>

@@ -16,13 +16,15 @@ class KasikarisController < ApplicationController
   end
 
   def new_kari
+    @from_user = User.find_by(id: @item.owner.id)
+    @to_user   = current_user
     @kasikari = Kasikari.new(
-      item_id: @item.id,
-      from_user_id: @item.owner.id,
-      to_user_id: current_user.id,
+      item_id:      @item.id,
+      from_user_id: @from_user.id,
+      to_user_id:   @to_user.id,
     )
 
-    render 'new'
+    render 'new_with_item'
   end
 
   def create
