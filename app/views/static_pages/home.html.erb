@@ -1,7 +1,7 @@
 <% provide(:title, "Home") %>
 <!-- <body id="home_only"> -->
 <section id="hero1" class="hero">
-  <div class="inner">
+  <div class="inner_1">
     <div class="center_home">
     <h1>Manage Kasi Kari</h1>
     <% if logged_in? %>
@@ -20,27 +20,111 @@
 <!-- </body> -->
 
 <section class="content" id="about">
-  <div class="inner">
-    <div class="center_home">
-    <h3>About</h3>
-    <p>
+  <div class="inner_2">
+    <div class="about">
+      <br>
+      <div class="hero_img">
+        <img src="/images/hero-logo/share-logo.png"  width="150" height="140">
+        <p>
+          <h6>シェア</h6>
+          友人との「物の貸し借り」を可視化<br>
+          どんどん友人の物を借りよう！
+        </p>
+      </div>
+      <div class="hero_img">
+        <img src="/images/hero-logo/kasikari-logo.png" width="150" height="140">
+        <p>
+          <h6>貸し借り管理</h6>
+          貸し借りでのトラブルを防止<br>
+          「貸しっぱなし」「借りっぱなし」<br>を無くします！
+        </p>
+      </div>
+      <div class="hero_img">
+        <img src="/images/hero-logo/registration-logo.png" width="150" height="140">
+        <p>
+          <h6>登録削除</h6>
+          友人,アイテムを登録・削除<br>
+          貸していいものや物を共有したい友人<br>を登録しよう！
+        </p>
+      </div>
+      <div class="hero_img">
+        <img src="/images/hero-logo/time-logo.png" width="150" height="140">
+        <p>
+          <h6>タイムライン</h6>
+          タイムラインで貸し借りを促進<br>
+          タイムラインで他の人の貸し借りを<br>見ることができます
 
-    </p>
+        </p>
+      </div>
+      <div class="hero_img">
+        <img src="/images/hero-logo/tuti-logo.png" width="150" height="140">
+        <p>
+          <h6>プッシュ通知</h6>
+          プッシュ通知により返却期限の通知<br>
+          通知により返却しないといけないこと<br>が思い出せる！！
+        </p>
+      </div>
+      <div class="hero_img">
+        <img src="/images/hero-logo/KK2-logo.png" width="250" height="155">
+        <p>
+          <h6>MKK</h6>
+          これらの機能を有するのがMKKです<br>
+          物の貸し借りをより良い体験に
+        </p>
+      </div>
     </div>
   </div>
 </section>
 
+<section id="hero_use" >
+  <div class="inner_3">
+    <h4>How to Use</h4>
+    <div class="hero_page">
+      <h3>タイムライン</h3>
+      <p>ユーザが登録しているフレンド間の貸し借りを表示します。<br>
+      借りた日と返却期限を表示しています。</p>
+      <img src="/images/hero-page/use1.png" width="800" height="443" class="hero_use">
+      <div class="hero_border"></div>
+    </div>
+    <div class="hero_page">
+      <h3>アイテム一覧</h3>
+      <p>ユーザが登録しているアイテムの一覧を表示します。<br>
+        貸し出しが可能であるアイテムと不可能であるアイテムの情報も確認できます。</p>
+      <img src="/images/hero-page/use2.png" width="800" height="443" class="hero_use">
+      <div class="hero_border"></div>
+    </div>
+    <div class="hero_page">
+      <h3>フレンド一覧</h3>
+      <p>ユーザが登録しているフレンド一覧を表示します。<br>
+        他ユーザのフレンド数と貸し出しアイテムの総数を確認できます。</p>
+      <img src="/images/hero-page/use3.png" width="800" height="443" class="hero_use">
+      <div class="hero_border"></div>
+    </div>
+    <div class="hero_page">
+      <h3>通知</h3>
+      <p>自分のアイテムを借りたい他ユーザからの申請一覧を表示しています。<br>
+      申請に対して許可・拒否が選択できます。</p>
+      <img src="/images/hero-page/use4.png" width="800" height="364" class="hero_use">
+      <!-- <div class="hero_border"></div> -->
+    </div>
+  </div>
+</section>
+
+<section class="content" id="rank">
+  <div class="inner_4">
+    <h3>ランキング</h3>
+    comming soon...
+  </div>
+</section>
+
 <section id="hero1" class="hero">
-  <div class="inner">
+  <div class="inner_5">
     <div class="center_home">
-    <h1>とりあえず始めよう！</h1>
+    <h2>物の貸し借りを良い体験にしませんか？</h2>
     <% if logged_in? %>
       <h2></h2>
       <%= link_to "アイテムを登録する", new_item_path, class: "btn btn-lg btn-primary" %>
     <% else %>
-      <h2>
-        物の貸し借りをより良い体験に
-      </h2>
 
       <%= link_to "Sign up now!", signup_path, class: "btn btn-lg btn-primary" %>
     <% end %>
@@ -49,7 +133,7 @@
 </section>
 
 <section class="content" id="help">
-  <div class="inner">
+  <div class="inner_6">
     <div class="center_home">
     <h3>Help</h3>
     <p>
