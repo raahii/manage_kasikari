@@ -15,15 +15,17 @@
         <%= render 'sidebar' %>
       </section>
 
-      <section class="timeline">
-        <h6>タイムライン</h6>
-        <br>
-        <div id="timeline-list">
-          <ul>
-            <%= render @timeline_kasikaris %>
-          </ul>
-      </div>
-      </section>
+      <% if current_user? @user %>
+        <section class="timeline">
+          <h6>タイムライン</h6>
+          <br>
+          <div id="timeline-list">
+            <ul>
+              <%= render @timeline_kasikaris %>
+            </ul>
+        </div>
+        </section>
+      <% end %>
     </div>
 </div>
 
