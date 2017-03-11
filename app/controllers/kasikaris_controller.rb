@@ -24,19 +24,28 @@ class KasikarisController < ApplicationController
       to_user_id:   @to_user.id,
     )
 
-    store_location
+    session[:create_kari] = @item.id
 
     render 'new_with_item'
   end
 
   def create
     @kasikari = Kasikari.new(kasikari_params)
-
+    
+    # new_kariから来た場合にそのアイテムidが記録されている
+    @item = Item.find_by(id: session[:create_kari])
     if @kasikari.save
+      session.delete(:create_kari) if @item
       flash[:success] = "貸し借りを登録しました"
       redirect_to @kasikari
     else
-      redirect_back_or new_kasikari_path
+      if @item
+        @from_user = User.find_by(id: @item.owner.id)
+        @to_user   = current_user
+        render 'new_with_item' and return
+      else
+        render 'new' and return
+      end
     end
   end
 
@@ -102,7 +111,6 @@ class KasikarisController < ApplicationController
 
   def correct_item
     @item = Item.find(params[:id])
-
     if current_user?(@item.owner)
       redirect_to root_path
     elsif !current_user.friend_with?(@item.owner)

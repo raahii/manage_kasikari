@@ -40,20 +40,20 @@
     </div>
 
     <%= form_for(@kasikari) do |f| %>
-      <%= f.hidden_field :item_id, class: 'form-control' %>
-      <%= f.hidden_field :from_user_id, class: 'form-control' %>
-      <%= f.hidden_field :to_user_id, class: 'form-control' %>
+      <%= f.hidden_field :item_id, value: @item.id, class: 'form-control', readonly:true %>
+      <%= f.hidden_field :from_user_id, value: @from_user.id, class: 'form-control', readonly:true %>
+      <%= f.hidden_field :to_user_id, value: @to_user.id, class: 'form-control', readonly:true %>
 
       <div class="date_form_container">
         <div class="date_form">
-          開始日
+          貸出日
           <%= f.text_field :start_date, class: 'datepicker form-control' %>
         </div>
 
         <i class="fa fa-angle-right" aria-hidden="true"></i>
 
         <div class="date_form">
-          終了日
+          返却日
           <%= f.text_field :end_date, class: 'datepicker form-control' %>
         </div>
       </div>
