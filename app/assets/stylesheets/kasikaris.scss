@@ -37,7 +37,52 @@
 }
 
 .kasikari_with_item {
-  .panel-body {
-    padding-left: 40px;
+  .panel_container {
+    display: flex;
+    justify-content: space-around;
+    width: 100%;
+    margin-bottom: 50px;
+
+    .panel {
+      min-width: 150px;
+      margin: 0;
+
+      .panel-body {
+        padding: 10px;
+        text-align: center;
+        margin-bottom: 0;
+
+        .thumbnail_user, .thumbnail_item {
+          display: block;
+          margin: 0 auto 10px;
+        }
+      }
+    }
+  }
+
+  .date_form_container {
+    display: flex;
+    margin-bottom: 70px;
+
+    .date_form {
+      flex: 3;
+      text-align: center;
+
+      input {
+        text-align: center;
+        margin: 0;
+      }
+    }
+
+    .fa {
+      flex: 1;
+      padding-top: 18px;
+      text-align: center;
+      font-size: 32px;
+    }
+
+    input[type="submit"] {
+      display: block;
+    }
   }
 }

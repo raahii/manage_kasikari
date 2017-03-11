@@ -24,6 +24,8 @@ class KasikarisController < ApplicationController
       to_user_id:   @to_user.id,
     )
 
+    store_location
+
     render 'new_with_item'
   end
 
@@ -34,7 +36,7 @@ class KasikarisController < ApplicationController
       flash[:success] = "貸し借りを登録しました"
       redirect_to @kasikari
     else
-      redirect_to new_kasikari_path
+      redirect_back_or new_kasikari_path
     end
   end
 
