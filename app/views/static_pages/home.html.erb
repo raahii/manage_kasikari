@@ -39,14 +39,14 @@
           「貸しっぱなし」「借りっぱなし」<br>を無くします！
         </p>
       </div>
-      <div class="hero_img">
+      <!-- <div class="hero_img">
         <img src="/images/hero-logo/registration-logo.png" width="150" height="140">
         <p>
           <h6>登録削除</h6>
           友人,アイテムを登録・削除<br>
           貸していいものや物を共有したい友人<br>を登録しよう！
         </p>
-      </div>
+      </div> -->
       <div class="hero_img">
         <img src="/images/hero-logo/time-logo.png" width="150" height="140">
         <p>
@@ -64,14 +64,14 @@
           通知により返却しないといけないこと<br>が思い出せる！！
         </p>
       </div>
-      <div class="hero_img">
+      <!-- <div class="hero_img">
         <img src="/images/hero-logo/KK2-logo.png" width="250" height="155">
         <p>
           <h6>MKK</h6>
           これらの機能を有するのがMKKです<br>
           物の貸し借りをより良い体験に
         </p>
-      </div>
+      </div> -->
     </div>
   </div>
 </section>
@@ -119,7 +119,12 @@
 
 <section id="hero1" class="hero">
   <div class="inner_5">
-    <div class="center_home">
+    <div class="hero_img">
+      <img src="/images/hero-logo/KK2-logo.png" width="250" height="155">
+      <!-- <p>
+        これらの機能を有するのがMKKです
+      </p> -->
+    </div>
     <h2>物の貸し借りを良い体験にしませんか？</h2>
     <% if logged_in? %>
       <h2></h2>
@@ -128,7 +133,6 @@
 
       <%= link_to "Sign up now!", signup_path, class: "btn btn-lg btn-primary" %>
     <% end %>
-    </div>
   </div>
 </section>
 
