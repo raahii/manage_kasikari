@@ -36,7 +36,7 @@ class Kasikari < ApplicationRecord
   validate :exist_item?, :exist_from_user?, :exist_to_user?
   validate :valid_item?
 
-  default_scope -> { order(created_at: :desc) }
+  default_scope -> { order(updated_at: :desc) }
 
   def exist_item?
     if Item.find_by(id: item_id).nil?
