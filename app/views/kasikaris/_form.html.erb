@@ -67,10 +67,20 @@
 <% end %>
 
 <!-- モーダルウィンドウ用 -->
+<div id="modal_overlay"></div>
+<a id="modal_close" class="button_link"><i class="fa fa-times-circle-o" aria-hidden="true"></i></a>
+
 <div id="modal_from_user" class="modal_content">
-  <p>「閉じる」か「背景」をクリックするとモーダルウィンドウを終了します。</p>
-  <p><a id="modal_close" class="button_link">閉じる</a></p>
+  <p class="title">自分</p>
+  <div class="contents">
+    <%= render @current_user, dont_link: true %>
+  </div>
+  <p class="title">友達</p>
+  <div class="contents">
+    <%= render @friends, dont_link: true%>
+  </div>
 </div>
+
 <div id="modal_kasikari_item" class="modal_content">
   <p>「閉じる」か「背景」をクリックするとモーダルウィンドウを終了します。</p>
   <p><a id="modal_close" class="button_link">閉じる</a></p>
@@ -79,6 +89,7 @@
   <p>「閉じる」か「背景」をクリックするとモーダルウィンドウを終了します。</p>
   <p><a id="modal_close" class="button_link">閉じる</a></p>
 </div>
+
   <script>
 //モーダルウィンドウのコンテンツをセンタリングする
 function centeringModalSyncer(modal_content){
@@ -88,35 +99,30 @@ function centeringModalSyncer(modal_content){
   var cw = modal_content.outerWidth();
   var ch = modal_content.outerHeight();
 
-  var pxleft = ((w - cw)/2);
-  var pxtop = ((h - ch)/2);
+  var pxleft = (w - cw) / 2;
+  var pxtop  = (h - ch) / 2;
+
+  var pxright = (w - cw) / 4;
 
   $(".modal_content").css({ "left": pxleft + "px" });
   $(".modal_content").css({ "top":  pxtop  + "px" });
+  $("#modal_close").css({ "right":  pxleft * 2 / 3 + "px" });
+  $("#modal_close").css({ "top":  pxtop  + "px" });
 }
 
 $(".panel-footer > button").click(
   function(){
-    // モーダルの多重起動を防止
-    $(this).blur();
-    if($("#modal_overlay")[0]) {
-      return false;
-    }
-
-    // オーバーレイを追加
-    $("body").append('<div id="modal_overlay"></div>');
     $("#modal_overlay").fadeIn("slow");
 
     var content = $("#modal_" + $(this)[0].id);
     content.fadeIn("slow");
     centeringModalSyncer(content);
+    $("#modal_close").fadeIn("slow");
   }
 );
 
 $("#modal_overlay, #modal_close").unbind().click(function(){
-  $(".modal_content, #modal_overlay").fadeOut("slow", function(){
-    $("#modal_overlay").remove();
-  });
+  $(".modal_content, #modal_overlay, #modal_close").fadeOut("slow");
 });
 
 // 個々のモーダルコンテンツ
