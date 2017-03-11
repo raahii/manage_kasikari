@@ -24,6 +24,7 @@ gem 'jquery-rails'
 gem 'jquery-ui-rails'
 gem 'jbuilder', '~> 2.5'
 gem "font-awesome-rails"
+gem 'rails-i18n', '~> 5.0.0'
 # gem 'redis', '~> 3.0'
 # gem 'bcrypt', '~> 3.1.7'
 

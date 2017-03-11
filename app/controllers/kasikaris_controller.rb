@@ -80,6 +80,21 @@ class KasikarisController < ApplicationController
 
   def kasikari_params
     param = params.require(:kasikari)
+    
+    begin
+      [:start_date, :end_date].each do |attr|
+        param[attr] ||= Time.parse param[attr]
+      end
+    rescue
+      puts "\n" << "********************************************"
+      puts "[ date parse error occured ]"
+      puts e
+      puts e.backtrace.join("\n")
+      puts "\n" << "********************************************"
+
+      param[:start_date] = nil
+      param[:end_date]   = nil
+    end
 
     param.permit(
       :item_id,
