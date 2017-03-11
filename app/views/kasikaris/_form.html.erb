@@ -2,23 +2,28 @@
 
   <%= render 'shared/error_messages', object: @kasikari %>
 
-  <%= f.label :item_id %>
-  <%= f.text_field :item_id, class: 'form-control' %>
+  <%= f.hidden_field :item_id, class: 'form-control' %>
+  <%= f.hidden_field :from_user_id, class: 'form-control' %>
+  <%= f.hidden_field :to_user_id, class: 'form-control' %>
 
-  <%= f.label :from_user_id %>
-  <%= f.text_field :from_user_id, class: 'form-control' %>
+  <div class="date_form_container">
+    <div class="date_form">
+      貸出日
+      <%= f.text_field :start_date, class: 'datepicker form-control' %>
+    </div>
 
-  <%= f.label :to_user_id %>
-  <%= f.text_field :to_user_id, class: 'form-control' %>
+    <i class="fa fa-angle-right" aria-hidden="true"></i>
 
-  <%= f.label :start_date %>
-  <%= f.date_select :start_date, {}, class: 'form-control' %>
-
-  <%= f.label :end_date %>
-  <%= f.date_select :end_date, {}, class: 'form-control' %>
-
-  <%= f.label :status %>
+    <div class="date_form">
+      返却日
+      <%= f.text_field :end_date, class: 'datepicker form-control' %>
+    </div>
+  </div>
+  
+  <!--
+  <%= f.label "ステータス" %>
   <%= f.select :status, Kasikari.statuses.keys.to_a, {}, class: 'form-control' %>
+  -->
 
   <%= f.submit "登録", class: "btn btn-primary" %>
 <% end %>
