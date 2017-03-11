@@ -89,7 +89,7 @@ class User < ApplicationRecord
   def friends
     following & followers
   end
-  
+
   def kasis
     Kasikari.where(from_user_id: self.id)
   end

@@ -13,6 +13,8 @@ class KasikarisController < ApplicationController
 
   def new
     @kasikari = Kasikari.new
+    @user = current_user
+    @friends = current_user.friends
   end
 
   def new_kari

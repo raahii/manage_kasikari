@@ -1,6 +1,44 @@
-<%= form_for(@kasikari) do |f| %>
+<div class="panel_container">
+  <div class="panel panel-default">
+    <div class="panel-heading">
+      貸すユーザー
+    </div>
+    <div class="panel-body">
+      選択されていません
+    </div>
+    <div class="panel-footer">
+      <button type="button" id="from_user" class="btn btn-primary">選択する</button>
+    </div>
+  </div>
 
-  <%= render 'shared/error_messages', object: @kasikari %>
+  <div class="panel panel-default">
+    <div class="panel-heading">
+      アイテム
+    </div>
+    <div class="panel-body">
+      選択されていません
+    </div>
+    <div class="panel-footer">
+      <button type="button" id="kasikari_item" class="btn btn-primary">選択する</button>
+    </div>
+  </div>
+
+  <div class="panel panel-default">
+    <div class="panel-heading">
+      借りるユーザー
+    </div>
+    <div class="panel-body">
+      選択されていません
+    </div>
+    <div class="panel-footer">
+      <button type="button" id="to_user" class="btn btn-primary">選択する</button>
+    </div>
+  </div>
+</div>
+
+<%= render 'shared/error_messages', object: @kasikari %>
+
+<%= form_for(@kasikari) do |f| %>
 
   <%= f.hidden_field :item_id, class: 'form-control' %>
   <%= f.hidden_field :from_user_id, class: 'form-control' %>
@@ -19,10 +57,10 @@
       <%= f.text_field :end_date, class: 'datepicker form-control' %>
     </div>
   </div>
-  
+
   <!--
-  <%= f.label "ステータス" %>
-  <%= f.select :status, Kasikari.statuses.keys.to_a, {}, class: 'form-control' %>
+    <%= f.label "ステータス" %>
+    <%= f.select :status, Kasikari.statuses.keys.to_a, {}, class: 'form-control' %>
   -->
 
   <%= f.submit "登録", class: "btn btn-primary" %>
