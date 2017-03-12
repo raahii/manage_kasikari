@@ -1,31 +1,48 @@
 <% provide(:title, "貸し借り") %>
-<div class="row">
-  <aside class="col-md-4 kasikari">
-    <section class="from_user_info">
+<div class="row kasikari_row">
+  <div class="kasikari-i">
+    <div class="from_user_info">
       <h1>
         <%= render @kasikari.from_user %>
       </h1>
-    </section>
+    </div>
 
-    <section class="item">
+    <div class="arrow">
+      <img src="/images/arrow2-logo.png"width=50px height=50px>
+    </div>
+
+    <div class="item">
       <h1>
         <%= render @kasikari.item %>
       </h1>
-    </section>
+    </div>
 
-    <section class="to_user_info">
+    <div class="arrow">
+      <img src="/images/arrow2-logo.png"width=50px height=50px>
+    </div>
+
+    <div class="to_user_info" >
       <h1>
         <%= render @kasikari.to_user %>
       </h1>
-    </section>
-
-    <section class="info">
-      <ul>
-        <li>貸出日:<%= @kasikari.start_date %></li>
-        <li>返却日:<%= @kasikari.end_date %></li>
-        <li>ステータス: <%= @kasikari.status %></li>
-      </ul>
-    </section>
-
-  </aside>
+    </div>
+  </div>
+  <div class="info">
+    <ul class="defaultlist list11">
+      <li>貸出日:<%= @kasikari.start_date %></li>
+      <li>返却日:<%= @kasikari.end_date %></li>
+      <% if @kasikari.applying? %>
+        <li> 申請中</li>
+      <% end %>
+      <% if @kasikari.ongoing? %>
+        <li> 貸し借り中</li>
+      <% end %>
+      <% if @kasikari.denied? %>
+        <li> 拒否されました</li>
+      <% end %>
+      <% if @kasikari.done? %>
+        <li> 貸し借り終了</li>
+      <% end %>
+    </ul>
+  </div>
 </div>

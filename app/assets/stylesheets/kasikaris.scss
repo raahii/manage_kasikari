@@ -65,7 +65,7 @@ div {
 
         li {
           list-style-type: none;
-        } 
+        }
 
         .thumbnail_user, .thumbnail_item {
           display: block;
@@ -188,4 +188,75 @@ div {
     color: white;
     text-decoration: none;
   }
+}
+
+/*kasikari_showページ*/
+.kasikari_row{
+  margin: 0 auto;
+  margin-top: 50px;
+  width: 800px;
+  border-radius: 5px;
+  background-color: #FFF;
+}
+
+.kasikari-i{
+  background-color: #FFF;
+  margin-top: 50px;
+  list-style: none;
+  display: flex;
+  text-align: center;
+  .arrow{
+    padding: 30px 0px;
+    img{
+      margin: 0 auto;
+    }
+  }
+  h1{
+    font-size: 20px;
+  }
+  .from_user_info,.item,.to_user_info{
+    flex:1;
+    padding-left: 40px;
+    width: 32%;
+    img{
+      display: block;
+      margin: 0 auto;
+    }
+  }
+}
+
+.info{
+    text-align: center;
+      .defaultlist
+    ,.defaultlist li{
+    	padding:0px;
+    	margin-left:25%;
+      width: 70%;
+    }
+
+    .defaultlist li{
+    	list-style-type:none !important;
+    	list-style-image:none !important;
+    	margin: 5px 0px 5px 0px !important;
+    }
+    .list11 li{
+    	position:relative;
+    	display: block;
+    	padding: 5px 0px 5px 30px;
+    	background: #95dbd0;
+    	color: #444;
+    	border-radius:15px 0px 0px 15px;
+    }
+
+    .list11 li:after{
+    	content:'';
+    	display:block;
+    	position:absolute;
+    	width:14px;
+    	height: 14px;
+    	top:7px;
+    	left:5px;
+    	background: #95dbd0;
+    	border-radius: 10px;
+    }
 }
