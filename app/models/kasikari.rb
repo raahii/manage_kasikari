@@ -33,34 +33,41 @@ class Kasikari < ApplicationRecord
   validates :end_date,     presence: true
   
   # 独自のバリデータ
-  validate :exist_item?, :exist_from_user?, :exist_to_user?
-  validate :valid_item?
+  validate :exist_item, :exist_from_user, :exist_to_user
+  validate :valid_item, :valid_term
 
   default_scope -> { order(updated_at: :desc) }
 
-  def exist_item?
+  def exist_item
     if Item.find_by(id: item_id).nil?
       errors.add(:item_id, "無効なアイテムです")
     end
   end
 
-  def exist_from_user?
+  def exist_from_user
     if User.find_by(id: from_user_id).nil?
       errors.add(:from_user_id, "貸し手のユーザーが無効です")
     end
   end
 
-  def exist_to_user?
+  def exist_to_user
     if User.find_by(id: to_user_id).nil?
       errors.add(:to_user_id, "借り手のユーザーが無効です")
+      return false
     end
   end
 
-  def valid_item?
+  def valid_item
     if !from_user.items.include?(item)
       errors.add(:item_id, "貸し手はそのアイテムを持っていません")
     elsif !item.available
       errors.add(:item_id, "そのアイテムは既に他の人に借りられています")
+    end
+  end
+
+  def valid_term
+    if start_date > end_date
+      errors.add("無効な貸出期間:   ", "貸出日、返却日の組み合わせが無効です")
     end
   end
 

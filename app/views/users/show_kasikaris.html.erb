@@ -19,22 +19,45 @@
     <!-- <section class="timeline"> -->
     <section class="kasikari-list">
       <h6>貸し借り</h6>
-      <div class="kasikari">
+      <div id="kasikari">
         <ul class="nav nav-tabs">
-          <li class="active"><a data-toggle="tab" href="#kasi">貸し</a></li>
-          <li><a data-toggle="tab" href="#kari">借り</a></li>
+          <li class="active"><a data-toggle="tab" href="#kasis">貸しリスト</a></li>
+          <li><a data-toggle="tab" href="#karis">借りリスト</a></li>
         </ul>
 
-        <div id="tab-content">
-          <div id="kasi" class="tab-pane fade in active">
-            <%= render @kasis %>
+        <div class="tab-content">
+          <div id="kasis" class="tab-pane fade in active">
+            <% @kasis.each do |kasi| %>
+              <li>
+                <div class="text">
+                  <%= thumbnail_for kasi.to_user, size: 30 %>
+                  <%= link_to kasi.to_user.name, kasi.to_user %>さんに
+                  <%= thumbnail_for kasi.item, size: 30 %>
+                  <%= link_to kasi.item.name, kasi.item %> を貸しています
+                </div>
+                <div class="updated_time">
+                  <%= print_time(kasi.updated_at) %>
+                </div>
+              </li>
+            <% end %>
           </div>
-          <div id="kari" class="tab-pane fade">
-            <%= render @karis %>
+          <div id="karis" class="tab-pane fade">
+            <% @karis.each do |kari| %>
+              <li>
+                <div class="text">
+                  <%= thumbnail_for kari.from_user, size: 30 %>
+                  <%= link_to kari.from_user.name, kari.from_user %>さんから
+                  <%= thumbnail_for kari.item, size: 30 %>
+                  <%= link_to kari.item.name, kari.item %> を借りています
+                </div>
+                <div class="updated_time">
+                  <%= print_time(kari.updated_at) %>
+                </div>
+              </li>
+            <% end %>
           </div>
         </div>
       </div>
-
     </section>
   </div>
 </div>

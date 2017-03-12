@@ -3,7 +3,7 @@
 
 
 main{
-  padding-top: 50px;
+  padding-top: 70px;
   padding-left: 1%;
   padding-right: 1%;
 }
@@ -111,17 +111,17 @@ main{
   flex-wrap: wrap;
   text-align: center;
   li{
-     list-style-type: none;
-      div{
-        // display: inline-block;
-      }
-      img{
-        display: block;
-        margin: 0 auto;
-      }
-      .users_name{
-        font-size: 20px;
-      }
+    list-style-type: none;
+    div{
+      // display: inline-block;
+    }
+    img{
+      display: block;
+      margin: 0 auto;
+    }
+    .users_name{
+      font-size: 20px;
+    }
   }
   .friends_list_person{
     width: 200px;
@@ -177,27 +177,27 @@ main{
   flex-wrap: wrap;
   text-align: center;
   li{
-     list-style-type: none;
-      div{
-        // display: inline-block;
-      }
-      img{
-        display: block;
-        margin: 0 auto;
-      }
-      .items_name{
-        font-size: 20px;
-      }
-      .btn-primary{
-        width:100%;
-        padding: 5px 16px;
-      }
-      .btn-sm-b{
-        color: #337AB7;
-      }
-      .btn-sm-r{
-        color: #DC143C;
-      }
+    list-style-type: none;
+    div{
+      // display: inline-block;
+    }
+    img{
+      display: block;
+      margin: 0 auto;
+    }
+    .items_name{
+      font-size: 20px;
+    }
+    .btn-primary{
+      width:100%;
+      padding: 5px 16px;
+    }
+    .btn-sm-b{
+      color: #337AB7;
+    }
+    .btn-sm-r{
+      color: #DC143C;
+    }
   }
   .items_list_person{
     width: 200px;
@@ -216,6 +216,8 @@ main{
 .set_position_kasikaris{
   display: flex;
   list-style-type: none;
+  padding: 0 10px;
+
   section.kasikaris-list{
     margin: 10px;
     border-radius: 5px;
@@ -227,46 +229,104 @@ main{
     }
   }
   section.user_me{
+    flex: 1;
     margin: 10px;
     padding-top: 30px;
     background: #FFFFFF;
     text-align: center;
     border: 1px solid #e1e8ed;
     border-radius: 5px;
+    margin-top: 40px;
     .stats{
       padding: 20px 10px;
     }
   }
-  .user_me{
-    flex:1;
-  }
   .kasikari-list{
-    flex:3;
-  }
-  #tab-content{
-    #kasi,#kari{
-      position:absolute;
-      width: 100%;
-      // overflow: scroll;
-      img{
-          width: 30px;
-          height:30px ;
-        }
-     }
-   }
-}
+    flex: 3;
 
-#tab-content li{
-  list-style-type: none;
-  border-bottom: 4px solid #F5F8FA;
-  background-size:cover;
-  // background-position:center center;
-  // background-color:#464646;
-  div{
-    display: inline-block;
-    height: 100px;
-    img{
-      display: block;
+    .nav {
+      li {
+        width: 50%;
+        text-align: center;
+      }
+    }
+    h6 {
+      height: 40px;
+      padding-top: 5px;
+    }
+    .tab-content {
+      list-style-type: none;
+      background: white;
+      border-radius: 0px;
+      border-left: 1px solid #ddd;
+      border-right: 1px solid #ddd;
+      border-bottom: 1px solid #ddd;
+
+      #kasis, #karis {
+        li{
+          list-style-type: none;
+          display: flex;
+          padding: 25px 20px 20px;
+          border-bottom: 1px solid #8899a6;
+          margin: 0 10px;
+          background-color:#FFFFFF;
+
+          &:last-child {
+            border-bottom: none;
+          }
+
+          div{
+            display: inline-block;
+          }
+          .text{
+            flex: 4;
+          }
+          .updated_at {
+            flex: 1;
+            padding-top: 10px;
+            text-align: center;
+            color: #8899a6;
+            font-size: 12px;
+          }
+        }
+      }
     }
   }
 }
+/*
+      #kasis, #karis {
+          .time_show {
+              border-radius: 0px;
+              border-left: 1px solid #ddd;
+              border-right: 1px solid #ddd;
+              border-bottom: 1px solid #ddd;
+
+              .notification_time {
+                  margin: 10px 0px;
+              }
+          li {
+              margin: 20px 0px;
+              padding: 0px 20px;
+              display: flex;
+
+              .kasikari_from_user {
+                  flex: 1;
+                  text-align: center;
+              }
+              .kasikari_item {
+                  flex: 1;
+                  text-align: left;
+              }
+              .kasikari_to_user {
+                  flex: 2;
+                  text-align: center;
+              }
+              div {
+                  img {
+                      width: 50px;
+                      height: 50px;
+                  }
+              }
+          }
+        }
+*/

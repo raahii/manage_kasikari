@@ -9,7 +9,7 @@
         <%= thumbnail_for to_user, size: 30 %> <%= link_to to_user.name, to_user %>さん から <%= thumbnail_for item, size: 30 %><%= link_to item.name, item %> の借りたい申請が来ています
       </div>
       <div class="notification_time">
-        <%= print_time(kasikari.created_at) %>
+        <%= print_time(kasikari.updated_at) %>
       </div>
       <div class="notification_btn">
         <button type="button" id="permit_button" class="btn btn-permit">許可</button>
