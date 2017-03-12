@@ -253,6 +253,15 @@ main{
     h6 {
       height: 40px;
       padding-top: 5px;
+      i {
+        font-size: 16px;
+      }
+      button {
+        position: absolute;
+        top: 65px;
+        right: 40px;
+        font-size: 14px;
+      }
     }
     .tab-content {
       list-style-type: none;

@@ -18,7 +18,12 @@
 
     <!-- <section class="timeline"> -->
     <section class="kasikari-list">
-      <h6>貸し借り</h6>
+      <h6>
+        貸し借り
+        <%= link_to new_kasikari_path do %>
+          <button type="button" class="btn btn-primary"><i class="fa fa-plus-circle" aria-hidden="true"></i>  登録</button>
+        <% end %>
+      </h6>
       <div id="kasikari">
         <ul class="nav nav-tabs">
           <li class="active"><a data-toggle="tab" href="#kasis">貸しリスト</a></li>
