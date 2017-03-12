@@ -34,18 +34,23 @@ class KasikarisController < ApplicationController
   def create
     @kasikari = Kasikari.new(kasikari_params)
     
-    # new_kariから来た場合にそのアイテムidが記録されている
-    @item = Item.find_by(id: session[:create_kari])
+    # new_kariから来た場合にそのアイテムidが記録されているのでそれで判断
     if @kasikari.save
       session.delete(:create_kari) if @item
       flash[:success] = "貸し借りを登録しました"
       redirect_to @kasikari
     else
-      if @item
+      if session[:create_kari].present?
+        @item      = Item.find_by(id: session[:create_kari])
         @from_user = User.find_by(id: @item.owner.id)
         @to_user   = current_user
         render 'new_with_item' and return
       else
+        @user      = current_user
+        @friends   = current_user.friends
+        @from_user = @kasikari.from_user
+        @to_user   = @kasikari.to_user
+        @item      = @kasikari.item
         render 'new' and return
       end
     end

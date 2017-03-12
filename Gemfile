@@ -39,12 +39,9 @@ gem 'webpush'
 
 group :development, :test do
   gem 'byebug', platform: :mri
-  gem 'annotate'   # modelのソースの先頭にテーブルのスキーマ情報を付加してくれる
   gem 'pry-rails'  # rails console(もしくは、rails c)でirbの代わりにpryを使われる
   gem 'pry-doc'    # methodを表示
   gem 'pry-byebug' # デバッグを実施
-  gem 'hirb'       # モデルの出力結果を表形式で表示するGem
-  gem 'hirb-unicode'
   gem 'faker'
 end
 
@@ -55,6 +52,10 @@ group :development do
   gem 'spring',                '1.7.2'
   gem 'spring-watcher-listen', '2.0.0'
   gem "better_errors"
+  gem 'binding_of_caller'
+  gem 'hirb'       # モデルの出力結果を表形式で表示するGem
+  gem 'hirb-unicode'
+  gem 'annotate'   # modelのソースの先頭にテーブルのスキーマ情報を付加してくれる
 end
 
 group :test do

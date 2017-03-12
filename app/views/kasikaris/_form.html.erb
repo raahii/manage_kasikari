@@ -1,10 +1,15 @@
+<%= render 'shared/error_messages', object: @kasikari %>
 <div class="panel_container">
   <div id="from_user" class="panel panel-default">
     <div class="panel-heading">
       貸すユーザー
     </div>
     <div class="panel-body">
-      選択されていません
+      <% if @from_user.present? %>
+        <%= render @from_user %>
+      <% else %>
+        選択されていません
+      <% end %>
     </div>
     <div class="panel-footer">
       <button type="button" class="btn btn-primary">選択する</button>
@@ -16,7 +21,11 @@
       アイテム
     </div>
     <div class="panel-body">
-      選択されていません
+      <% if @item.present? %>
+        <%= render @item %>
+      <% else %>
+        選択されていません
+      <% end %>
     </div>
     <div class="panel-footer">
       <button type="button" class="btn btn-primary">選択する</button>
@@ -28,7 +37,11 @@
       借りるユーザー
     </div>
     <div class="panel-body">
-      選択されていません
+      <% if @to_user.present? %>
+        <%= render @to_user %>
+      <% else %>
+        選択されていません
+      <% end %>
     </div>
     <div class="panel-footer">
       <button type="button" class="btn btn-primary">選択する</button>
@@ -36,10 +49,7 @@
   </div>
 </div>
 
-<%= render 'shared/error_messages', object: @kasikari %>
-
 <%= form_for(@kasikari) do |f| %>
-
   <%= f.hidden_field :item_id, class: 'form-control' %>
   <%= f.hidden_field :from_user_id, class: 'form-control' %>
   <%= f.hidden_field :to_user_id, class: 'form-control' %>

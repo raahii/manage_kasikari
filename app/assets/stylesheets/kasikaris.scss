@@ -53,6 +53,10 @@
         margin-bottom: 0;
         min-height: 100px;
 
+        li {
+          list-style-type: none;
+        } 
+
         .thumbnail_user, .thumbnail_item {
           display: block;
           margin: 0 auto 10px;
