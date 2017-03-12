@@ -210,3 +210,63 @@ main{
 
   }
 }
+
+
+/* user/:id/kasikaris/ページ */
+.set_position_kasikaris{
+  display: flex;
+  list-style-type: none;
+  section.kasikaris-list{
+    margin: 10px;
+    border-radius: 5px;
+    // background: #FFFFFF;
+    padding: 15px;
+    display: flex;
+    section.stats{
+      padding-top: 0px;
+    }
+  }
+  section.user_me{
+    margin: 10px;
+    padding-top: 30px;
+    background: #FFFFFF;
+    text-align: center;
+    border: 1px solid #e1e8ed;
+    border-radius: 5px;
+    .stats{
+      padding: 20px 10px;
+    }
+  }
+  .user_me{
+    flex:1;
+  }
+  .kasikari-list{
+    flex:3;
+  }
+  #tab-content{
+    #kasi,#kari{
+      position:absolute;
+      width: 100%;
+      // overflow: scroll;
+      img{
+          width: 30px;
+          height:30px ;
+        }
+     }
+   }
+}
+
+#tab-content li{
+  list-style-type: none;
+  border-bottom: 4px solid #F5F8FA;
+  background-size:cover;
+  // background-position:center center;
+  // background-color:#464646;
+  div{
+    display: inline-block;
+    height: 100px;
+    img{
+      display: block;
+    }
+  }
+}
