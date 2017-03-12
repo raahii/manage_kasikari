@@ -87,7 +87,7 @@ class User < ApplicationRecord
   
   # TODO: ちゃんとSQLで書く
   def friends
-    following & followers
+    (following & followers).sort{|a,b| involve_count(a) <=> involve_count(b)}.reverse
   end
 
   def kasis
@@ -101,6 +101,13 @@ class User < ApplicationRecord
   # TODO: ちゃんとSQLで書く
   def kasikaris
     self.kasis | self.karis
+  end
+  
+  # 自分と相手(user)間の貸し借りの総数
+  def involve_count(user)
+    Kasikari.where(from_user_id: self, to_user_id: user)
+      .or(Kasikari.where(from_user_id: user, to_user_id: self))
+      .ongoing.count
   end
 
   # 渡された文字列のハッシュ値を返す
