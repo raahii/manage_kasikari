@@ -49,10 +49,6 @@ class KasikarisController < ApplicationController
     if @kasikari.update_attributes(kasikari_params)
       @kasikari.item.update_attributes!(available: !@kasikari.ongoing?)
       flash[:success] = "貸し借りを更新しました"
-      respond_to do |format|
-        format.html { redirect_to @kasikari }
-        format.js
-      end
     else
       render 'edit'
     end

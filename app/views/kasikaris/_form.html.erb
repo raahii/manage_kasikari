@@ -88,8 +88,9 @@
 
 <!-- アイテムの選択肢 -->
 <div id="modal_item" class="modal_content">
-  <p>「閉じる」か「背景」をクリックするとモーダルウィンドウを終了します。</p>
-  <p><a id="modal_close" class="button_link">閉じる</a></p>
+  <p class="title">貸す人が持っているアイテム</p>
+  <div class="contents">
+  </div>
 </div>
 
   <script>
@@ -112,26 +113,73 @@ function centeringModalSyncer(modal_content){
   $("#modal_close").css({ "top":  pxtop  + "px" });
 }
 
+// ajaxでユーザーのアイテムを取得して表示する
+function show_items(callback){
+  user_id = parseInt($("#kasikari_from_user_id").val(), 10);
+
+  // アイテムを描画するdiv
+  target_div = $("#modal_item > .contents");
+  target_div.html("");
+
+  if (isNaN(user_id)) {
+    target_div.html("貸す人が選択されていません！<br>アイテム一覧を表示するにはまず先に貸す人を決める必要があります。");
+    return;
+  }
+  
+  // ユーザーのアイテムを取得＆表示
+  $.ajax({
+    type: 'GET',
+    url: `/users/${user_id}/items`,
+    data: 'ajax_handler=1',
+    datatype: 'json',
+    success: function(items){
+      //ajaxで取得したデータを基にアイテムを描画
+      items.forEach(function(item) {
+        target_div.append(`\
+          <li id='${item.id}'>\
+              <img src='${item.image.url}' \
+                   alt='${item.name}' class="thumbnail_item"\
+                   width='50' height='50'>\
+              ${item.name}\
+          </li>`);
+      });
+
+      //コールバック
+      callback();
+    }
+  });
+}
+
+// ボタンをクリックした時のイベント
 $(".panel-footer > button").click(
   function(){
+    // ボタンに対応するモーダルコンテンツ
     var modal_contents = {
       "from_user": "#modal_user",
       "to_user":   "#modal_user",
       "item":      "#modal_item",
     }
-
-    var dom_name = $(this).parent().parent()[0].id
+    var dom_name = $(this).parent().parent()[0].id;
     var modal_content = $(modal_contents[dom_name]);
-
+    
+    // オーバーレイ、コンテンツ、閉じるボタンを表示
     $("#modal_overlay").fadeIn("slow");
-    modal_content.fadeIn("slow");
+    modal_content.fadeIn("slow", function() {
+      if(dom_name === "item") {
+        show_items(function() {
+          $("#modal_item").find("li").unbind().click(function() {
+            $(`#item > .panel-body`).html($(this).html());
+            $(`#kasikari_item_id`).val($(this)[0].id);
+            $(".modal_content, #modal_overlay, #modal_close").fadeOut("slow");
+          });
+        });
+      }
+    });
     centeringModalSyncer(modal_content);
     $("#modal_close").fadeIn("slow");
 
-
-    // 個々のモーダルコンテンツ
+    // モーダルコンテンツ内の選択処理
     modal_content.find("li").unbind().click(function() {
-      console.info(dom_name);
       $(`#${dom_name} > .panel-body`).html($(this).html());
       $(`#kasikari_${dom_name}_id`).val($(this)[0].id);
       $(".modal_content, #modal_overlay, #modal_close").fadeOut("slow");

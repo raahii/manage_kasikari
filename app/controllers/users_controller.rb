@@ -49,7 +49,11 @@ class UsersController < ApplicationController
 
   def items
     @items = @user.items
-    render 'show_items'
+    if params[:ajax_handler].present?
+      render :json => @items.where(available: true) and return
+    else
+      render 'show_items'
+    end
   end
 
   def kasikaris
