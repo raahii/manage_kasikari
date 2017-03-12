@@ -26,46 +26,49 @@ class Kasikari < ApplicationRecord
     read:  1,
   }
 
-  validates :item_id,      presence: true, allow_nil: true
-  validates :from_user_id, presence: true, allow_nil: true
-  validates :to_user_id,   presence: true, allow_nil: true
+  validates :item_id,      presence: true
+  validates :from_user_id, presence: true
+  validates :to_user_id,   presence: true
   validates :start_date,   presence: true
   validates :end_date,     presence: true
   
   # 独自のバリデータ
-  validate :exist_item, :exist_from_user, :exist_to_user
-  validate :valid_item, :valid_term
+  validate :valid_item, :valid_from_user, :valid_to_user
+  validate :valid_term
 
   default_scope -> { order(updated_at: :desc) }
 
-  def exist_item
-    if Item.find_by(id: item_id).nil?
-      errors.add(:item_id, "無効なアイテムです")
-    end
-  end
-
-  def exist_from_user
-    if User.find_by(id: from_user_id).nil?
-      errors.add(:from_user_id, "貸し手のユーザーが無効です")
-    end
-  end
-
-  def exist_to_user
-    if User.find_by(id: to_user_id).nil?
-      errors.add(:to_user_id, "借り手のユーザーが無効です")
-      return false
-    end
-  end
-
   def valid_item
-    if !from_user.items.include?(item)
+    if item_id.nil?
+      return
+    elsif Item.find_by(id: item_id).nil?
+      errors.add(:item_id, "アイテムは存在しません")
+    elsif !from_user.items.include?(item)
       errors.add(:item_id, "貸し手はそのアイテムを持っていません")
     elsif !item.available
       errors.add(:item_id, "そのアイテムは既に他の人に借りられています")
     end
   end
 
+  def valid_from_user
+    if from_user_id.nil?
+      return
+    elsif User.find_by(id: from_user_id).nil?
+      errors.add(:from_user_id, "貸し手のユーザーは存在しません")
+    end
+  end
+
+  def valid_to_user
+    if to_user_id.nil?
+      return
+    elsif User.find_by(id: to_user_id).nil?
+      errors.add(:to_user_id, "借り手のユーザーが無効です")
+    end
+  end
+
   def valid_term
+    return if start_date.nil? || end_date.nil?
+
     if start_date > end_date
       errors.add("無効な貸出期間:   ", "貸出日、返却日の組み合わせが無効です")
     end

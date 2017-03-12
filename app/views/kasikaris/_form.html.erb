@@ -8,7 +8,7 @@
       <% if @from_user.present? %>
         <%= render @from_user %>
       <% else %>
-        選択されていません
+        <div class="not_selected">選択されていません</div>
       <% end %>
     </div>
     <div class="panel-footer">
@@ -24,7 +24,7 @@
       <% if @item.present? %>
         <%= render @item %>
       <% else %>
-        選択されていません
+        <div class="not_selected">選択されていません</div>
       <% end %>
     </div>
     <div class="panel-footer">
@@ -40,7 +40,7 @@
       <% if @to_user.present? %>
         <%= render @to_user %>
       <% else %>
-        選択されていません
+        <div class="not_selected">選択されていません</div>
       <% end %>
     </div>
     <div class="panel-footer">
@@ -183,6 +183,9 @@ $(".panel-footer > button").click(
             $(".modal_content, #modal_overlay, #modal_close").fadeOut("slow");
           });
         });
+      } else if(dom_name == "from_user"){
+        $(`#item > .panel-body`).html("<div class='not_selected'>選択されていません</div>");
+        $(`#kasikari_item_id`).val("");
       }
     });
     centeringModalSyncer(modal_content);

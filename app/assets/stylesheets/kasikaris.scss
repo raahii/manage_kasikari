@@ -14,8 +14,7 @@ main{
     width: 100%;
     list-style-type: none;
 
-
-    div {
+div {
       display: inline-block;
       width: calc(90% / 3);
       text-align: center;
@@ -58,6 +57,11 @@ main{
         text-align: center;
         margin-bottom: 0;
         min-height: 100px;
+
+        .not_selected {
+          margin-top: 37px;
+          text-align: center;
+        }
 
         li {
           list-style-type: none;
