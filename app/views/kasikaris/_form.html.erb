@@ -1,5 +1,5 @@
 <div class="panel_container">
-  <div class="panel panel-default">
+  <div id="from_user" class="panel panel-default">
     <div class="panel-heading">
       貸すユーザー
     </div>
@@ -7,11 +7,11 @@
       選択されていません
     </div>
     <div class="panel-footer">
-      <button type="button" id="from_user" class="btn btn-primary">選択する</button>
+      <button type="button" class="btn btn-primary">選択する</button>
     </div>
   </div>
 
-  <div class="panel panel-default">
+  <div id="item" class="panel panel-default">
     <div class="panel-heading">
       アイテム
     </div>
@@ -19,11 +19,11 @@
       選択されていません
     </div>
     <div class="panel-footer">
-      <button type="button" id="kasikari_item" class="btn btn-primary">選択する</button>
+      <button type="button" class="btn btn-primary">選択する</button>
     </div>
   </div>
 
-  <div class="panel panel-default">
+  <div id="to_user" class="panel panel-default">
     <div class="panel-heading">
       借りるユーザー
     </div>
@@ -31,7 +31,7 @@
       選択されていません
     </div>
     <div class="panel-footer">
-      <button type="button" id="to_user" class="btn btn-primary">選択する</button>
+      <button type="button" class="btn btn-primary">選択する</button>
     </div>
   </div>
 </div>
@@ -66,11 +66,16 @@
   <%= f.submit "登録", class: "btn btn-primary" %>
 <% end %>
 
-<!-- モーダルウィンドウ用 -->
+<!-- ここからモーダルウィンドウ用 -->
+
+<!-- オーバーレイのdiv -->
 <div id="modal_overlay"></div>
+
+<!-- ウィンドウを閉じるボタン -->
 <a id="modal_close" class="button_link"><i class="fa fa-times-circle-o" aria-hidden="true"></i></a>
 
-<div id="modal_from_user" class="modal_content">
+<!-- 貸すヒト、借りるヒトの選択肢 -->
+<div id="modal_user" class="modal_content">
   <p class="title">自分</p>
   <div class="contents">
     <%= render @current_user, dont_link: true %>
@@ -81,11 +86,8 @@
   </div>
 </div>
 
-<div id="modal_kasikari_item" class="modal_content">
-  <p>「閉じる」か「背景」をクリックするとモーダルウィンドウを終了します。</p>
-  <p><a id="modal_close" class="button_link">閉じる</a></p>
-</div>
-<div id="modal_to_user" class="modal_content">
+<!-- アイテムの選択肢 -->
+<div id="modal_item" class="modal_content">
   <p>「閉じる」か「背景」をクリックするとモーダルウィンドウを終了します。</p>
   <p><a id="modal_close" class="button_link">閉じる</a></p>
 </div>
@@ -112,18 +114,34 @@ function centeringModalSyncer(modal_content){
 
 $(".panel-footer > button").click(
   function(){
-    $("#modal_overlay").fadeIn("slow");
+    var modal_contents = {
+      "from_user": "#modal_user",
+      "to_user":   "#modal_user",
+      "item":      "#modal_item",
+    }
 
-    var content = $("#modal_" + $(this)[0].id);
-    content.fadeIn("slow");
-    centeringModalSyncer(content);
+    var dom_name = $(this).parent().parent()[0].id
+    var modal_content = $(modal_contents[dom_name]);
+
+    $("#modal_overlay").fadeIn("slow");
+    modal_content.fadeIn("slow");
+    centeringModalSyncer(modal_content);
     $("#modal_close").fadeIn("slow");
+
+
+    // 個々のモーダルコンテンツ
+    modal_content.find("li").unbind().click(function() {
+      console.info(dom_name);
+      $(`#${dom_name} > .panel-body`).html($(this).html());
+      $(`#kasikari_${dom_name}_id`).val($(this)[0].id);
+      $(".modal_content, #modal_overlay, #modal_close").fadeOut("slow");
+    });
   }
 );
 
+// モーダルウィンドウを閉じる
 $("#modal_overlay, #modal_close").unbind().click(function(){
   $(".modal_content, #modal_overlay, #modal_close").fadeOut("slow");
 });
 
-// 個々のモーダルコンテンツ
   </script>

@@ -1,5 +1,5 @@
 <% if defined?(dont_link) && dont_link %>
-  <li>
+  <li id="<%= user.id %>">
     <%= thumbnail_for user, size: 50 %>
     <%= user.name %>
   </li>
