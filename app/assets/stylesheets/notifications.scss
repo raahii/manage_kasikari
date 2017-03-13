@@ -7,31 +7,39 @@
 @import "users";
 
 /* user/notificationページ */
-#notificaion-list ul:after{
-  display: block;
-}
+#notification-list {
+  padding: 5px 15px;
 
-#notification-list ul li{
-  list-style-type: none;
-  display: flex;
-  padding: 25px 20px 20px;
-  border-bottom: 4px solid #F5F8FA;
-  background-color:#FFFFFF;
+  ul {
+    padding: 0;
 
-  div {
-    display: inline-block;
-  }
-  .notification_text{
-    flex: 4;
-  }
-  .notification_time {
-    flex: 1;
-    padding-top: 10px;
-    text-align: center;
-    color: #8899a6;
-    font-size: 12px;
-  }
-  .notification_btn{
-    flex: 1;
+    &:after {
+      display: block;
+    }
+
+    li{
+      list-style-type: none;
+      display: flex;
+      padding: 20px;
+      border-bottom: 2px solid #F5F8FA;
+      background-color:#FFFFFF;
+
+      div {
+        display: inline-block;
+      }
+      .notification_text{
+        flex: 4;
+      }
+      .notification_time {
+        flex: 1;
+        padding-top: 10px;
+        text-align: center;
+        color: #8899a6;
+        font-size: 12px;
+      }
+      .notification_btn{
+        flex: 1;
+      }
+    }
   }
 }

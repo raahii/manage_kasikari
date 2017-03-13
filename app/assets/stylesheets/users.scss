@@ -2,12 +2,20 @@
 @import "kasikaris";
 
 .user-box {
-  .register-button {
-    font-size: 14px;
-  }
-  .follow-button {
-    width: 50%;
-    margin: 20px auto;
+  .register-buttons {
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    button {
+      width: auto;
+      margin: 10px 0;
+    }
+    .register-button {
+      font-size: 14px;
+    }
+    .follow-button {
+      margin: 20px auto;
+    }
   }
 
   .stats {
@@ -16,24 +24,28 @@
 }
 
 /* index */
-#timeline ul:after{
-  display: block;
+#timeline ul{
+  padding-left: 10px;
+
+  &:after{
+    display: block;
+  }
 }
 
 #timeline ul li{
   list-style-type: none;
-  padding-top: 3%;
-  padding-bottom: 3%;
-  padding-left: 10%;
+  padding: 3%;
   border-bottom: 4px solid #F5F8FA;
   background:url(/images/arrow.jpg);
   background-position:center center;
   div{
     display: inline-block;
     height: 100px;
+    text-align: center;
     width: 32%;
     img{
       display: block;
+      margin: 0 auto;
     }
   }
   .kasikari_item{

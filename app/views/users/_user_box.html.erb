@@ -3,9 +3,9 @@
     <%= thumbnail_for @user %>
     <br><br>
     <%= @user.name %>
-    <%= render 'follow_form' if logged_in? %>
+    <%= render 'users/follow_form' if logged_in? %>
   </h6>
 </section>
 <%= render 'shared/stats' %>
 <br><br><br>
-<%= render 'sidebar' %>
+<%= render 'users/sidebar' %>

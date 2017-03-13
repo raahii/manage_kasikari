@@ -1,9 +1,16 @@
-<% if current_user? @user %>
-  <%= link_to "アイテムを登録する", new_item_path, class: "btn btn-lg btn-primary register-button" %>
+<div class="register-buttons">
+  <% if current_user? @user %>
+    <%= link_to new_item_path do %>
+      <button type="button" class="btn btn-lg btn-primary register-button">アイテムを登録する</button>
+    <% end %>
 
-  <% if controller.controller_name === "notifications" %>
-    <button type="button" id="subscribe_button" class="btn btn-primary register-button" disabled="disabled">プッシュ通知は使えません</button>
-    <button type="button" id="notify_button" class="btn btn-primary register-button">ガッティさんの顔を見る</button>
+    <%= link_to new_kasikari_path do %>
+      <button type="button" class="btn btn-lg btn-primary register-button">貸し借りを登録する</button>
+    <% end %>
+
+    <% if controller.controller_name === "notifications" %>
+      <button type="button" id="subscribe_button" class="btn btn-primary register-button" disabled="disabled">プッシュ通知は使えません</button>
+      <button type="button" id="notify_button" class="btn btn-primary register-button">ガッティさんの顔を見る</button>
+    <% end %>
   <% end %>
-
-<% end %>
+</div>
