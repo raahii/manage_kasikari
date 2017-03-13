@@ -7,12 +7,47 @@
         <%= render 'users/user_box' %>
       </section>
 
-      <section class="timeline main-content panel panel-default">
-        <div class="panel-heading">通知</div>
-        <div id="notification-list" class="panel-body">
-          <ul>
-            <%= render 'notification' %>
-          </ul>
+      <section class="notifications main-content panel panel-default">
+        <ul class="nav nav-tabs">
+          <li class="active"><a data-toggle="tab" href="#kasikaris">貸し借り申請</a></li>
+          <li><a data-toggle="tab" href="#followers">友達申請</a></li>
+        </ul>
+
+        <div class="tab-content">
+          <div id="kasikaris" class="tab-pane fade in active">
+            <% @new_kasikaris.each do |kasikari| %>
+              <% from_user = kasikari.from_user %>
+              <% to_user = kasikari.to_user %>
+              <% item = kasikari.item %>
+              <li>
+                <div class="text">
+                  <%= thumbnail_for to_user, size: 30 %> <%= link_to to_user.name, to_user %>さん から <%= thumbnail_for item, size: 30 %><%= link_to item.name, item %> の借りたい申請が来ています
+                </div>
+                <div class="updated_time">
+                  <%= print_time(kasikari.updated_at) %>
+                </div>
+                <div class="notification_btn">
+                  <button type="button" id="permit_button" class="btn btn-permit">許可</button>
+                  <button type="button" id="reject_button" class="btn btn-reject">拒否</button>
+                </div>
+              </li>
+            <% end %>
+          </div>
+          <div id="followers" class="tab-pane fade">
+            <% @new_followers.each do |follower| %>
+              <li>
+                <div class="text">
+                  <%= thumbnail_for follower, size: 30 %><%= link_to follower.name, follower %>さん から友達申請が来ています
+                </div>
+                <div class="updated_time">
+                  <%= print_time(follower.updated_at) %>
+                </div>
+                <div class="notification_btn">
+                  <button type="button" id="permit_button" class="btn btn-permit">許可</button>
+                </div>
+              </li>
+            <% end %>
+          </div>
         </div>
       </section>
     </div>

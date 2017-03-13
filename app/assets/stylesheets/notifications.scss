@@ -7,38 +7,54 @@
 @import "users";
 
 /* user/notificationページ */
-#notification-list {
-  padding: 5px 15px;
+.notifications {
+  border: none;
+  background-color: #F5F8FA;
 
-  ul {
-    padding: 0;
+  .nav {
+    li {
+      width: 50%;
+      text-align: center;
 
-    &:after {
-      display: block;
+      &.active a {
+        background-color: #f0f0f0;
+      }
+
+      &:not(.active) a:hover{
+        background-color: #E5E8EA;
+      }
     }
+  }
+  .tab-content {
+    background: white;
+    border-radius: 0px;
+    border-left: 1px solid #ddd;
+    border-right: 1px solid #ddd;
+    border-bottom: 1px solid #ddd;
 
-    li{
-      list-style-type: none;
-      display: flex;
-      padding: 20px;
-      border-bottom: 2px solid #F5F8FA;
-      background-color:#FFFFFF;
+    #kasikaris, #followers {
+      li {
+        list-style-type: none;
+        display: flex;
+        padding: 25px 20px 20px;
+        border-bottom: 1px solid #8899a6;
+        margin: 0 10px;
+        background-color:#FFFFFF;
 
-      div {
-        display: inline-block;
-      }
-      .notification_text{
-        flex: 4;
-      }
-      .notification_time {
-        flex: 1;
-        padding-top: 10px;
-        text-align: center;
-        color: #8899a6;
-        font-size: 12px;
-      }
-      .notification_btn{
-        flex: 1;
+        &:last-child {
+          border-bottom: none;
+        }
+
+        .text{
+          flex: 4;
+        }
+        .updated_time {
+          flex: 1;
+          padding-top: 10px;
+          text-align: center;
+          color: #8899a6;
+          font-size: 14px;
+        }
       }
     }
   }
