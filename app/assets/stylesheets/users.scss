@@ -17,6 +17,14 @@
       margin: 20px auto;
     }
   }
+  #notify_button{
+    width:66px;
+    margin: 0 auto;
+    img{
+      margin-right: 10px;
+    }
+    border-radius: 50px;
+  }
 
   .stats {
     padding: 20px 10px;
@@ -246,9 +254,20 @@ section.user_me{
   }
 }
 
+
 #img_label {
   font-weight: normal;
 }
 .submit {
   margin-top: 30px;
+
+fieldset{
+  color: #FFFFFF;
+  h1{
+    text-align: left;
+    font-size: 15px;
+    color: #333333;
+    color:black;
+    margin-bottom: 0px;
+  }
 }
