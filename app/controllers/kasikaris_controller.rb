@@ -88,17 +88,37 @@ class KasikarisController < ApplicationController
   end
 
   def permit
-    @kasikari.ongoing!
-    head :no_content
+    if @kasikari.update_attributes(status: "ongoing")
+      head :no_content
+    else
+      render json: {
+        error: @kasikari.errors.full_messages,
+        status: 400
+      }
+    end
   end
 
   def reject
-    @kasikari.denied!
+    if @kasikari.update_attributes(status: "denied")
+      head :no_content
+    else
+      render json: {
+        errors: @kasikari.errors.full_messages,
+        status: 400
+      }
+    end
     head :no_content
   end
 
   def done
-    @kasikari.done!
+    if @kasikari.update_attributes(status: "done")
+      head :no_content
+    else
+      render json: {
+        error: @kasikari.errors.full_messages,
+        status: 400
+      }
+    end
     head :no_content
   end
 
@@ -142,7 +162,7 @@ class KasikarisController < ApplicationController
     from_user = @kasikari.from_user
     to_user   = @kasikari.to_user
 
-    if ![from_user, to_user].include?(current_user)
+    if ![fromeuser, to_user].include?(current_user)
       flash[:danger] = "貸し借りにあなたが含まれていません"
       redirect_to new_kasikari_path
     elsif from_user == current_user && to_user == current_user
