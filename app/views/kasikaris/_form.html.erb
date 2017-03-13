@@ -11,9 +11,11 @@
         <div class="not_selected">選択されていません</div>
       <% end %>
     </div>
-    <div class="panel-footer">
-      <button type="button" class="btn btn-primary">選択する</button>
-    </div>
+    <% if can_edit? %>
+      <div class="panel-footer">
+        <button type="button" class="btn btn-primary">選択する</button>
+      </div>
+    <% end %>
   </div>
 
   <div id="item" class="panel panel-default">
@@ -27,9 +29,11 @@
         <div class="not_selected">選択されていません</div>
       <% end %>
     </div>
-    <div class="panel-footer">
-      <button type="button" class="btn btn-primary">選択する</button>
-    </div>
+    <% if can_edit? %>
+      <div class="panel-footer">
+        <button type="button" class="btn btn-primary">選択する</button>
+      </div>
+    <% end %>
   </div>
 
   <div id="to_user" class="panel panel-default">
@@ -43,9 +47,11 @@
         <div class="not_selected">選択されていません</div>
       <% end %>
     </div>
-    <div class="panel-footer">
-      <button type="button" class="btn btn-primary">選択する</button>
-    </div>
+    <% if can_edit? %>
+      <div class="panel-footer">
+        <button type="button" class="btn btn-primary">選択する</button>
+      </div>
+    <% end %>
   </div>
 </div>
 
