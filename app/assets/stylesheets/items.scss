@@ -6,7 +6,6 @@
 }
 
 .item{
-  margin-top: 30px;
   .item_box{
     margin: 0 auto;
     border-radius: 5px;
@@ -33,4 +32,14 @@
     -webkit-text-stroke-color: #000;
     -webkit-text-stroke-width: 0.1px;
   }
+}
+
+.to-items-list {
+  box-sizing: border-box;
+  height: 30px;
+  width: 100%;
+  text-align: left;
+  margin-top: 20px;
+  padding-left: 30px;
+  font-size: 16px;
 }
