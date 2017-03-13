@@ -9,8 +9,20 @@
     <% end %>
 
     <% if controller.controller_name === "notifications" %>
-      <button type="button" id="subscribe_button" class="btn btn-primary register-button" disabled="disabled">プッシュ通知は使えません</button>
-      <button type="button" id="notify_button" class="btn btn-primary register-button"><img src="/images/hero-logo/tuti-logo.png" width="40" height="40"></button>
+      <!-- <button type="button" id="subscribe_button" class="btn btn-primary register-button" disabled="disabled">プッシュ通知は使えません</button> -->
+      <button type="button" id="notify_button" class="btn btn-primary register-button"><img src="/images/hero-logo/tuti-w-logo.png" width="40" height="40"></button>
     <% end %>
+    <fieldset>
+      <h1>プッシュ通知</h1>
+      <div class="switch-toggle well">
+        <input id="week" name="view" type="radio" checked>
+        <label for="week" onclick="">ON</label>
+
+        <input id="month" name="view" type="radio">
+        <label for="month" onclick="">OFF</label>
+
+        <a class="btn btn-primary"></a>
+      </div>
+    </fieldset>
   <% end %>
 </div>
