@@ -6,7 +6,6 @@
 @import "kasikaris";
 @import "users";
 
-
 /* user/notificationページ */
 #notificaion-list ul:after{
   display: block;
@@ -19,7 +18,7 @@
   border-bottom: 4px solid #F5F8FA;
   background-color:#FFFFFF;
 
-  div{
+  div {
     display: inline-block;
   }
   .notification_text{

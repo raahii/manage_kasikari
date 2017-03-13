@@ -1,11 +1,4 @@
 @import "custom";
-/* kasikaris index */
-// li{background:url(画像);}
-main{
-  padding-top: 50px;
-  padding-left: 1%;
-  padding-right: 1%;
-}
 
 .kasikaris {
   margin: 0;
@@ -14,7 +7,7 @@ main{
     width: 100%;
     list-style-type: none;
 
-div {
+    div {
       display: inline-block;
       width: calc(90% / 3);
       text-align: center;

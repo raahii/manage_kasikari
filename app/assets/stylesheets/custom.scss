@@ -5,7 +5,6 @@
 
 html{
   overflow: auto;
-
 }
 
 body{
@@ -19,11 +18,17 @@ img{
     border-radius: 10px;
 }
 
+main {
+  margin-top: 50px;
+  padding-left: 1%;
+  padding-right: 1%;
+}
+
 /* Bootstrapスタイル 変更点 */
 .navbar-inverse {
   background-color: #34b490;
-  border-color: #228E70;
-
+  border-bottom: 1px solid #44C4A0;
+  
   .dropdown{
     a{
       padding: 8px 15px 4px;
@@ -91,9 +96,6 @@ img{
     color: #FFFFFF;
   }
 }
-
-
-
 
 /* homeのみの変更点  ヒーロー*/
 *, *:after, *:before {
@@ -535,4 +537,8 @@ input {
   .form-control {
     color: $state-danger-text;
   }
+}
+
+.row {
+  padding-top: 20px;
 }

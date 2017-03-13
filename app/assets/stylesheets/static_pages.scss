@@ -1,1 +1,11 @@
 @import "custom";
+
+#register_buttons {
+  display: flex;
+  margin-top: 10%;
+  justify-content: space-around;
+
+  .btn {
+    font-size: 16px;
+  }
+}
