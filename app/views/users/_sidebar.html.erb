@@ -1,7 +1,10 @@
 <% if current_user? @user %>
-  <%= link_to "アイテムを登録する", new_item_path, class: "btn btn-lg btn-primary" %>
+  <%= link_to new_item_path do %>
+    <button type="button" class="btn btn-primary"><i class="fa fa-plus-circle" aria-hidden="true"></i>アイテム登録</button>
+  <% end %>
+  <button type="button" id="notify_button" class="btn btn-primary horn"><img src="/images/hero-logo/tuti-logo.png" width="40" height="40"></button>
   <br><br><br>
   <button type="button" id="subscribe_button" class="btn btn-primary" disabled="disabled">プッシュ通知は使えません</button>
   <br><br>
-  <button type="button" id="notify_button" class="btn btn-primary">ガッティさんの顔を見る</button>
+
 <% end %>

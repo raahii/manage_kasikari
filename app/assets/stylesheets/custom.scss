@@ -58,8 +58,7 @@ img{
 .btn-primary{
   background-color: #34b490;
   border-color: #228E70;
-  // border-radius: 20px;
-  // font-family: "Rounded Mplus 1c";
+  text-align: center;
   &:hover,&:focus {
     background-color: #228E70;
     border-color: #34b490;
@@ -92,7 +91,15 @@ img{
   }
 }
 
-
+.horn{
+  background-color: #FFFFFF;
+  border-color: #FFFFFF;
+  border-radius: 70px;
+  &:hover,&:focus {
+    border-color: #34b490;
+    color: #FFFFFF;
+  }
+}
 
 
 /* homeのみの変更点  ヒーロー*/
@@ -135,26 +142,24 @@ img{
   color:#34B490;
   min-height:200px;
   position: relative;
-  padding-bottom: 40px;
   h4{
     font-size: 40px;
     padding-top: 40px;
+    margin: 0;
   }
   h6{
     font-size: 2em;
     color:#34B490;
   }
-  .arrow{
+  .batu{
     padding-top: 50px;
+    padding-left: 5px;
   }
   .mane{
-    padding-right: 120px;
-    img{
-      margin-bottom: 15px;
-    }
+    padding-right: 150px;
   }
   .share{
-    padding-left: 120px;
+    padding-left: 150px;
   }
 
 }
@@ -269,13 +274,18 @@ textarea {
   width:100%;
   display: flex;
   flex-wrap: wrap;
-  .hero_img{
-    margin: 30px 0px;
-    width: 50%;
-
-
+  // .hero_img{
+  //   margin: 30px 0px;
+  //   width: 32%;
+  // }
+  .share,.mane{
+    flex:6;
+  }
+  .batu{
+    flex:1;
   }
 }
+
 .about2{
   width:100%;
   display: flex;
@@ -283,8 +293,6 @@ textarea {
   .hero_img{
     margin: 30px 0px;
     width: 33%;
-
-
   }
 }
 
@@ -367,13 +375,7 @@ h6{
 h7{
   font-size: 12px;
 }
-//
-// p {
-//   font-size: 1.1em;
-//   // line-height: 1.7em;
-// }
-//
-//
+
 // /* header */
 //
 .navbar-brand{
@@ -510,6 +512,21 @@ aside {
 }
 
 /* forms */
+label.input_file {
+  color: white;
+  background-color: red;
+  padding: 6px;
+  border-radius: 5px;
+}
+
+input[type="file"]{
+  display:none;
+}
+
+.prev{
+  margin: 10px 0px;
+  display: block;
+}
 
 input, textarea, select, .uneditable-input {
   border: 1px solid #bbb;
@@ -534,5 +551,12 @@ input {
   @extend .has-error;
   .form-control {
     color: $state-danger-text;
+  }
+}
+
+/* follow_form */
+#follow_form{
+  h3{
+    font-size: 40px;
   }
 }

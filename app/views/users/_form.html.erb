@@ -13,8 +13,13 @@
   <%= f.label :password_confirmation, "Confirmation" %>
   <%= f.password_field :password_confirmation, class: 'form-control' ,:placeholder => "Enter password again" %>
 
-  <%= f.label :image, "プロフィール画像" %>
-  <%= f.file_field :image, accept: 'image/jpeg,image/gif,image/png' %>
+  <%= f.label :image, "プロフィール画像" %><br>
+
+  <label for="user_image" class="input_file">
+    <i class="fa fa-plus-circle" aria-hidden="true"></i>ファイル選択
+    <%= f.file_field :image, :id => 'user_image' , accept: 'image/jpeg,image/gif,image/png'%>
+  </label>
+  <img id="img_prev" width=200 height=200 src="#" class="img-thumbnail hidden prev"/>
 
   <%= f.submit yield(:button_text), class: "btn btn-primary" %>
 <% end %>
@@ -26,4 +31,21 @@
       alert('Maximum file size is 5MB. Please choose a smaller file.');
     }
   });
+  $(function() {
+  function readURL(input) {
+    if (input.files && input.files[0]) {
+      var reader = new FileReader();
+
+      reader.onload = function (e) {
+        $('#img_prev').attr('src', e.target.result);
+      }
+      reader.readAsDataURL(input.files[0]);
+    }
+  }
+
+  $("#user_image").change(function(){
+    $('#img_prev').removeClass('hidden');
+    readURL(this);
+  });
+});
 </script>
