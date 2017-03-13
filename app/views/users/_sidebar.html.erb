@@ -1,11 +1,11 @@
 <div class="register-buttons">
   <% if current_user? @user %>
     <%= link_to new_item_path do %>
-      <button type="button" class="btn btn-lg btn-primary register-button"><i class="fa fa-plus-circle" aria-hidden="true"></i>アイテムを登録する</button>
+      <button type="button" class="btn btn-lg btn-primary register-button"><i class="fa fa-plus-circle" aria-hidden="true"></i> アイテムを登録する</button>
     <% end %>
 
     <%= link_to new_kasikari_path do %>
-      <button type="button" class="btn btn-lg btn-primary register-button"><i class="fa fa-plus-circle" aria-hidden="true"></i>貸し借りを登録する</button>
+      <button type="button" class="btn btn-lg btn-primary register-button"><i class="fa fa-plus-circle" aria-hidden="true"></i> 貸し借りを登録する</button>
     <% end %>
 
     <% if controller.controller_name === "notifications" %>

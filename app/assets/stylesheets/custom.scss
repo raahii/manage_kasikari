@@ -530,10 +530,19 @@ aside {
 
 /* forms */
 label.input_file {
-  color: white;
-  background-color: red;
+  height: 27px;
+  color: #333;
+  background-color: #fff;
   padding: 6px;
-  border-radius: 5px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  font-size: 12px;
+  text-decoration: normal;
+  cursor: pointer;
+
+  &:hover {
+    background-color: #E6E6E6;
+  }
 }
 
 input[type="file"]{

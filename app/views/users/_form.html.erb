@@ -13,15 +13,14 @@
   <%= f.label :password_confirmation, "Confirmation" %>
   <%= f.password_field :password_confirmation, class: 'form-control' ,:placeholder => "Enter password again" %>
 
-  <%= f.label :image, "プロフィール画像" %><br>
-
+  <%= f.label :image, "プロフィール画像", id: "img_label" %><br>
   <label for="user_image" class="input_file">
-    <i class="fa fa-plus-circle" aria-hidden="true"></i>ファイル選択
+    <i class="fa fa-plus-circle" aria-hidden="true"></i> ファイル選択
     <%= f.file_field :image, :id => 'user_image' , accept: 'image/jpeg,image/gif,image/png'%>
   </label>
   <img id="img_prev" width=200 height=200 src="#" class="img-thumbnail hidden prev"/>
 
-  <%= f.submit yield(:button_text), class: "btn btn-primary" %>
+  <%= f.submit yield(:button_text), class: "btn btn-primary submit" %>
 <% end %>
 
 <script type="text/javascript">
