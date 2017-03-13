@@ -19,23 +19,23 @@
               <% from_user = kasikari.from_user %>
               <% to_user = kasikari.to_user %>
               <% item = kasikari.item %>
-              <li>
+              <li class="kasikari">
                 <div class="text">
-                  <%= thumbnail_for to_user, size: 30 %> <%= link_to to_user.name, to_user %>さん から <%= thumbnail_for item, size: 30 %><%= link_to item.name, item %> の借りたい申請が来ています
+                  <%= thumbnail_for to_user, size: 30 %><%= link_to to_user.name, to_user %>さん から <%= thumbnail_for item, size: 30 %><%= link_to item.name, item %> の借りたい申請が来ています
                 </div>
                 <div class="updated_time">
                   <%= print_time(kasikari.updated_at) %>
                 </div>
                 <div class="notification_btn">
-                  <button type="button" id="permit_button" class="btn btn-permit">許可</button>
-                  <button type="button" id="reject_button" class="btn btn-reject">拒否</button>
+                  <button type="button" kasikari_id="<%= kasikari.id %>" class="btn btn-permit">許可</button>
+                  <button type="button" kasikari_id="<%= kasikari.id %>" class="btn btn-reject">拒否</button>
                 </div>
               </li>
             <% end %>
           </div>
           <div id="followers" class="tab-pane fade">
             <% @new_followers.each do |follower| %>
-              <li>
+              <li class="friend" id="<%=follower.id%>">
                 <div class="text">
                   <%= thumbnail_for follower, size: 30 %><%= link_to follower.name, follower %>さん から友達申請が来ています
                 </div>
@@ -193,4 +193,19 @@ if ('serviceWorker' in navigator && 'PushManager' in window) {
   console.warn('Push messaging is not supported');
   subscribeButton.textContent = 'プッシュ通知は使えません';
 }
+
+//--------------------------------------------------------
+$(".btn-permit").click(function() {
+  var id = parseInt($(this)[0].attributes.kasikari_id.value, 10)
+
+  if (isNaN(id)) return;
+
+  $.ajax({
+    type: 'GET',
+    url: `/kasikaris/${id}/permit`,
+    contentType: "application/json",
+    success: function (id) {
+    }
+  });
+});
 </script>

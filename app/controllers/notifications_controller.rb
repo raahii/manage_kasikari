@@ -7,6 +7,5 @@ class NotificationsController < ApplicationController
 
   def read
     current_user.kasis.applying.unread.each(&:read!)
-    # current_user.followers.unread.each{&:read!}
   end
 end

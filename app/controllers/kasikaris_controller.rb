@@ -1,8 +1,9 @@
 class KasikarisController < ApplicationController
-  before_action :set_kasikari,   only: [:show, :edit, :update, :destroy]
+  before_action :set_kasikari,   only: [:show, :edit, :update, :destroy, :permit, :reject, :done]
   before_action :logged_in_user, only: [:index, :new, :create, :edit, :update, :destroy]
   before_action :correct_user,   only: [:edit, :update, :destroy]
   before_action :correct_item,   only: [:new_kari]
+  before_action :ajax_correct_user, only: [:permit, :reject, :done]
 
   def index
     @kasikaris = Kasikari.paginate(page: params[:page])
@@ -86,6 +87,21 @@ class KasikarisController < ApplicationController
     redirect_to user_path(current_user)
   end
 
+  def permit
+    @kasikari.ongoing!
+    head :no_content
+  end
+
+  def reject
+    @kasikari.denied!
+    head :no_content
+  end
+
+  def done
+    @kasikari.done!
+    head :no_content
+  end
+
   private
 
   def set_kasikari
@@ -144,6 +160,15 @@ class KasikarisController < ApplicationController
       redirect_to root_path
     elsif !current_user.friend_with?(@item.owner)
       redirect_to root_path
+    end
+  end
+
+  def ajax_correct_user
+    if @kasikari.from_user != current_user
+      render json: {
+        error: "invalid user",
+        status: 400
+      }
     end
   end
 end
