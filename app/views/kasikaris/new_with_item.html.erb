@@ -1,64 +1,66 @@
 <% provide(:title, '貸し借りを登録する') %>
 
-<h4>借りたい！を申請をする</h4>
+<div class="container">
+  <h3>借りたい！を申請をする</h3>
 
-<div class="row">
-  <div class="col-md-6 col-md-offset-3 create_kasikari">
+  <div class="row">
+    <div class="col-md-6 col-md-offset-3 create_kasikari">
 
-    <%= render 'shared/error_messages', object: @kasikari %>
+      <%= render 'shared/error_messages', object: @kasikari %>
 
-    <div class="panel_container">
-      <div class="panel panel-default">
-        <div class="panel-heading">
-          貸すユーザー
+      <div class="panel_container">
+        <div class="panel panel-default">
+          <div class="panel-heading">
+            貸すユーザー
+          </div>
+          <div class="panel-body">
+            <%= thumbnail_for @from_user, size: 70 %>
+            <%= link_to @from_user.name, @from_user %>
+          </div>
         </div>
-        <div class="panel-body">
-          <%= thumbnail_for @from_user, size: 70 %>
-          <%= link_to @from_user.name, @from_user %>
+
+        <div class="panel panel-default">
+          <div class="panel-heading">
+            アイテム
+          </div>
+          <div class="panel-body">
+            <%= thumbnail_for @item, size: 70 %>
+            <%= link_to @item.name, item_path(@item) %>
+          </div>
+        </div>
+
+        <div class="panel panel-default">
+          <div class="panel-heading">
+            借りるユーザー
+          </div>
+          <div class="panel-body">
+            <%= thumbnail_for @to_user, size: 70 %>
+            <%= link_to @to_user.name, @to_user %>
+          </div>
         </div>
       </div>
 
-      <div class="panel panel-default">
-        <div class="panel-heading">
-          アイテム
-        </div>
-        <div class="panel-body">
-          <%= thumbnail_for @item, size: 70 %>
-          <%= link_to @item.name, item_path(@item) %>
-        </div>
-      </div>
+      <%= form_for(@kasikari) do |f| %>
+        <%= f.hidden_field :item_id, value: @item.id, class: 'form-control', readonly:true %>
+        <%= f.hidden_field :from_user_id, value: @from_user.id, class: 'form-control', readonly:true %>
+        <%= f.hidden_field :to_user_id, value: @to_user.id, class: 'form-control', readonly:true %>
 
-      <div class="panel panel-default">
-        <div class="panel-heading">
-          借りるユーザー
+        <div class="date_form_container">
+          <div class="date_form">
+            貸出日
+            <%= f.text_field :start_date, class: 'datepicker form-control' %>
+          </div>
+
+          <i class="fa fa-angle-right" aria-hidden="true"></i>
+
+          <div class="date_form">
+            返却日
+            <%= f.text_field :end_date, class: 'datepicker form-control' %>
+          </div>
         </div>
-        <div class="panel-body">
-          <%= thumbnail_for @to_user, size: 70 %>
-          <%= link_to @to_user.name, @to_user %>
-        </div>
-      </div>
+
+        <%= f.submit "送信", class: "btn btn-primary" %>
+      <% end %>
     </div>
-
-    <%= form_for(@kasikari) do |f| %>
-      <%= f.hidden_field :item_id, value: @item.id, class: 'form-control', readonly:true %>
-      <%= f.hidden_field :from_user_id, value: @from_user.id, class: 'form-control', readonly:true %>
-      <%= f.hidden_field :to_user_id, value: @to_user.id, class: 'form-control', readonly:true %>
-
-      <div class="date_form_container">
-        <div class="date_form">
-          貸出日
-          <%= f.text_field :start_date, class: 'datepicker form-control' %>
-        </div>
-
-        <i class="fa fa-angle-right" aria-hidden="true"></i>
-
-        <div class="date_form">
-          返却日
-          <%= f.text_field :end_date, class: 'datepicker form-control' %>
-        </div>
-      </div>
-
-      <%= f.submit "送信", class: "btn btn-primary" %>
-    <% end %>
   </div>
 </div>
