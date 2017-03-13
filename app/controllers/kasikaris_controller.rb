@@ -162,7 +162,7 @@ class KasikarisController < ApplicationController
     from_user = @kasikari.from_user
     to_user   = @kasikari.to_user
 
-    if ![fromeuser, to_user].include?(current_user)
+    if ![from_user, to_user].include?(current_user)
       flash[:danger] = "貸し借りにあなたが含まれていません"
       redirect_to new_kasikari_path
     elsif from_user == current_user && to_user == current_user

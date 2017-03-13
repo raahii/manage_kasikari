@@ -221,7 +221,7 @@ $(".btn-permit").click(function() {
   }).fail(function(response) {
     response.errors.forEach(function(msg) {
       $("main").prepend(`\
-        <div class="alert alert-danger">#{msg}</div>\
+        <div class="alert alert-danger">${msg}</div>\
       `);
     });
   });
@@ -246,7 +246,7 @@ $(".btn-reject").click(function() {
   }).fail(function(response) {
     response.errors.forEach(function(msg) {
       $("main").prepend(`\
-        <div class="alert alert-danger">#{msg}</div>\
+        <div class="alert alert-danger">${msg}</div>\
       `);
     });
   });
