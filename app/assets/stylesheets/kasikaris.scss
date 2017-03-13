@@ -191,20 +191,25 @@ div {
 }
 
 /*kasikari_showページ*/
+.back_kasikari{
+  height: 100px;
+  padding-top: 50px;
+}
 .kasikari_row{
   margin: 0 auto;
-  margin-top: 50px;
-  width: 800px;
+  margin-top: 40px;
+  width: 600px;
   border-radius: 5px;
-  background-color: #FFF;
+  background-color:#F5F8FA;
 }
 
-.kasikari-i{
+.kasikari-rent, .kasikari-return{
   background-color: #FFF;
-  margin-top: 50px;
+  margin-top: 5px;
   list-style: none;
   display: flex;
   text-align: center;
+  border-radius: 3px;
   .arrow{
     padding: 30px 0px;
     img{
@@ -225,38 +230,48 @@ div {
   }
 }
 
-.info{
-    text-align: center;
-      .defaultlist
-    ,.defaultlist li{
-    	padding:0px;
-    	margin-left:25%;
-      width: 70%;
-    }
+.kasikari-rent{
+  border: 1px solid #0000FF;
+}
 
-    .defaultlist li{
-    	list-style-type:none !important;
-    	list-style-image:none !important;
-    	margin: 5px 0px 5px 0px !important;
-    }
-    .list11 li{
-    	position:relative;
-    	display: block;
-    	padding: 5px 0px 5px 30px;
-    	background: #95dbd0;
-    	color: #444;
-    	border-radius:15px 0px 0px 15px;
-    }
+.kasikari-return{
+  border: 1px solid #FF0000;
+}
 
-    .list11 li:after{
-    	content:'';
-    	display:block;
-    	position:absolute;
-    	width:14px;
-    	height: 14px;
-    	top:7px;
-    	left:5px;
-    	background: #95dbd0;
-    	border-radius: 10px;
-    }
+#rentday{
+  background-color: #0000FF;
+  color: #FFFFFF;
+  padding-top: 40px;
+}
+#returnday{
+  background-color: #FF0000;
+  color: #FFFFFF;
+  padding-top: 40px;
+}
+
+
+#kasi_state{
+
+  color: #FFFFFF;
+  margin-top: 10px;
+  text-align: center;
+  #applying,#ongoing,#denied,#done{
+    font-size: 30px;
+    padding-top: 10px;
+    height: 50px;
+    border-radius: 150px;
+  }
+  #applying{
+    background-color: #CC6600;
+  }
+  #ongoing{
+    background-color: #009933;
+  }
+  #denied{
+    background-color: #990000;
+  }
+  #done{
+    background-color: #333333;
+  }
+
 }

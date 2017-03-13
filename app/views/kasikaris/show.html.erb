@@ -1,6 +1,18 @@
 <% provide(:title, "貸し借り") %>
+
+<div class="back_kasikari">
+  <%= link_to kasikaris_user_path(current_user) do%>
+    <i class="fa fa-chevron-left fa-lg" aria-hidden="true"></i>
+    <h7>貸し借り<i class="fa fa-handshake-o fa-lg" aria-hidden="true"></i>一覧へ</h7>
+  <% end %>
+</div>
+
 <div class="row kasikari_row">
-  <div class="kasikari-i">
+
+  <div class="kasikari-rent">
+    <div id="rentday">
+      貸出日<br><%= @kasikari.start_date %>
+    </div>
     <div class="from_user_info">
       <h1>
         <%= render @kasikari.from_user %>
@@ -8,7 +20,7 @@
     </div>
 
     <div class="arrow">
-      <img src="/images/arrow2-logo.png"width=50px height=50px>
+      <img src="/images/rent-logo.png"width=50px height=50px>
     </div>
 
     <div class="item">
@@ -18,7 +30,7 @@
     </div>
 
     <div class="arrow">
-      <img src="/images/arrow2-logo.png"width=50px height=50px>
+      <img src="/images/rent-logo.png"width=50px height=50px>
     </div>
 
     <div class="to_user_info" >
@@ -26,23 +38,55 @@
         <%= render @kasikari.to_user %>
       </h1>
     </div>
+
   </div>
-  <div class="info">
-    <ul class="defaultlist list11">
-      <li>貸出日:<%= @kasikari.start_date %></li>
-      <li>返却日:<%= @kasikari.end_date %></li>
+
+
+
+
+  <div class="kasikari-return">
+    <div class="from_user_info">
+      <h1>
+        <%= render @kasikari.from_user %>
+      </h1>
+    </div>
+
+    <div class="arrow">
+      <img src="/images/return-logo.png"width=50px height=50px>
+    </div>
+
+    <div class="item">
+      <h1>
+        <%= render @kasikari.item %>
+      </h1>
+    </div>
+
+    <div class="arrow">
+      <img src="/images/return-logo.png"width=50px height=50px>
+    </div>
+
+    <div class="to_user_info" >
+      <h1>
+        <%= render @kasikari.to_user %>
+      </h1>
+    </div>
+    <div id="returnday">
+      返却日<br><%= @kasikari.end_date %>
+    </div>
+  </div>
+
+    <div id="kasi_state">
       <% if @kasikari.applying? %>
-        <li> 申請中</li>
+        <div id="applying" ><i class="fa fa-pencil" aria-hidden="true"></i>申請中</div>
       <% end %>
       <% if @kasikari.ongoing? %>
-        <li> 貸し借り中</li>
+        <div id="ongoing"><i class="fa fa-spinner" aria-hidden="true"></i>貸し借り中</div>
       <% end %>
       <% if @kasikari.denied? %>
-        <li> 拒否されました</li>
+        <div id="denied"><i class="fa fa-ban" aria-hidden="true"></i>拒否されました</div>
       <% end %>
       <% if @kasikari.done? %>
-        <li> 貸し借り終了</li>
+        <div id="done"><i class="fa fa-check-circle" aria-hidden="true"></i>貸し借り終了</div>
       <% end %>
-    </ul>
-  </div>
+    </div>
 </div>
