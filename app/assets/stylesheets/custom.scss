@@ -1,14 +1,23 @@
 @import "bootstrap-sprockets";
 @import "bootstrap";
-@import url('https://fonts.googleapis.com/css?family=Josefin+Sans');//web-font
+@import url('https://fonts.googleapis.com/css?family=Josefin+Sans'); //web-font
 @import "font-awesome";
+
+/* universal */
+/* mixins, variables, etc. */
+$gray-medium-light: #eaeaea;
+@mixin box_sizing {
+  -moz-box-sizing:    border-box;
+  -webkit-box-sizing: border-box;
+  box-sizing:         border-box;
+}
 
 html{
   overflow: auto;
-
 }
 
 body{
+  font-family: 'Josefin Sans', sans-serif;
   background-color:#F5F8FA;
   overflow: hidden;
   position: relative;
@@ -19,11 +28,25 @@ img{
     border-radius: 10px;
 }
 
+main {
+  margin-top: 50px;
+  padding-left: 1%;
+  padding-right: 1%;
+}
+
+textarea {
+  resize: vertical;
+}
+
+section {
+  overflow: auto;
+}
+
 /* Bootstrapスタイル 変更点 */
 .navbar-inverse {
   background-color: #34b490;
-  border-color: #228E70;
-
+  border-bottom: 1px solid #44C4A0;
+  
   .dropdown{
     a{
       padding: 8px 15px 4px;
@@ -324,16 +347,13 @@ h1 {
   -webkit-text-stroke-color: #000;
   -webkit-text-stroke-width: 0.1px;
 }
-//
+
 h2 {
-  // font-size: 1.2em;
   letter-spacing: -1px;
   margin-bottom: 30px;
-  //text-align: center;
-  // font-weight: normal;
   color: white;
 }
-//
+
 h3 {
   font-size: 3em;
   letter-spacing: -2px;
@@ -376,8 +396,6 @@ h7{
   font-size: 12px;
 }
 
-// /* header */
-//
 .navbar-brand{
   background: url("/images/KK-logo.png") no-repeat left center;
   background-size: contain;
@@ -396,7 +414,6 @@ h7{
 /* footer */
 
 footer {
-  // bottom: 0;
   width: 100%;
   height: 100px;
   margin-top: 45px;
@@ -554,9 +571,27 @@ input {
   }
 }
 
-/* follow_form */
-#follow_form{
-  h3{
-    font-size: 40px;
+.row {
+  .set_position {
+    display: flex;
+
+    .side-content {
+      flex:1;
+      margin: 20px 10px;
+      padding-top: 30px;
+      background: #FFFFFF;
+      text-align: center;
+      border: 1px solid #e1e8ed;
+      border-radius: 5px;
+    }
+
+    .main-content {
+      flex: 3;
+      margin: 20px 10px;
+
+      .panel-heading {
+        background-color: #f0f0f0;
+      }
+    }
   }
 }

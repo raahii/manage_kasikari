@@ -1,10 +1,16 @@
-<% if current_user? @user %>
-  <%= link_to new_item_path do %>
-    <button type="button" class="btn btn-primary"><i class="fa fa-plus-circle" aria-hidden="true"></i>アイテム登録</button>
-  <% end %>
-  <button type="button" id="notify_button" class="btn btn-primary horn"><img src="/images/hero-logo/tuti-logo.png" width="40" height="40"></button>
-  <br><br><br>
-  <button type="button" id="subscribe_button" class="btn btn-primary" disabled="disabled">プッシュ通知は使えません</button>
-  <br><br>
+<div class="register-buttons">
+  <% if current_user? @user %>
+    <%= link_to new_item_path do %>
+      <button type="button" class="btn btn-lg btn-primary register-button"><i class="fa fa-plus-circle" aria-hidden="true"></i>アイテムを登録する</button>
+    <% end %>
 
-<% end %>
+    <%= link_to new_kasikari_path do %>
+      <button type="button" class="btn btn-lg btn-primary register-button"><i class="fa fa-plus-circle" aria-hidden="true"></i>貸し借りを登録する</button>
+    <% end %>
+
+    <% if controller.controller_name === "notifications" %>
+      <button type="button" id="subscribe_button" class="btn btn-primary register-button" disabled="disabled">プッシュ通知は使えません</button>
+      <button type="button" id="notify_button" class="btn btn-primary register-button"><img src="/images/hero-logo/tuti-logo.png" width="40" height="40"></button>
+    <% end %>
+  <% end %>
+</div>

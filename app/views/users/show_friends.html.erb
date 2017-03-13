@@ -1,28 +1,24 @@
 <% provide(:title, "Friends") %>
-<div class="row">
-  <div class="set_position_friends">
-    <section class="user_me user_me_friends">
-      <section class="user_info user_info_friends">
-        <%= thumbnail_for @user %>
-        <br><br>
-        <h6><%= @user.name %></h6>
+
+<div class="container">
+  <div class="row">
+    <div class="set_position">
+      <section class="side-content user-box">
+        <%= render 'user_box' %>
       </section>
-        <%= render 'shared/stats' %>
-        <% if @users.any? %>
-        <% end %>
-    </section>
 
-    <section class="friends_list">
-      <h6>フレンド</h6>
-      <% if @users.any? %>
-        <ul class="users_follow">
-
-            <% @users.each do |user| %>
-              <%= render 'friend_user', user: user %>
-            <% end %>
-        </ul>
-        <% # = will_paginate %>
-      <% end %>
-    </section>
+      <section class="main-content friends_list panel panel-default">
+        <div class="panel-heading">フレンド</div>
+        <div class="panel-body">
+          <% if @users.any? %>
+            <ul class="users_follow">
+              <% @users.each do |user| %>
+                <%= render 'friend_user', user: user %>
+              <% end %>
+            </ul>
+          <% end %>
+        </div>
+      </section>
+    </div>
   </div>
 </div>

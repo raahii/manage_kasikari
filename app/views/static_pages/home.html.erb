@@ -5,8 +5,10 @@
     <div class="center_home">
     <h1>Manage Kasi Kari</h1>
     <% if logged_in? %>
-      <h2></h2>
-      <%= link_to "アイテムを登録する", new_item_path, class: "btn btn-lg btn-primary" %>
+      <div id="register_buttons">
+        <%= link_to "アイテムを登録する", new_item_path, class: "btn btn-lg btn-primary register-button" %>
+        <%= link_to "貸し借りを登録する", new_kasikari_path, class: "btn btn-lg btn-primary register-button" %>
+      </div>
     <% else %>
       <h2>
         物の貸し借りをより良い体験に
@@ -31,9 +33,12 @@
           どんどん友人の物を借りよう！
         </p>
       </div>
+<<<<<<< HEAD
       <div class="hero_img batu">
         <img src="/images/hero-logo/plus-logo.png" width="78" height="80">
       </div>
+=======
+>>>>>>> update-design
       <div class="hero_img mane">
         <img src="/images/hero-logo/kasikari-logo.png" width="150" height="140">
         <p>
@@ -54,16 +59,20 @@
         <p>
           <h6>タイムライン</h6>
           タイムラインで貸し借りを促進<br>
-          タイムラインで他の人の貸し借りを<br>見ることができます
-
+          他の人の貸し借りを見ることができます
         </p>
       </div>
       <div class="hero_img">
         <img src="/images/hero-logo/tuti-logo.png" width="150" height="140">
         <p>
           <h6>プッシュ通知</h6>
+<<<<<<< HEAD
           プッシュ通知により返却期限の通知<br>
           通知により返却しないといけないことが<br>思い出せる！！
+=======
+          プッシュ通知で返却期限をお知らせ<br>
+          返却しないといけないことをリマインド！
+>>>>>>> update-design
         </p>
       </div>
 
@@ -72,7 +81,7 @@
         <p>
           <h6>予約</h6>
           借りたいアイテムを予約<br>
-          貸し出し済みのアイテムを次に借りれるように<br>予約しよう
+          相手に「次借りたい！」を伝えよう
         </p>
       </div>
 

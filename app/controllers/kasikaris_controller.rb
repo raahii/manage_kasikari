@@ -57,6 +57,11 @@ class KasikarisController < ApplicationController
   end
 
   def edit
+    @user      = current_user
+    @friends   = current_user.friends
+    @from_user = @kasikari.from_user
+    @to_user   = @kasikari.to_user
+    @item      = @kasikari.item
   end
 
   def update

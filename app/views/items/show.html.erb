@@ -1,6 +1,14 @@
 <% provide(:title, @item.name) %>
-<div class="item">
-    <div class="item_box">
+
+<div class="container">
+  <div class="row">
+    <div class="back_to_items">
+      <%= link_to items_user_path(@item.owner) do %>
+        <i class="fa fa-chevron-left" aria-hidden="true"></i> 一覧へ
+      <% end %>
+    </div>
+    <div class="item">
+      <div class="item_box">
         <h4><%= @item.name %><br></h4>
         <%= thumbnail_for @item, size: 200 %>
         <br><br>
@@ -10,14 +18,13 @@
         </div>
         <div id="edit_item">
           <% if logged_in? && current_user.id === @item.user_id %>
-             <%= link_to "編集", edit_item_path(@item) %>
+            <%= link_to "編集", edit_item_path(@item) %>
             | <%= link_to "削除", @item, method: :delete, data: { confirm: "You sure?" } %>
-          <% else %>
-            <%= link_to "借りたい", new_kari_path(@item), class: "btn btn-lg btn-primary" %>
-          <% end %>
+        <% else %>
+          <%= link_to "借りたい", new_kari_path(@item), class: "btn btn-lg btn-primary" %>
+        <% end %>
         </div>
       </div>
-      <%= link_to user_path(current_user) do %>
-       <i class="fa fa-chevron-left" aria-hidden="true"></i>一覧へ
-    <% end %>
+    </div>
+  </div>
 </div>

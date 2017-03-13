@@ -1,11 +1,7 @@
 @import "custom";
-/* kasikaris index */
-// li{background:url(画像);}
-main{
-  padding-top: 50px;
-  padding-left: 1%;
-  padding-right: 1%;
-}
+
+$rent_color: #337ab7;
+$return_color: #d9534f;
 
 .kasikaris {
   margin: 0;
@@ -14,7 +10,7 @@ main{
     width: 100%;
     list-style-type: none;
 
-div {
+    div {
       display: inline-block;
       width: calc(90% / 3);
       text-align: center;
@@ -23,7 +19,7 @@ div {
   }
 }
 
-.kasikari_to_user,.kasikari_from_user{
+.kasikari_to_user, .kasikari_from_user{
   a{
     img{
       border-radius: 50px;
@@ -41,7 +37,7 @@ div {
   }
 }
 
-.create_kasikari {
+.create_kasikari, .edit_kasikari {
   .panel_container {
     display: flex;
     justify-content: space-around;
@@ -197,7 +193,6 @@ div {
 }
 .kasikari_row{
   margin: 0 auto;
-  margin-top: 40px;
   width: 600px;
   border-radius: 5px;
   background-color:#F5F8FA;
@@ -212,13 +207,23 @@ div {
   border-radius: 3px;
   .arrow{
     padding: 30px 0px;
-    img{
-      margin: 0 auto;
+    text-align: center;
+    font-size: 42px;
+  }
+  .rent{
+    color: $rent_color;
+  }
+  .return{
+    color: $return_color;
+  }
+
+  li {
+    margin-top: 25px;
+    a {
+      font-size: 16px;
     }
   }
-  h1{
-    font-size: 20px;
-  }
+  
   .from_user_info,.item,.to_user_info{
     flex:1;
     padding-left: 40px;
@@ -231,32 +236,31 @@ div {
 }
 
 .kasikari-rent{
-  border: 1px solid #0000FF;
+  border: 1px solid $rent_color;
 }
 
 .kasikari-return{
-  border: 1px solid #FF0000;
+  border: 1px solid $return_color;
 }
 
 #rentday{
-  background-color: #0000FF;
+  background-color: $rent_color;
   color: #FFFFFF;
   padding-top: 40px;
 }
 #returnday{
-  background-color: #FF0000;
+  background-color: $return_color;
   color: #FFFFFF;
   padding-top: 40px;
 }
 
 
 #kasi_state{
-
   color: #FFFFFF;
-  margin-top: 10px;
+  margin-top: 30px;
   text-align: center;
   #applying,#ongoing,#denied,#done{
-    font-size: 30px;
+    font-size: 24px;
     padding-top: 10px;
     height: 50px;
     border-radius: 150px;
@@ -274,4 +278,48 @@ div {
     background-color: #333333;
   }
 
+  .info{
+    text-align: center;
+    .defaultlist
+    .defaultlist li{
+      padding:0px;
+      margin-left:25%;
+      width: 70%;
+    }
+
+    .defaultlist li{
+      list-style-type:none !important;
+      list-style-image:none !important;
+      margin: 5px 0px 5px 0px !important;
+    }
+    .list11 li{
+      position:relative;
+      display: block;
+      padding: 5px 0px 5px 30px;
+      background: #95dbd0;
+      color: #444;
+      border-radius:15px 0px 0px 15px;
+    }
+
+    .list11 li:after{
+      content:'';
+      display:block;
+      position:absolute;
+      width:14px;
+      height: 14px;
+      top:7px;
+      left:5px;
+      background: #95dbd0;
+      border-radius: 10px;
+    }
+  }
+}
+.back_to_kasikaris {
+  box-sizing: border-box;
+  height: 30px;
+  width: 100%;
+  text-align: left;
+  margin-top: 20px;
+  padding-left: 30px;
+  font-size: 16px;
 }
