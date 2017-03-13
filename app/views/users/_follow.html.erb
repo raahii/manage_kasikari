@@ -1,5 +1,10 @@
-<% # 友達登録済みでもなんか良い感じにdisableのボタンで表現するとそれっぽくなりそう %>
-<%= form_for(current_user.active_relationships.build) do |f| %>
-  <div><%= hidden_field_tag :followed_id, @user.id %></div>
-  <%= f.submit "Follow", class: "btn btn-primary" %>
+<% if current_user.friend_with?(@user) %>
+  <button class="btn btn-primary" disabled="disabled">友達です</button>
+<% elsif current_user.following?(@user) %>
+  <button class="btn btn-primary" disabled="disabled">友達登録を申請中です</button>
+<% else %>
+  <%= form_for(current_user.active_relationships.build) do |f| %>
+    <div><%= hidden_field_tag :followed_id, @user.id %></div>
+    <%= f.submit "Follow", class: "btn btn-primary follow-button" %>
+  <% end %>
 <% end %>

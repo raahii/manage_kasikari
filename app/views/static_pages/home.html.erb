@@ -6,8 +6,8 @@
     <h1>Manage Kasi Kari</h1>
     <% if logged_in? %>
       <div id="register_buttons">
-        <%= link_to "アイテムを登録する", new_item_path, class: "btn btn-lg btn-primary" %>
-        <%= link_to "貸し借りを登録する", new_kasikari_path, class: "btn btn-lg btn-primary" %>
+        <%= link_to "アイテムを登録する", new_item_path, class: "btn btn-lg btn-primary register-button" %>
+        <%= link_to "貸し借りを登録する", new_kasikari_path, class: "btn btn-lg btn-primary register-button" %>
       </div>
     <% else %>
       <h2>
