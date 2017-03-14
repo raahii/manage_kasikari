@@ -10,19 +10,15 @@
 
     <% if controller.controller_name === "notifications" %>
       <!-- <button type="button" id="subscribe_button" class="btn btn-primary register-button" disabled="disabled">プッシュ通知は使えません</button> -->
-      <button type="button" id="notify_button" class="btn btn-primary register-button"><img src="/images/hero-logo/tuti-w-logo.png" width="40" height="40"></button>
-      <fieldset>
-        <h1>プッシュ通知</h1>
-        <div class="switch-toggle well">
-          <input id="week" name="view" type="radio" checked>
-          <label for="week" onclick="">ON</label>
-
-          <input id="month" name="view" type="radio">
-          <label for="month" onclick="">OFF</label>
-
-          <a class="btn btn-primary"></a>
-        </div>
-      </fieldset>
+      <div class="toggle">
+        <button type="button" id="notify_button" class="btn btn-primary register-button"><img src="/images/hero-logo/tuti-w-logo.png" width="40" height="40"></button>
+        <h1>プッシュ通知の配信設定</h1>
+           <form action="">
+             <input class='tgl tgl-light' id='subscribe_button' type='checkbox'>
+             <label class='tgl-btn' for='subscribe_button'></label>
+           </form>
+      </div>
     <% end %>
   <% end %>
+
 </div>
