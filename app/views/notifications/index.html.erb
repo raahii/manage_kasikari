@@ -202,21 +202,31 @@ function parse_id(str_id) {
   return str_id.split("-")[1]
 }
 
-//貸し借りの許可
-$(".btn-permit").click(function() {
-  var id = parseInt(parse_id($(this)[0].id), 10)
+function update_status(status, clicked_dom) {
+  var id = parseInt(parse_id(clicked_dom[0].id), 10)
   if (isNaN(id)) return;
 
   $.ajax({
-    type: 'GET',
-    url: `/kasikaris/${id}/permit`,
+    type: 'PUT',
+    url: `/kasikaris/${id}/`,
+    data: JSON.stringify({
+      "ajax_action": true,
+      "kasikari": {
+        "status": status,
+      }
+    }),
     contentType: "application/json",
   }).done(function() {
     var li = $(`#kasikari-${id}`).parent()
+    if (status === "ongoing") {
+      var action = "許可"
+    } else {
+      var action = "拒否"
+    }
     li.children().fadeOut("slow", function() {
-      li.html('\
-          <button type="button" class="btn btn-outline-secondary" disabled="disabled">許可しました</button>\
-      ');
+      li.html(`\
+          <button type="button" class="btn btn-outline-secondary" disabled="disabled">${action}しました</button>\
+      `);
     });
   }).fail(function(response) {
     response.errors.forEach(function(msg) {
@@ -225,30 +235,14 @@ $(".btn-permit").click(function() {
       `);
     });
   });
+}
+
+//貸し借りの許可
+$(".btn-permit").click(function() {
+  update_status("ongoing", $(this));
 });
-
-// 貸し借りの拒否
+//貸し借りの拒否
 $(".btn-reject").click(function() {
-  var id = parseInt(parse_id($(this)[0].id), 10)
-  if (isNaN(id)) return;
-
-  $.ajax({
-    type: 'GET',
-    url: `/kasikaris/${id}/reject`,
-    contentType: "application/json"
-  }).done(function() {
-    var li = $(`#kasikari-${id}`).parent()
-    li.children().fadeOut("slow", function() {
-      li.html('\
-          <button type="button" class="btn btn-outline-secondary" disabled="disabled">拒否しました</button>\
-      ');
-    });
-  }).fail(function(response) {
-    response.errors.forEach(function(msg) {
-      $("main").prepend(`\
-        <div class="alert alert-danger">${msg}</div>\
-      `);
-    });
-  });
+  update_status("denied", $(this));
 });
 </script>

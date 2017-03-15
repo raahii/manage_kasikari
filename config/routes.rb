@@ -21,9 +21,6 @@ Rails.application.routes.draw do
   resources :kasikaris, except: [:index]
 
   get '/kasikaris/new/:id', to: 'kasikaris#new_with_item', as: 'new_kari'
-  get '/kasikaris/:id/permit', to: 'kasikaris#permit', as: 'kasikari_permit'
-  get '/kasikaris/:id/reject', to: 'kasikaris#reject', as: 'kasikari_reject'
-  get '/kasikaris/:id/done', to: 'kasikaris#done', as: 'kasikari_done'
 
   post '/subscribe'   => 'subscriptions#create'
   post '/unsubscribe' => 'subscriptions#destroy'

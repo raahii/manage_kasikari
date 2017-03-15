@@ -58,10 +58,16 @@ class KasikarisController < ApplicationController
   def update
     if @kasikari.update_attributes(kasikari_params)
       @kasikari.item.update_attributes!(available: !@kasikari.ongoing?)
-      flash[:success] = "貸し借りを更新しました"
-      redirect_to @kasikari
+  
+      if params[:ajax_action]
+        head :no_content and return
+      else
+        flash[:success] = "貸し借りを更新しました"
+        redirect_to @kasikari
+      end
     else
       set_choices
+      debugger
       render 'edit'
     end
   end
@@ -124,7 +130,9 @@ class KasikarisController < ApplicationController
     _params = params.require(:kasikari)
     
     [:start_date, :end_date].each do |attr|
-      _params[attr] = Date.parse(_params[attr]) rescue nil
+      if _params[attr].present?
+        _params[attr] = Date.parse(_params[attr]) rescue nil
+      end
     end
 
     _params.permit(
