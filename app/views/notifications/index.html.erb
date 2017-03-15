@@ -47,7 +47,10 @@
                   <%= print_time(follower.updated_at) %>
                 </div>
                 <div class="notification_btn">
-                  <button type="button" id="permit_button" class="btn btn-permit">許可</button>
+                <%= form_for(current_user.active_relationships.build, remote: true) do |f| %>
+                  <div><%= hidden_field_tag :followed_id, follower.id %></div>
+                  <%= f.submit "許可", class: "btn btn-permit", id: "follower-#{follower.id}" %>
+                <% end %>
                 </div>
               </li>
             <% end %>

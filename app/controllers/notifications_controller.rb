@@ -2,7 +2,7 @@ class NotificationsController < ApplicationController
   def index
     @user = current_user
     @new_kasikaris = @user.kasis.applying.limit(20)
-    @new_followers = @user.friends - @user.followers.limit(10)
+    @new_followers = @user.followers - @user.friends
   end
 
   def read

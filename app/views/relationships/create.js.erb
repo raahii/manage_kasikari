@@ -1,0 +1,6 @@
+var li = $(`#follower-<%= @user.id %>`).parent()
+li.children().fadeOut("slow", function() {
+  li.html(`\
+    <button type="button" class="btn btn-outline-secondary" disabled="disabled">許可しました</button>\
+  `);
+});
