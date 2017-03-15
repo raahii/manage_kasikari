@@ -3,7 +3,7 @@ class KasikarisController < ApplicationController
   before_action :set_choices, only: [:edit]
   before_action :logged_in_user, only: [:index, :new, :create, :edit, :update, :destroy]
   before_action :correct_user,   only: [:edit, :update, :destroy]
-  before_action :correct_item,   only: [:new_kari]
+  before_action :correct_item,   only: [:new_with_item]
   before_action :ajax_correct_user, only: [:permit, :reject, :done]
 
   def index
@@ -14,12 +14,15 @@ class KasikarisController < ApplicationController
   end
 
   def new
+    delete_item_session
     @kasikari = Kasikari.new
-    @user = current_user
-    @friends = current_user.friends
+    set_choices
   end
-
-  def new_kari
+  
+  # newアクションの時に、「特定の値は埋めて表示させる」ということはできない
+  # urlでitem_idを渡すしかないので、アクションも分けるしか無い ?
+  def new_with_item
+    set_item_session
     @from_user = User.find_by(id: @item.owner.id)
     @to_user   = current_user
     @kasikari = Kasikari.new(
@@ -28,31 +31,22 @@ class KasikarisController < ApplicationController
       to_user_id:   @to_user.id,
     )
 
-    session[:create_kari] = @item.id
-
     render 'new_with_item'
   end
 
   def create
     @kasikari = Kasikari.new(kasikari_params)
     
-    # new_kariから来た場合にそのアイテムidが記録されているのでそれで判断
+    # 借りたいボタンから来た場合にそのアイテムidが記録されているのでそれで判断
     if @kasikari.save
-      session.delete(:create_kari) if @item
+      delete_item_session
       flash[:success] = "貸し借りを登録しました"
       redirect_to @kasikari
     else
-      if session[:create_kari].present?
-        @item      = Item.find_by(id: session[:create_kari])
-        @from_user = User.find_by(id: @item.owner.id)
-        @to_user   = current_user
+      set_choices
+      if session[:with_item].present?
         render 'new_with_item' and return
       else
-        @user      = current_user
-        @friends   = current_user.friends
-        @from_user = @kasikari.from_user
-        @to_user   = @kasikari.to_user
-        @item      = @kasikari.item
         render 'new' and return
       end
     end
@@ -116,6 +110,14 @@ class KasikarisController < ApplicationController
 
   def set_kasikari
     @kasikari = Kasikari.find(params[:id])
+  end
+
+  def set_item_session
+    session[:with_item] = true
+  end
+
+  def delete_item_session
+    session.delete(:with_item) if session[:with_item].present?
   end
 
   def kasikari_params
