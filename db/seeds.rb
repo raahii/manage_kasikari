@@ -5,7 +5,8 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
-IMAGES_NUM = 10
+
+# example user
 dummy_image = "#{Rails.root}/public/images/gutty.png"
 User.create!(
   name:  "Example User",
@@ -15,6 +16,8 @@ User.create!(
   image: File.open(dummy_image)
 )
 
+# users
+IMAGES_NUM = 10
 99.times do |n|
   name  = Faker::Name.name
   email = "example-#{n+1}@railstutorial.org"
@@ -29,9 +32,9 @@ User.create!(
   )
 end
 
-# アイテム
-users = User.order(:created_at).take(30) << User.find(1)
-10.times do
+# items
+users = User.first(50) << User.find(1)
+5.times do
   users.each do |user|
     name = Faker::Food.ingredient
     file_path = "#{Rails.root}/public/images/sample/items/#{rand(1..IMAGES_NUM)}.png"
@@ -43,7 +46,7 @@ users = User.order(:created_at).take(30) << User.find(1)
   end
 end
 
-# リレーションシップ
+# relationships
 users = User.all
 user = User.find(2)
 following = users[3..20]
@@ -58,8 +61,8 @@ following.each { |followed| user.follow(followed) }
 followers.each { |follower| follower.follow(user) }
 
 
-# 貸し借り
-friends = user.friends.first(10)
+# kasikaris
+friends = user.friends.first(5)
 other_user = User.find(2)
 status = 1
 

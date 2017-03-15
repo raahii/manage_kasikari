@@ -107,7 +107,6 @@ class KasikarisController < ApplicationController
         status: 400
       }
     end
-    head :no_content
   end
 
   def done
@@ -119,7 +118,6 @@ class KasikarisController < ApplicationController
         status: 400
       }
     end
-    head :no_content
   end
 
   private
