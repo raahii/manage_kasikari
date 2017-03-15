@@ -1,5 +1,6 @@
 class KasikarisController < ApplicationController
   before_action :set_kasikari,   only: [:show, :edit, :update, :destroy, :permit, :reject, :done]
+  before_action :set_choices, only: [:edit]
   before_action :logged_in_user, only: [:index, :new, :create, :edit, :update, :destroy]
   before_action :correct_user,   only: [:edit, :update, :destroy]
   before_action :correct_item,   only: [:new_kari]
@@ -58,11 +59,6 @@ class KasikarisController < ApplicationController
   end
 
   def edit
-    @user      = current_user
-    @friends   = current_user.friends
-    @from_user = @kasikari.from_user
-    @to_user   = @kasikari.to_user
-    @item      = @kasikari.item
   end
 
   def update
@@ -71,11 +67,7 @@ class KasikarisController < ApplicationController
       flash[:success] = "貸し借りを更新しました"
       render @kasikari
     else
-      @user      = current_user
-      @friends   = current_user.friends
-      @from_user = @kasikari.from_user
-      @to_user   = @kasikari.to_user
-      @item      = @kasikari.item
+      set_choices
       render 'edit'
     end
   end
@@ -179,6 +171,14 @@ class KasikarisController < ApplicationController
     elsif !current_user.friend_with?(@item.owner)
       redirect_to root_path
     end
+  end
+
+  def set_choices
+    @user      = current_user
+    @friends   = current_user.friends
+    @from_user = @kasikari.from_user
+    @to_user   = @kasikari.to_user
+    @item      = @kasikari.item
   end
 
   def ajax_correct_user
