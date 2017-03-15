@@ -27,6 +27,11 @@
                   <div class="updated_time">
                     <%= print_time(kasi.updated_at) %>
                   </div>
+                  <div class="edit_kasikari">
+                    <%= link_to edit_kasikari_path(kasi) do%>
+                      <button type="button" class="btn btn-primary">編集</button>
+                    <% end %>
+                  </div>
                 </li>
               <% end %>
             </div>
@@ -41,6 +46,11 @@
                   </div>
                   <div class="updated_time">
                     <%= print_time(kari.updated_at) %>
+                  </div>
+                  <div class="edit_kasikari">
+                    <%= link_to edit_kasikari_path(kari) do%>
+                      <button type="button" class="btn btn-primary">編集</button>
+                    <% end %>
                   </div>
                 </li>
               <% end %>

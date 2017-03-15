@@ -45,7 +45,7 @@ class Kasikari < ApplicationRecord
       errors.add(:item_id, "アイテムは存在しません")
     elsif !from_user.items.include?(item)
       errors.add(:item_id, "貸し手はそのアイテムを持っていません")
-    elsif !item.available
+    elsif !item.available && item.borrower != self.to_user
       errors.add(:item_id, "そのアイテムは既に他の人に借りられています")
     end
   end

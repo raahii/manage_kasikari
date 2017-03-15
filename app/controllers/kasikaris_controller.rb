@@ -65,7 +65,7 @@ class KasikarisController < ApplicationController
     if @kasikari.update_attributes(kasikari_params)
       @kasikari.item.update_attributes!(available: !@kasikari.ongoing?)
       flash[:success] = "貸し借りを更新しました"
-      render @kasikari
+      redirect_to @kasikari
     else
       set_choices
       render 'edit'
@@ -119,24 +119,13 @@ class KasikarisController < ApplicationController
   end
 
   def kasikari_params
-    param = params.require(:kasikari)
+    _params = params.require(:kasikari)
     
-    begin
-      [:start_date, :end_date].each do |attr|
-        param[attr] ||= Time.parse param[attr]
-      end
-    rescue
-      puts "\n" << "********************************************"
-      puts "[ date parse error occured ]"
-      puts e
-      puts e.backtrace.join("\n")
-      puts "\n" << "********************************************"
-
-      param[:start_date] = nil
-      param[:end_date]   = nil
+    [:start_date, :end_date].each do |attr|
+      _params[attr] = Date.parse(_params[attr]) rescue nil
     end
 
-    param.permit(
+    _params.permit(
       :item_id,
       :from_user_id,
       :to_user_id,

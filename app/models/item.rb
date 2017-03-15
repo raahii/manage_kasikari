@@ -22,4 +22,9 @@ class Item < ApplicationRecord
   def owner
     User.find(user_id)
   end
+
+  def borrower
+    return nil if available
+    Kasikari.where(item_id: id).ongoing.first.to_user
+  end
 end
