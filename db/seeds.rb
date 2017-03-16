@@ -7,22 +7,31 @@
 #   Character.create(name: 'Luke', movie: movies.first)
 
 # example user
-dummy_image = "#{Rails.root}/public/images/gutty.png"
-User.create!(
-  name:  "Example User",
-  email: "example@railstutorial.org",
+
+gutty_image  = "#{Rails.root}/public/images/gutty.png"
+raahii_image = "#{Rails.root}/public/images/raahii.png"
+
+gutty = User.create!(
+  name:  "三上大河",
+  email: "mikami@gmail.com",
   password:              "foobar",
   password_confirmation: "foobar",
-  image: File.open(dummy_image)
+  image: File.open(gutty_image)
+)
+nakahira = User.create!(
+  name:  "中平有樹",
+  email: "nakahira@gmail.com",
+  password:              "foobar",
+  password_confirmation: "foobar",
+  image: File.open(raahii_image)
 )
 
-# users
-IMAGES_NUM = 10
-99.times do |n|
+# other users
+10.times do |n|
   name  = Faker::Name.name
   email = "example-#{n+1}@railstutorial.org"
   password = "password"
-  file_path = "#{Rails.root}/public/images/sample/users/#{rand(1..IMAGES_NUM)}.png"
+  file_path = "#{Rails.root}/public/images/sample/users/#{n+1}.png"
   User.create!(
     name:                  name,
     email:                 email,
@@ -33,68 +42,73 @@ IMAGES_NUM = 10
 end
 
 # items
-users = User.first(50) << User.find(1)
-5.times do
-  users.each do |user|
-    name = Faker::Food.ingredient
-    file_path = "#{Rails.root}/public/images/sample/items/#{rand(1..IMAGES_NUM)}.png"
+item_images = Dir.glob("#{Rails.root}/public/images/sample/items/*")
+[gutty, nakahira].each do |user|
+  5.times do
+    index = rand(0...item_images.length)
+    image_path = item_images[index]
+    filename = File.basename(image_path).split(".").first
 
     item = user.items.create!(
-      name:  name,
-      image: File.open(file_path),
+      name:  filename,
+      image: File.open(image_path),
+    )
+  end
+end
+
+other_users = User.all.where.not(id: [1,2])
+other_users.each do |user|
+  rand(2..5).times do
+    index = rand(0...item_images.length)
+    image_path = item_images[index]
+    filename = File.basename(image_path).split(".").first
+
+    item = user.items.create!(
+      name:  filename,
+      image: File.open(image_path),
     )
   end
 end
 
 # relationships
-users = User.all
-user = User.find(2)
-following = users[3..20]
-followers = users[3..30]
-following.each { |followed| user.follow(followed) }
-followers.each { |follower| follower.follow(user) }
+following = other_users[0...5]
+followers = other_users[0...10]
+following.each { |followed| gutty.follow(followed) }
+followers.each { |follower| follower.follow(gutty) }
 
-user = User.find(1)
-following = users[2..40]
-followers = users[2..50]
-following.each { |followed| user.follow(followed) }
-followers.each { |follower| follower.follow(user) }
-
+following = other_users[5...10]
+followers = other_users[0...10]
+following.each { |followed| nakahira.follow(followed) }
+followers.each { |follower| follower.follow(nakahira) }
 
 # kasikaris
-friends = user.friends.first(5)
-other_user = User.find(2)
 status = 1
-
-friends.each.with_index(1) do |friend, i|
-  status = 1 - status
-  Kasikari.create!(
-    item_id:      user.items[i].id,
-    from_user_id: user.id,
-    to_user_id:   friend.id,
-    start_date:   Date.today,
-    end_date:     Date.today + i,
-    status:       status,
-  )
-end
-friends.each.with_index(1) do |friend, i|
-  status = 1 - status
-  Kasikari.create!(
-    item_id:      friend.items.first.id,
-    from_user_id: friend.id,
-    to_user_id:   user.id,
-    start_date:   Date.today,
-    end_date:     Date.today + i,
-    status:       status,
-  )
-end
-friends.last(9).each.with_index(1) do |friend, i|
-  Kasikari.create!(
-    item_id:      other_user.items.first.id,
-    from_user_id: other_user.id,
-    to_user_id:   friend.id,
-    start_date:   Date.today,
-    end_date:     Date.today + i,
-  )
+[gutty, nakahira].each do |user|
+  friends = user.friends
+  friends.each_with_index do |friend, i|
+    status = 1 - status
+    Kasikari.create!(
+      item_id:      user.items[i].id,
+      from_user_id: user.id,
+      to_user_id:   friend.id,
+      start_date:   Date.today,
+      end_date:     Date.today + i,
+      status:       status,
+    )
+  end
+  friends.each_with_index do |friend, i|
+    status = 1 - status
+    Kasikari.create!(
+      item_id:      friend.items.first.id,
+      from_user_id: friend.id,
+      to_user_id:   user.id,
+      start_date:   Date.today,
+      end_date:     Date.today + i,
+      status:       status,
+    )
+  end
 end
 
+
+gutty.follow(nakahira)
+nakahira.follow(gutty)
