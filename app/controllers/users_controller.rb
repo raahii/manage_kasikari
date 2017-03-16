@@ -6,7 +6,11 @@ class UsersController < ApplicationController
   before_action :correct_user,   only: [:edit, :update]
 
   def index
-    @users = User.paginate(page: params[:page])
+    @users = User.all.order("created_at DESC").select(:id, :name, :image, :created_at)
+    render json: { data: @users }
+  end
+  
+  def search
   end
 
   def show

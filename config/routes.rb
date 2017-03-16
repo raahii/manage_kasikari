@@ -7,7 +7,7 @@ Rails.application.routes.draw do
   post   '/login',     to: 'sessions#create'
   delete '/logout',    to: 'sessions#destroy'
   get '/notification', to: 'notifications#index'
-  
+
   resources :users do
     member do
       get :friends
@@ -15,6 +15,7 @@ Rails.application.routes.draw do
       get :kasikaris
     end
   end
+  get '/search', to: 'users#search', as: 'search_user'
 
   resources :relationships, only: [:create, :destroy]
   resources :items, except: [:index]
