@@ -8,6 +8,10 @@
       <button type="button" class="btn btn-lg btn-primary register-button"><i class="fa fa-plus-circle" aria-hidden="true"></i> 貸し借りを登録する</button>
     <% end %>
 
+    <%= link_to search_user_path do %>
+      <button type="button" class="btn btn-lg btn-primary register-button"><i class="fa fa-plus-circle" aria-hidden="true"></i> 友達を探す</button>
+    <% end %>
+
     <% if controller.controller_name === "notifications" %>
       <!-- <button type="button" id="subscribe_button" class="btn btn-primary register-button" disabled="disabled">プッシュ通知は使えません</button> -->
       <div class="toggle">
