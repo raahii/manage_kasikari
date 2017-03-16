@@ -25,7 +25,7 @@ var UserBox = React.createClass({
     return (
       <div className="container">
         <div className="row">
-          <div className="user-box">
+          <div className="user-box search">
             <UserForm onEventCallBack={this.changeText} />
             <UserList data={this.state.data} text={this.state.text} />
           </div>
@@ -42,7 +42,10 @@ var UserForm = React.createClass({
   },
   render: function() {
     return (
-      <input type="text" placeholder="名前から絞る" onChange={this.changeText}/>
+      <div className="user-form">
+        <i className="fa fa-search"></i>
+        <input type="text" placeholder="名前から検索" className="form-control" onChange={this.changeText}/>
+      </div>
     );
   }
 });
@@ -60,21 +63,23 @@ var UserList = React.createClass({
     });
 
     return (
-      <div className="comment-list">
+      <div className="user-list">
         <div className="statement">
         {(() => {
           if (this.props.text !== "") {
             return (
               <span>
-                名前で検索: "{this.props.text}"
+                名前で検索: "{this.props.text}"<br/>
               </span>
             );
           }
         })()}
-          <span className="hit_num">{userNodes.length}</span>
-          件のユーザー
+          <span className="hit-num"> {userNodes.length} </span>
+          人のユーザー
         </div>
-        {userNodes}
+        <div className="users">
+          {userNodes}
+      </div>
       </div>
     );
   }
@@ -83,14 +88,16 @@ var UserList = React.createClass({
 var User = React.createClass({
   render: function() {
     return (
-      <div className="user">
-        <div className="user-image">
-          <img src={this.props.image} alt={this.props.name} width="50" height="50" />
-        </div>
-        <h3 className="user-name">
-          {this.props.name}
-        </h3>
-      </div>
+      <a href={'/users/' + this.props.key}>
+        <li className="user">
+          <div className="user-image">
+            <img src={this.props.image} alt={this.props.name} width="70" height="70" />
+          </div>
+          <div className="user-name">
+            {this.props.name}
+          </div>
+        </li>
+      </a>
     )
   }
 });

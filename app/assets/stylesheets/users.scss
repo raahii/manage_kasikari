@@ -274,62 +274,122 @@ section.user_me{
   border-radius: 50px;
   border: 2px solid #e1e8ed;
   h1{
-      margin-top: 30px;
-      text-align: center;
-      font-size: 15px;
-      color: #333333;
-      color:black;
-      margin-bottom: 0px;
-    }
-      .tgl {
-      display: none;
-    }
-    .tgl, .tgl:after, .tgl:before, .tgl *, .tgl *:after, .tgl *:before, .tgl + .tgl-btn {
-      box-sizing: border-box;
-    }
-    .tgl::selection, .tgl:after::selection, .tgl:before::selection, .tgl *::selection, .tgl *:after::selection, .tgl *:before::selection, .tgl + .tgl-btn::selection {
-        background: none;
-    }
-    .tgl + .tgl-btn {
-        outline: 0;
-        display: block;
-        width: 4em;
-        height: 2em;
-        margin: 0 auto;
-        // position: relative;
-        cursor: pointer;
-    }
-    .tgl + .tgl-btn:after, .tgl + .tgl-btn:before {
-        position: relative;
-        display: block;
-        content: "";
-        width: 50%;
-        height: 100%;
-    }
-    .tgl + .tgl-btn:after {
-        left: 0;
-    }
-    .tgl + .tgl-btn:before {
-        display: none;
-    }
-    .tgl:checked + .tgl-btn:after {
-        left: 50%;
-    }
+    margin-top: 30px;
+    text-align: center;
+    font-size: 15px;
+    color: #333333;
+    color:black;
+    margin-bottom: 0px;
+  }
+  .tgl {
+    display: none;
+  }
+  .tgl, .tgl:after, .tgl:before, .tgl *, .tgl *:after, .tgl *:before, .tgl + .tgl-btn {
+    box-sizing: border-box;
+  }
+  .tgl::selection, .tgl:after::selection, .tgl:before::selection, .tgl *::selection, .tgl *:after::selection, .tgl *:before::selection, .tgl + .tgl-btn::selection {
+    background: none;
+  }
+  .tgl + .tgl-btn {
+    outline: 0;
+    display: block;
+    width: 4em;
+    height: 2em;
+    margin: 0 auto;
+    // position: relative;
+    cursor: pointer;
+  }
+  .tgl + .tgl-btn:after, .tgl + .tgl-btn:before {
+    position: relative;
+    display: block;
+    content: "";
+    width: 50%;
+    height: 100%;
+  }
+  .tgl + .tgl-btn:after {
+    left: 0;
+  }
+  .tgl + .tgl-btn:before {
+    display: none;
+  }
+  .tgl:checked + .tgl-btn:after {
+    left: 50%;
+  }
 
-    .tgl-light + .tgl-btn {
-        background: #606060;
-        border-radius: 2em;
-        padding: 2px;
-        -webkit-transition: all .4s ease;
-        transition: all .4s ease;
+  .tgl-light + .tgl-btn {
+    background: #606060;
+    border-radius: 2em;
+    padding: 2px;
+    -webkit-transition: all .4s ease;
+    transition: all .4s ease;
+  }
+  .tgl-light + .tgl-btn:after {
+    border-radius: 50%;
+    background: #fff;
+    -webkit-transition: all .2s ease;
+    transition: all .2s ease;
+  }
+  .tgl-light:checked + .tgl-btn {
+    background: #9FD6AE;
+  }
+}
+
+/* search */
+.search {
+  .user-form{
+    margin: 0 auto;
+    text-align: center;
+    i {
+      display: inline-block;
+      margin-right: 15px;
+      font-size: 24px;
+      line-height: 24px;
+      height: 100%;
+      color: gray;
     }
-    .tgl-light + .tgl-btn:after {
-        border-radius: 50%;
-        background: #fff;
-        -webkit-transition: all .2s ease;
-        transition: all .2s ease;
-    }
-    .tgl-light:checked + .tgl-btn {
-        background: #9FD6AE;
+    input {
+      display: inline-block;
+      margin-left: 10px;
+      font-size: 16px;
+      margin: 0 auto;
+      width: 60%;
     }
   }
+
+  .user-list {
+    font-size: 18px;
+    .statement {
+      margin: 10px 0;
+      .hit-num {
+        color: red;
+        font-weight: bold;
+      }
+    }
+    .users {
+      display: flex;
+      flex-wrap: wrap;
+      flex-direction: row;
+      padding: 10px 20px;
+      marign-top: 30px;
+      background-color: white;
+      .user {
+        list-style-type: none;
+        display: block;
+        min-width: 200px;
+        height: 90px;
+        background-color: #f5f5f5;
+        border: 1px solid #e1e8ed;
+        border-radius: 5px;
+        padding: 10px 5px;
+        margin: 10px;
+
+        .user-image, .user-name {
+          display: inline-block;
+        }
+        .user-image {
+          margin-right: 20px;
+        }
+      }
+    }
+  }
+}
