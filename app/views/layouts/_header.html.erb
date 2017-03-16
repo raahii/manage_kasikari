@@ -20,9 +20,9 @@
           </li>
         <% else %>
         <li>
-          <%= link_to root_path do%>
-            <i class="fa fa-font-awesome fa-lg" aria-hidden="true"></i>
-            <h7>トップ</h7>
+          <%= link_to current_user do%>
+            <i class="fa fa-home fa-lg" aria-hidden="true"></i>
+            <h7>ホーム</h7>
           <% end %>
         </li>
         <% end %>
