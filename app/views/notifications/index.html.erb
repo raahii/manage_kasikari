@@ -9,8 +9,8 @@
 
       <section class="notifications main-content panel panel-default">
         <ul class="nav nav-tabs">
-          <li class="active"><a data-toggle="tab" href="#kasikaris">貸し借り申請</a></li>
-          <li><a data-toggle="tab" href="#followers">友達申請</a></li>
+          <li class="active"><a data-toggle="tab" href="#kasikaris">貸し借り申請<%= render "shared/count_label", object: @new_kasikaris %></a></li>
+          <li><a data-toggle="tab" href="#followers">友達申請<%= render "shared/count_label", object: @new_followers %></a></li>
         </ul>
 
         <div class="tab-content">

@@ -95,6 +95,7 @@ status = 1
       end_date:     Date.today + i,
       status:       status,
     )
+    user.items[i].available = false
   end
   friends.each_with_index do |friend, i|
     status = 1 - status
@@ -106,6 +107,7 @@ status = 1
       end_date:     Date.today + i,
       status:       status,
     )
+    friend.items.first.available = false
   end
 end
 

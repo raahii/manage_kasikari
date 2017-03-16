@@ -52,12 +52,24 @@ class User < ApplicationRecord
   
   # そのユーザーが貸した物一覧
   def kasis
-    Kasikari.where("from_user_id = #{id}")
+    Kasikari.where("from_user_id = #{id}").ongoing
   end
 
   # そのユーザーが借りた物一覧
   def karis
-    Kasikari.where("to_user_id = #{id}")
+    Kasikari.where("to_user_id = #{id}").ongoing
+  end
+
+  # TODO: ちゃんとSQLで書く
+  def kasikaris
+    self.kasis | self.karis
+  end
+  
+  # 自分と相手(user)間の貸し借りの総数
+  def involve_count(user)
+    Kasikari.where(from_user_id: self, to_user_id: user)
+      .or(Kasikari.where(from_user_id: user, to_user_id: self))
+      .ongoing.count
   end
 
   # ユーザーをフォローする
@@ -88,26 +100,6 @@ class User < ApplicationRecord
   # TODO: ちゃんとSQLで書く
   def friends
     (following & followers).sort{|a,b| involve_count(a) <=> involve_count(b)}.reverse
-  end
-
-  def kasis
-    Kasikari.where(from_user_id: self.id)
-  end
-
-  def karis
-    Kasikari.where(to_user_id: self.id)
-  end
-
-  # TODO: ちゃんとSQLで書く
-  def kasikaris
-    self.kasis | self.karis
-  end
-  
-  # 自分と相手(user)間の貸し借りの総数
-  def involve_count(user)
-    Kasikari.where(from_user_id: self, to_user_id: user)
-      .or(Kasikari.where(from_user_id: user, to_user_id: self))
-      .ongoing.count
   end
 
   # 渡された文字列のハッシュ値を返す

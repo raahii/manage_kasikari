@@ -10,6 +10,7 @@
 .notifications {
   border: none;
   background-color: #F5F8FA;
+  overflow: visible;
 
   .nav {
     li {
@@ -19,6 +20,7 @@
       cursor: pointer;
       a {
         border: 1px solid #ddd;
+        line-height: 20px;
       }
       &.active a {
         border-bottom: 2px solid white;

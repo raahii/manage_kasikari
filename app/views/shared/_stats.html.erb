@@ -12,12 +12,10 @@
     </strong>
     アイテム <i class="fa fa-briefcase" aria-hidden="true"></i>
   </a>
-  <% if current_user?(@user) %>
-    <a href="<%= kasikaris_user_path(@user) %>">
-      <strong id="following" class="stat">
-        <%= @user.items.count %>
-      </strong>
-      貸し借り <i class="fa fa-handshake-o" aria-hidden="true"></i>
-    </a>
-  <% end %>
+  <a href="<%= kasikaris_user_path(@user) %>">
+    <strong id="following" class="stat">
+      <%= @user.kasikaris.count %>
+    </strong>
+    貸し借り <i class="fa fa-handshake-o" aria-hidden="true"></i>
+  </a>
 </div>

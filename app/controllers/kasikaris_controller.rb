@@ -36,7 +36,8 @@ class KasikarisController < ApplicationController
 
   def create
     @kasikari = Kasikari.new(kasikari_params)
-    
+    @kasikari.status = "ongoing" if @kasikari.from_user == current_user
+      
     # 借りたいボタンから来た場合にそのアイテムidが記録されているのでそれで判断
     if @kasikari.save
       delete_item_session

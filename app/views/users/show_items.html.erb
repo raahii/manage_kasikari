@@ -7,7 +7,7 @@
         <%= render 'user_box' %>
       </section>
       <section class="main-content items_list panel panel-default">
-        <div class="panel-heading">アイテム</div>
+        <div class="panel-heading">アイテム<%= render "shared/count_label", object: @items %></div>
 
         <div class="panel-body">
           <ul class="user_items">

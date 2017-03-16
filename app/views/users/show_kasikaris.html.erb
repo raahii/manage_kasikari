@@ -10,8 +10,8 @@
       <section class="main-content kasikari-list panel panel-default">
         <div id="kasikari">
           <ul class="nav nav-tabs">
-            <li class="active"><a data-toggle="tab" href="#kasis">貸しリスト</a></li>
-            <li><a data-toggle="tab" href="#karis">借りリスト</a></li>
+            <li class="active"><a data-toggle="tab" href="#kasis">貸しリスト<%= render "shared/count_label", object: @kasis %></a></li>
+            <li><a data-toggle="tab" href="#karis">借りリスト<%= render "shared/count_label", object: @karis %></a></li>
           </ul>
 
           <div class="tab-content">

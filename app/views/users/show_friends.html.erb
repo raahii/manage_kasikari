@@ -8,7 +8,7 @@
       </section>
 
       <section class="main-content friends_list panel panel-default">
-        <div class="panel-heading">フレンド</div>
+        <div class="panel-heading">フレンド<%= render "shared/count_label", object: @users %></div>
         <div class="panel-body">
           <% if @users.any? %>
             <ul class="users_follow">
