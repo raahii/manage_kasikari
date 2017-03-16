@@ -57,8 +57,8 @@ class UsersController < ApplicationController
   end
 
   def kasikaris
-    @kasis = @user.kasis.ongoing
-    @karis = @user.karis.ongoing
+    @kasis = @user.kasis
+    @karis = @user.karis
     render 'show_kasikaris'
   end
 

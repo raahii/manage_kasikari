@@ -28,12 +28,20 @@
                     <%= print_time(kasi.updated_at) %>
                   </div>
                   <div class="kasikari_buttons">
-                    <%= link_to edit_kasikari_path(kasi) do%>
-                      <button type="button" class="btn btn-primary">編集</button>
-                    <% end %>
-                    <%= form_for :kasikari, url: kasikari_path(kasi), html: {method: "patch"}, remote: true do |f| %>
-                      <%= hidden_field_tag 'kasikari[status]', 'done' %>
-                      <%= f.submit "終了", class: "btn btn-danger", id: "kasikari-#{kasi.id}" %>
+                    <% if kasi.ongoing? %>
+                      <%= link_to edit_kasikari_path(kasi) do%>
+                        <button type="button" class="btn btn-primary">編集</button>
+                      <% end %>
+                      <%= form_for :kasikari, url: kasikari_path(kasi), html: {method: "patch"}, remote: true do |f| %>
+                        <%= hidden_field_tag 'kasikari[status]', 'done' %>
+                        <%= f.submit "終了", class: "btn btn-danger", id: "kasikari-#{kasi.id}" %>
+                      <% end %>
+                    <% elsif kasi.applying? %>
+                      <button type="button" class="btn btn-outline-secondary" disabled="disabled">申請中です</button>
+                    <% elsif kasi.applying? %>
+                      <button type="button" class="btn btn-outline-secondary" disabled="disabled">拒否しました</button>
+                    <% elsif kasi.done? %>
+                      <button type="button" class="btn btn-outline-secondary" disabled="disabled">終了しました</button>
                     <% end %>
                   </div>
                 </li>
@@ -52,12 +60,20 @@
                     <%= print_time(kari.updated_at) %>
                   </div>
                   <div class="kasikari_buttons">
-                    <%= link_to edit_kasikari_path(kari) do%>
-                      <button type="button" class="btn btn-primary">編集</button>
-                    <% end %>
-                    <%= form_for :kasikari, url: kasikari_path(kari), html: {method: "patch"}, remote: true do |f| %>
-                      <%= hidden_field_tag 'kasikari[status]', 'done' %>
-                      <%= f.submit "終了", class: "btn btn-danger", id: "kasikari-#{kari.id}" %>
+                    <% if kari.ongoing? %>
+                      <%= link_to edit_kasikari_path(kari) do%>
+                        <button type="button" class="btn btn-primary">編集</button>
+                      <% end %>
+                      <%= form_for :kasikari, url: kasikari_path(kari), html: {method: "patch"}, remote: true do |f| %>
+                        <%= hidden_field_tag 'kasikari[status]', 'done' %>
+                        <%= f.submit "終了", class: "btn btn-danger", id: "kasikari-#{kari.id}" %>
+                      <% end %>
+                    <% elsif kari.applying? %>
+                      <button type="button" class="btn btn-outline-secondary" disabled="disabled">申請中です</button>
+                    <% elsif kari.applying? %>
+                      <button type="button" class="btn btn-outline-secondary" disabled="disabled">拒否されました</button>
+                    <% elsif kari.done? %>
+                      <button type="button" class="btn btn-outline-secondary" disabled="disabled">終了しました</button>
                     <% end %>
                   </div>
                 </li>
