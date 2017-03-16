@@ -18,12 +18,16 @@ var UserBox = React.createClass({
     this.loadCommentsFromServer();
     //setInterval(this.loadCommentsFromServer, this.props.pollInterval);
   },
+  changeFilter(data){
+    text = data.text
+    console.log(text);
+  },
   render: function() {
     return (
       <div className="container">
         <div className="row">
           <div className="user-box">
-            <UserForm />
+            <UserForm onEventCallBack={this.changeFilter}/>
             <UserList data={this.state.data}  />
           </div>
         </div>
@@ -33,11 +37,13 @@ var UserBox = React.createClass({
 });
 
 var UserForm = React.createClass({
+  changeText(e){
+    this.props.onEventCallBack({ text : e.target.value });
+    return
+  },
   render: function() {
     return (
-      <div className="user-list">
-        Hello, world! I am a UserForm.
-      </div>
+      <input type="text" placeholder="名前から絞る" onChange={this.changeText}/>
     );
   }
 });
@@ -46,7 +52,7 @@ var UserList = React.createClass({
   render: function() {
     var userNodes = this.props.data.map(function (user) {
       return (
-        <User image={user.image.url} name={user.name} />
+        <User key={user.id} image={user.image.url} name={user.name} />
       );
     });
     return (
