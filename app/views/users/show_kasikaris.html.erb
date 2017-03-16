@@ -24,8 +24,8 @@
                     <%= thumbnail_for kasi.item, size: 30 %>
                     <%= link_to kasi.item.name, kasi.item %> を貸しています
                   </div>
-                  <div class="updated_time">
-                    <%= print_time(kasi.updated_at) %>
+                  <div class="end_date">
+                    返却期限(<%= kasi.end_date%>)
                   </div>
                   <div class="edit_kasikari">
                     <%= link_to edit_kasikari_path(kasi) do%>
@@ -44,8 +44,8 @@
                     <%= thumbnail_for kari.item, size: 30 %>
                     <%= link_to kari.item.name, kari.item %> を借りています
                   </div>
-                  <div class="updated_time">
-                    <%= print_time(kari.updated_at) %>
+                  <div class="end_date">
+                    返却期限(<%= kari.end_date%>)
                   </div>
                   <div class="edit_kasikari">
                     <%= link_to edit_kasikari_path(kari) do%>

@@ -92,7 +92,8 @@ main {
     padding-top: 22px;
     padding-bottom: 22px;
   }
-  h3{
+  h7{
+    text-align: center;
     font-size: 30px;
     color:#555;
   }
@@ -103,6 +104,7 @@ main {
   }
   .hero_page{
     width: 800;
+    text-align: center;
     p{
       text-align: center;
       color:#777;
@@ -123,6 +125,10 @@ main {
   margin: 3% 20%;
   padding: 2%;
   background-color: #FFFFFF;
+  h7{
+    font-size: 30px;
+    color:#555;
+  }
 }
 
 .inner_5{
@@ -139,6 +145,11 @@ main {
 .inner_6{
   min-height:600px;
   position: relative;
+  h7{
+    text-align: center;
+    font-size: 30px;
+    color:#555;
+  }
 }
 
 //
