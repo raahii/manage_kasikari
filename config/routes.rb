@@ -8,7 +8,7 @@ Rails.application.routes.draw do
   delete '/logout',    to: 'sessions#destroy'
   get '/notification', to: 'notifications#index'
   
-  resources :users, except: [:index] do
+  resources :users do
     member do
       get :friends
       get :items
