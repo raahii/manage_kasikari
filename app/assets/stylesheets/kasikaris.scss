@@ -323,3 +323,11 @@ $return_color: #d9534f;
   padding-left: 30px;
   font-size: 16px;
 }
+.kasikari_buttons {
+  form, .btn {
+    display: inline-block;
+  }
+  .btn + .btn {
+    margin-left: 10px;
+  }
+}

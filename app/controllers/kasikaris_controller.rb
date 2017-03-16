@@ -59,12 +59,17 @@ class KasikarisController < ApplicationController
   def update
     if @kasikari.update_attributes(kasikari_params)
       @kasikari.item.update_attributes!(available: !@kasikari.ongoing?)
-  
+
       if params[:ajax_action]
         head :no_content and return
       else
-        flash[:success] = "貸し借りを更新しました"
-        redirect_to @kasikari
+        respond_to do |format|
+          format.html { 
+            flash[:success] = "貸し借りを更新しました"
+            redirect_to @kasikari
+          }
+          format.js
+        end
       end
     else
       set_choices

@@ -27,9 +27,13 @@
                   <div class="updated_time">
                     <%= print_time(kasi.updated_at) %>
                   </div>
-                  <div class="edit_kasikari">
+                  <div class="kasikari_buttons">
                     <%= link_to edit_kasikari_path(kasi) do%>
                       <button type="button" class="btn btn-primary">編集</button>
+                    <% end %>
+                    <%= form_for :kasikari, url: kasikari_path(kasi), html: {method: "patch"}, remote: true do |f| %>
+                      <%= hidden_field_tag 'kasikari[status]', 'done' %>
+                      <%= f.submit "終了", class: "btn btn-danger", id: "kasikari-#{kasi.id}" %>
                     <% end %>
                   </div>
                 </li>
@@ -47,9 +51,13 @@
                   <div class="updated_time">
                     <%= print_time(kari.updated_at) %>
                   </div>
-                  <div class="edit_kasikari">
+                  <div class="kasikari_buttons">
                     <%= link_to edit_kasikari_path(kari) do%>
                       <button type="button" class="btn btn-primary">編集</button>
+                    <% end %>
+                    <%= form_for :kasikari, url: kasikari_path(kari), html: {method: "patch"}, remote: true do |f| %>
+                      <%= hidden_field_tag 'kasikari[status]', 'done' %>
+                      <%= f.submit "終了", class: "btn btn-danger", id: "kasikari-#{kari.id}" %>
                     <% end %>
                   </div>
                 </li>

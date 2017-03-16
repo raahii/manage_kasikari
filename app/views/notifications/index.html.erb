@@ -48,7 +48,7 @@
                 </div>
                 <div class="notification_btn">
                 <%= form_for(current_user.active_relationships.build, remote: true) do |f| %>
-                  <div><%= hidden_field_tag :followed_id, follower.id %></div>
+                  <%= hidden_field_tag :followed_id, follower.id %>
                   <%= f.submit "許可", class: "btn btn-permit", id: "follower-#{follower.id}" %>
                 <% end %>
                 </div>

@@ -1,0 +1,6 @@
+var li = $(`#kasikari-<%= @kasikari.id %>`).parent().parent()
+li.children().fadeOut("slow", function() {
+  li.html(`\
+    <button type="button" class="btn btn-outline-secondary" disabled="disabled">終了しました</button>\
+  `);
+});

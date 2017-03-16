@@ -52,12 +52,12 @@ class User < ApplicationRecord
   
   # そのユーザーが貸した物一覧
   def kasis
-    Kasikari.where("from_user_id = #{id}").ongoing
+    Kasikari.where("from_user_id = #{id}")
   end
 
   # そのユーザーが借りた物一覧
   def karis
-    Kasikari.where("to_user_id = #{id}").ongoing
+    Kasikari.where("to_user_id = #{id}")
   end
 
   # TODO: ちゃんとSQLで書く
