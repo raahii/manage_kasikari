@@ -14,7 +14,13 @@
       font-size: 14px;
     }
     .follow-button {
+      width: 100px;
       margin: 20px auto;
+    }
+  }
+  #follow_form {
+    .follow-button {
+      width: 100px;
     }
   }
   #notify_button{

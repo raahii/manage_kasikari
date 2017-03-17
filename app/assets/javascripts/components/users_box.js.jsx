@@ -58,7 +58,7 @@ var UserList = React.createClass({
     });
     var userNodes = filtered_users.map(function (user) {
       return (
-        <User key={user.id} image={user.image.url} name={user.name} />
+        <User key={user.id} id={user.id} image={user.image.url} name={user.name} />
       );
     });
 
@@ -88,7 +88,7 @@ var UserList = React.createClass({
 var User = React.createClass({
   render: function() {
     return (
-      <a href={'/users/' + this.props.key}>
+      <a href={'/users/' + this.props.id}>
         <li className="user">
           <div className="user-image">
             <img src={this.props.image} alt={this.props.name} width="70" height="70" />
