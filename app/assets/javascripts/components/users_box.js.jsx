@@ -12,7 +12,7 @@ var UserBox = React.createClass({
     });
   },
   getInitialState: function() {
-    return {data: [], text: ""};
+    return {data: [], text: this.props.search_word};
   },
   componentDidMount: function() {
     this.loadCommentsFromServer();
@@ -26,7 +26,7 @@ var UserBox = React.createClass({
       <div className="container">
         <div className="row">
           <div className="user-box search">
-            <UserForm onEventCallBack={this.changeText} />
+            <UserForm onEventCallBack={this.changeText} default_value={this.props.search_word}/>
             <UserList data={this.state.data} text={this.state.text} />
           </div>
         </div>
@@ -37,14 +37,18 @@ var UserBox = React.createClass({
 
 var UserForm = React.createClass({
   changeText(e){
+    this.setState({input_value: e.target.value});
     this.props.onEventCallBack({ text : e.target.value });
     return
+  },
+  getInitialState: function() {
+    return {input_value: this.props.default_value};
   },
   render: function() {
     return (
       <div className="user-form">
         <i className="fa fa-search"></i>
-        <input type="text" placeholder="名前から検索" className="form-control" onChange={this.changeText}/>
+        <input type="text" value={this.state.input_value} placeholder="名前から検索" className="form-control" onChange={this.changeText}/>
       </div>
     );
   }

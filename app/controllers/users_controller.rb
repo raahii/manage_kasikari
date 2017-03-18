@@ -11,6 +11,8 @@ class UsersController < ApplicationController
   end
   
   def search
+    @search_word = "鈴木"
+    # @search_word = params[:search_word] || ""
   end
 
   def show
