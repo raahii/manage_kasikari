@@ -4,7 +4,14 @@
     <!-- <%= link_to "MKK", root_path, id: "logo" %> -->
     <nav>
       <ul class="nav navbar-nav navbar-right">
-
+        <li>
+          <form action="" id="form-search">
+            <input type="text" id="input-search">
+            <button type="submit" id="submit-search">
+              <i class="fa fa-search" aria-hidden="true"></i>
+            </button>
+          </form>
+        </li>
         <% if current_page?(root_path) %>
           <li>
             <%= link_to '/#about' do%>
